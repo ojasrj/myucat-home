@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 
 const Hero = () => {
   return (
-    <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-light via-white to-secondary pt-20">
+    <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-light via-white to-secondary pt-20 pb-32">
       <div className="container mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto space-y-8 animate-fade-in">
           <span className="px-4 py-2 bg-white/80 backdrop-blur rounded-full text-primary-dark text-sm font-medium inline-block">
