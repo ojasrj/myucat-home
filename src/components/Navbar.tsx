@@ -27,7 +27,7 @@ const Navbar = () => {
             <a href="#about" className="text-gray-700 hover:text-primary transition-colors">About</a>
             <a href="#process" className="text-gray-700 hover:text-primary transition-colors">Process</a>
             <a href="#testimonials" className="text-gray-700 hover:text-primary transition-colors">Testimonials</a>
-            <a href="#faq" className="text-gray-700 hover:text-primary transition-colors">FAQ</a>
+            <a href="#faqs" className="text-gray-700 hover:text-primary transition-colors">FAQs</a>
           </div>
           <Button className="bg-primary hover:bg-primary-dark text-white transition-colors">
             Get Started

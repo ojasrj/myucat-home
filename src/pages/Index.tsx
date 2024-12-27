@@ -16,7 +16,7 @@ const Index = () => {
       <Hero />
       <Timeline />
       
-      <section className="bg-secondary relative overflow-hidden py-16">
+      <section id="faqs" className="bg-secondary relative overflow-hidden py-16">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent"></div>
         <div className="container mx-auto px-4 sm:px-6 relative">
           <Accordion 
