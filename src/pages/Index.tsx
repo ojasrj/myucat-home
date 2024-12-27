@@ -59,8 +59,8 @@ const Index = () => {
                   </div>
                   <div className="flex-shrink-0 w-48">
                     <img 
-                      src="/photo-1486312338219-ce68d2c6f44d" 
-                      alt="Student studying with laptop"
+                      src="/lovable-uploads/4672534e-030c-4a2a-9b2f-9b6044d097a8.png" 
+                      alt="MyUCAT Team Member"
                       className="rounded-lg shadow-md w-full h-auto object-cover aspect-[4/3] animate-fade-in"
                     />
                   </div>
