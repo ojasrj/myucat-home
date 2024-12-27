@@ -26,7 +26,7 @@ const steps = [
   {
     number: 4,
     title: "Interviews",
-    description: "University-specific support for Oxbridge, MMI & traditional by our mentoring team of doctors, dentists & experienced medical/dental interview tutors.",
+    description: "University-specific support for Oxbridge, MMI & traditional panel format by our mentoring team of doctors, dentists & experienced medical/dental interview tutors.",
     Icon: Handshake,
     align: "right",
   },
