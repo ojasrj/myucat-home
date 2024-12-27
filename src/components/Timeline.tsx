@@ -10,8 +10,8 @@ const steps = [
     Icon: GraduationCap,
     align: "left",
     buttons: [
-      { label: "1-1 Tutoring", href: "#" },
-      { label: "Free Group Lessons", href: "#" },
+      { label: "1-1 Tutoring", href: "https://www.guessandflag.co.uk/a-level-1-1" },
+      { label: "Free Group Lessons", href: "https://www.guessandflag.co.uk/a-level-tuition" },
     ],
   },
   {
@@ -21,9 +21,9 @@ const steps = [
     Icon: ClipboardCheck,
     align: "right",
     buttons: [
-      { label: "UCAT Course", href: "#" },
-      { label: "1-1 Tutoring", href: "#" },
-      { label: "Score Calculator", href: "#" },
+      { label: "UCAT Course", href: "https://www.guessandflag.co.uk/ucat-resources" },
+      { label: "1-1 Tutoring", href: "https://www.guessandflag.co.uk/ucat-1-1" },
+      { label: "Score Calculator", href: "https://www.guessandflag.co.uk/score-converter" },
     ],
   },
   {
@@ -33,8 +33,8 @@ const steps = [
     Icon: Target,
     align: "left",
     buttons: [
-      { label: "Strategic Applications", href: "#" },
-      { label: "Personal Statement", href: "#" },
+      { label: "Strategic Applications", href: "https://www.guessandflag.co.uk/strategic-applications" },
+      { label: "Personal Statement", href: "https://www.guessandflag.co.uk/personal-statements" },
     ],
   },
   {
@@ -44,9 +44,9 @@ const steps = [
     Icon: Handshake,
     align: "right",
     buttons: [
-      { label: "1-1 Interviews", href: "#" },
-      { label: "Dental Course", href: "#" },
-      { label: "Medical Course", href: "#" },
+      { label: "1-1 Interviews", href: "https://www.guessandflag.co.uk/interviews" },
+      { label: "Dental Course", href: "https://www.guessandflag.co.uk/dental-interview-programme" },
+      { label: "Medical Course", href: "https://www.guessandflag.co.uk/medical-interview-programme" },
     ],
   },
 ];

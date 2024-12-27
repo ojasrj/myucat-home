@@ -17,14 +17,14 @@ const Index = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
             <Button 
               className="bg-primary hover:bg-primary-dark text-white px-12 py-6 text-lg rounded-full w-full sm:w-auto transition-all transform hover:scale-105"
-              onClick={() => window.open('https://wa.me/+447878115057', '_blank')}
+              onClick={() => window.open('https://wa.me/447443341420', '_blank')}
             >
               WhatsApp us
             </Button>
             <Button 
               variant="outline"
               className="border-2 border-primary text-primary hover:bg-primary-light px-12 py-6 text-lg rounded-full w-full sm:w-auto"
-              onClick={() => window.open('#testimonials', '_blank')}
+              onClick={() => window.open('https://uk.trustpilot.com/review/myucat.co.uk', '_blank')}
             >
               Testimonials
             </Button>
