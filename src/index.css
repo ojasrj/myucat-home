@@ -1,5 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
+@font-face {
+  font-family: 'Lightbox 21';
+  src: url('/fonts/Lightbox21-Bold.woff2') format('woff2'),
+       url('/fonts/Lightbox21-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,6 +17,11 @@
   html {
     scroll-behavior: smooth;
     font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, .font-lightbox {
+    font-family: 'Lightbox 21', sans-serif;
+    font-weight: bold;
   }
 
   body {
