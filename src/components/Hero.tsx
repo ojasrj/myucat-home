@@ -12,7 +12,7 @@ const Hero = () => {
             MyUCAT Admissions Specialists
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            An evidence based approach to the university application process.
+            An evidence based approach to the university application process -- start your journey to medical or dental school today!
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
             <Button className="bg-primary hover:bg-primary-dark text-white px-8 py-6 text-lg transition-all transform hover:scale-105">
