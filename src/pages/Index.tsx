@@ -129,7 +129,7 @@ const Index = () => {
 
           <div className="mt-12 flex items-center justify-center gap-8">
             <a
-              href="https://www.instagram.com/myucat"
+              href="https://www.instagram.com/myucat.co.uk/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-primary hover:text-primary-dark transition-colors"
@@ -137,7 +137,7 @@ const Index = () => {
               <Instagram size={32} />
             </a>
             <a
-              href="https://www.tiktok.com/@myucat"
+              href="https://www.tiktok.com/@my_ucat"
               target="_blank"
               rel="noopener noreferrer"
               className="text-primary hover:text-primary-dark transition-colors"
@@ -145,7 +145,7 @@ const Index = () => {
               <TikTokIcon size={32} />
             </a>
             <a
-              href="https://www.linkedin.com/company/myucat"
+              href="https://www.linkedin.com/company/myucat/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-primary hover:text-primary-dark transition-colors"
