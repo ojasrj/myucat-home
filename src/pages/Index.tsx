@@ -16,15 +16,46 @@ const Index = () => {
       <Hero />
       <Timeline />
       
-      <section className="bg-white py-12">
-        <div className="container mx-auto px-6">
-          <Accordion type="single" collapsible className="w-full max-w-2xl mx-auto">
-            <AccordionItem value="who-is-myucat">
-              <AccordionTrigger className="text-xl font-semibold text-primary">
-                Who/what is MyUCAT?
+      <section className="bg-secondary relative overflow-hidden py-16">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent"></div>
+        <div className="container mx-auto px-6 relative">
+          <Accordion 
+            type="single" 
+            collapsible 
+            className="w-full max-w-2xl mx-auto bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-primary/10 overflow-hidden"
+          >
+            <AccordionItem value="who-is-myucat" className="border-none">
+              <AccordionTrigger className="px-6 py-4 hover:no-underline group">
+                <div className="flex items-center gap-4">
+                  <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                    <svg 
+                      xmlns="http://www.w3.org/2000/svg" 
+                      width="20" 
+                      height="20" 
+                      viewBox="0 0 24 24" 
+                      fill="none" 
+                      stroke="currentColor" 
+                      strokeWidth="2" 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round" 
+                      className="text-primary"
+                    >
+                      <circle cx="12" cy="12" r="10"/>
+                      <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                      <path d="M12 17h.01"/>
+                    </svg>
+                  </div>
+                  <h3 className="text-xl font-semibold text-primary text-left">
+                    Who/what is MyUCAT?
+                  </h3>
+                </div>
               </AccordionTrigger>
-              <AccordionContent className="text-gray-600 text-lg">
-                MyUCAT is a leading provider of UCAT preparation resources and medical school application support. We specialize in helping students achieve their dreams of entering medical and dental schools through comprehensive tutoring, strategic guidance, and proven preparation methods.
+              <AccordionContent className="px-6 pb-6">
+                <div className="pl-14">
+                  <p className="text-gray-600 text-lg leading-relaxed">
+                    MyUCAT is a leading provider of UCAT preparation resources and medical school application support. We specialize in helping students achieve their dreams of entering medical and dental schools through comprehensive tutoring, strategic guidance, and proven preparation methods.
+                  </p>
+                </div>
               </AccordionContent>
             </AccordionItem>
           </Accordion>
