@@ -9,10 +9,10 @@ const Hero = () => {
             Lightbox 21 bold
           </span>
           <h1 className="text-5xl md:text-6xl font-bold text-secondary-dark leading-tight">
-            Your Journey to Medical School Starts Here
+            Medical and dental admissions... by the experts
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Expert guidance and personalized support for your medical and dental school applications. Join our community of successful applicants.
+            An evidence based approach to the university application process.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
             <Button className="bg-primary hover:bg-primary-dark text-white px-8 py-6 text-lg transition-all transform hover:scale-105">
