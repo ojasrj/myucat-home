@@ -14,11 +14,17 @@ const Hero = () => {
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             An evidence based approach to the university application process -- start your journey to medical or dental school today!
           </p>
+          <p className="text-lg font-medium text-primary-dark">
+            Start your journey by joining our free advice groups:
+          </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
             <Button className="bg-primary hover:bg-primary-dark text-white px-8 py-6 text-lg transition-all transform hover:scale-105">
               Join Our Medical Interview Group
             </Button>
             <Button variant="outline" className="border-primary text-primary hover:bg-primary-light px-8 py-6 text-lg">
+              Y12 UCAT Group
+            </Button>
+            <Button className="bg-primary hover:bg-primary-dark text-white px-8 py-6 text-lg transition-all transform hover:scale-105">
               Dental Interview Group
             </Button>
           </div>
