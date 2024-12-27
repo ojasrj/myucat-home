@@ -51,10 +51,19 @@ const Index = () => {
                 </div>
               </AccordionTrigger>
               <AccordionContent className="px-6 pb-6">
-                <div className="pl-14">
-                  <p className="text-gray-600 text-lg leading-relaxed">
-                    MyUCAT is a leading provider of UCAT preparation resources and medical school application support. We specialize in helping students achieve their dreams of entering medical and dental schools through comprehensive tutoring, strategic guidance, and proven preparation methods.
-                  </p>
+                <div className="flex gap-6 items-start">
+                  <div className="flex-1 pl-14">
+                    <p className="text-gray-600 text-lg leading-relaxed">
+                      MyUCAT is a leading provider of UCAT preparation resources and medical school application support. We specialize in helping students achieve their dreams of entering medical and dental schools through comprehensive tutoring, strategic guidance, and proven preparation methods.
+                    </p>
+                  </div>
+                  <div className="flex-shrink-0 w-48">
+                    <img 
+                      src="/photo-1486312338219-ce68d2c6f44d" 
+                      alt="Student studying with laptop"
+                      className="rounded-lg shadow-md w-full h-auto object-cover aspect-[4/3] animate-fade-in"
+                    />
+                  </div>
                 </div>
               </AccordionContent>
             </AccordionItem>
