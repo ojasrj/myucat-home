@@ -36,7 +36,7 @@ const Timeline = () => {
     <section className="bg-secondary py-20">
       <div className="container mx-auto px-6">
         <h2 className="text-4xl md:text-5xl font-bold text-center text-primary mb-16">
-          Your Path to Medical School Success
+          Your Path to Medical/Dental Success
         </h2>
         
         <div className="relative">
