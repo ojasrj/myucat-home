@@ -63,7 +63,7 @@ const Index = () => {
                         <ul className="list-disc pl-6 space-y-2">
                           <li>Medical student at University of Oxford</li>
                           <li>One of the highest-scoring tutors ever (3470, SJT 1)</li>
-                          <li>Formerly the highest – many of my students surpassed me in 2023-24 and are now on track to join as tutors!</li>
+                          <li className="pl-4">Formerly the highest – many of my students surpassed me in 2023-24 and are now on track to join as tutors!</li>
                           <li>Offers from 4/4 medical schools: Oxford, Imperial, KCL, Birmingham</li>
                           <li>Personally assisted several thousand students from across the world with applying to UK institutions</li>
                         </ul>
@@ -88,7 +88,7 @@ const Index = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="flex-shrink-0 w-56">
+                  <div className="flex-shrink-0 w-32">
                     <img 
                       src="/lovable-uploads/4672534e-030c-4a2a-9b2f-9b6044d097a8.png" 
                       alt="MyUCAT Team Member"
