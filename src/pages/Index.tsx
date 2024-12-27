@@ -2,7 +2,8 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Timeline from "@/components/Timeline";
 import { Button } from "@/components/ui/button";
-import { Instagram, Tiktok, Linkedin } from "lucide-react";
+import { Instagram, Linkedin } from "lucide-react";
+import TikTokIcon from "@/components/icons/TikTokIcon";
 import {
   Accordion,
   AccordionContent,
@@ -141,7 +142,7 @@ const Index = () => {
               rel="noopener noreferrer"
               className="text-primary hover:text-primary-dark transition-colors"
             >
-              <Tiktok size={32} />
+              <TikTokIcon size={32} />
             </a>
             <a
               href="https://www.linkedin.com/company/myucat"
