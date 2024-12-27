@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Timeline from "@/components/Timeline";
 import { Button } from "@/components/ui/button";
+import { Instagram, Tiktok, Linkedin } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -123,6 +124,33 @@ const Index = () => {
             >
               Testimonials
             </Button>
+          </div>
+
+          <div className="mt-12 flex items-center justify-center gap-8">
+            <a
+              href="https://www.instagram.com/myucat"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary hover:text-primary-dark transition-colors"
+            >
+              <Instagram size={32} />
+            </a>
+            <a
+              href="https://www.tiktok.com/@myucat"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary hover:text-primary-dark transition-colors"
+            >
+              <Tiktok size={32} />
+            </a>
+            <a
+              href="https://www.linkedin.com/company/myucat"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary hover:text-primary-dark transition-colors"
+            >
+              <Linkedin size={32} />
+            </a>
           </div>
         </div>
       </section>
