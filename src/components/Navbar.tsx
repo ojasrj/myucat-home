@@ -22,7 +22,7 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <div className="text-2xl font-bold text-primary">MedPrep</div>
+          <div className="text-2xl font-bold text-primary">MyUCAT</div>
           <div className="hidden md:flex items-center space-x-8">
             <a href="#about" className="text-gray-700 hover:text-primary transition-colors">About</a>
             <a href="#process" className="text-gray-700 hover:text-primary transition-colors">Process</a>

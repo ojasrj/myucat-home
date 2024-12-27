@@ -6,7 +6,7 @@ const Hero = () => {
       <div className="container mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto space-y-8 animate-fade-in">
           <span className="px-4 py-2 bg-white/80 backdrop-blur rounded-full text-primary-dark text-sm font-medium inline-block">
-            Medical & Dental School Admissions
+            Lightbox 21 bold
           </span>
           <h1 className="text-5xl md:text-6xl font-bold text-secondary-dark leading-tight">
             Your Journey to Medical School Starts Here
