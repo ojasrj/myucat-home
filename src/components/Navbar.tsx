@@ -28,7 +28,7 @@ const Navbar = () => {
             <a href="https://uk.trustpilot.com/review/myucat.co.uk" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-primary transition-colors">Testimonials</a>
             <a href="https://www.guessandflag.co.uk/ucat-resources" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-primary transition-colors">UCAT</a>
             <a href="https://www.guessandflag.co.uk/interviews" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-primary transition-colors">Interviews</a>
-            <a href="https://www.guessandflag.co.uk/strategic-applications" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-primary transition-colors">Strategic Applications</a>
+            <a href="https://www.guessandflag.co.uk/strategic-applications" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-primary transition-colors">Strategic Guide</a>
           </div>
           <Button 
             className="bg-primary hover:bg-primary-dark text-white transition-colors"
