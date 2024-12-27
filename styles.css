@@ -339,7 +339,54 @@ body {
     border-radius: 0.5rem;
 }
 
-/* Mobile Styles */
+/* Social Section */
+.social {
+    padding: 5rem 0;
+    text-align: center;
+}
+
+.social h2 {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 2rem;
+}
+
+.contact-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.social-icon {
+    color: var(--primary);
+    transition: color 0.3s;
+}
+
+.social-icon:hover {
+    color: var(--primary-dark);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile Timeline Styles */
 @media (max-width: 768px) {
     .nav-links {
         display: none;
@@ -376,13 +423,7 @@ body {
     }
 
     .faq-image {
-        margin: 1rem auto;
-        max-width: 200px;
-    }
-
-    .faq-image img {
-        width: 100%;
-        height: auto;
+        display: none;
     }
 
     .contact-buttons {
