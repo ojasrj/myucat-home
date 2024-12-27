@@ -29,8 +29,11 @@ const Navbar = () => {
             <a href="#testimonials" className="text-gray-700 hover:text-primary transition-colors">Testimonials</a>
             <a href="#faqs" className="text-gray-700 hover:text-primary transition-colors">FAQs</a>
           </div>
-          <Button className="bg-primary hover:bg-primary-dark text-white transition-colors">
-            Get Started
+          <Button 
+            className="bg-primary hover:bg-primary-dark text-white transition-colors"
+            onClick={() => window.open('https://wa.me/447443341420', '_blank')}
+          >
+            Contact Us
           </Button>
         </div>
       </div>
