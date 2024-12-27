@@ -19,13 +19,13 @@ const Hero = () => {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
             <Button className="bg-primary hover:bg-primary-dark text-white px-8 py-6 text-lg transition-all transform hover:scale-105">
-              Join Our Medical Interview Group
+              Medical Interviews
             </Button>
             <Button variant="outline" className="border-primary text-primary hover:bg-primary-light px-8 py-6 text-lg">
               Y12 UCAT Group
             </Button>
             <Button className="bg-primary hover:bg-primary-dark text-white px-8 py-6 text-lg transition-all transform hover:scale-105">
-              Dental Interview Group
+              Dental Interviews
             </Button>
           </div>
         </div>
