@@ -25,7 +25,7 @@ const Navbar = () => {
           <div className="text-2xl font-bold text-primary">MyUCAT</div>
           <div className="hidden md:flex items-center space-x-8">
             <a href="#about" className="text-gray-700 hover:text-primary transition-colors">About</a>
-            <a href="#process" className="text-gray-700 hover:text-primary transition-colors">Process</a>
+            <a href="https://www.guessandflag.co.uk/ucat-resources" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-primary transition-colors">UCAT</a>
             <a href="https://uk.trustpilot.com/review/myucat.co.uk" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-primary transition-colors">Testimonials</a>
             <a href="#about-us" className="text-gray-700 hover:text-primary transition-colors">About Us</a>
           </div>
