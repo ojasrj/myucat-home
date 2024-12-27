@@ -63,7 +63,7 @@ const Index = () => {
                         <ul className="list-disc pl-6 space-y-2">
                           <li>Medical student at University of Oxford</li>
                           <li>One of the highest-scoring tutors ever (3470, SJT 1)</li>
-                          <li className="ml-4">Formerly the highest – many of my students surpassed me in 2023-24 and are now on track to join as tutors!</li>
+                          <li className="ml-4">Formerly the highest in the UK – many of my students surpassed me in 2023-24 and are now on track to join as tutors!</li>
                           <li>Offers from 4/4 medical schools: Oxford, Imperial, KCL, Birmingham</li>
                           <li>Personally assisted several thousand students from across the world with applying to UK institutions</li>
                         </ul>
@@ -75,10 +75,12 @@ const Index = () => {
                         <div>
                           <p className="font-semibold mb-2">We cover all aspects of medical & dental school admissions:</p>
                           <ul className="list-disc pl-6 space-y-2">
-                            <li>MMI Mock Interview Circuits</li>
-                            <li>1-1 University Specific: Oxbridge, Panel, MMI interview preparation sessions</li>
-                            <li>1-1 UCAT Tuition exclusively with top 3000+ scorers (unlike any other UK company)</li>
-                            <li>Exam-oriented A Level tuition</li>
+                            <li>Small group & 1-1 UCAT support – exclusively with 3000+ & even 3400/3500+ top scorers (unlike any other UK company)</li>
+                            <li>Small group & 1-1 interview support – MMI, traditional panel & Oxbridge styles</li>
+                            <li>Strategic UCAS application guidance</li>
+                            <li>Personal statement support</li>
+                            <li>MMI mock interview circuits</li>
+                            <li>Exam-oriented 1-1 A Level & GCSE tuition</li>
                           </ul>
                         </div>
                         
