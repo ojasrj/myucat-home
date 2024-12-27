@@ -62,7 +62,7 @@ const Timeline = () => {
                   {/* Content */}
                   <div 
                     className={`
-                      ${isMobile ? 'ml-8 w-full' : `w-1/2 ${step.align === 'left' ? 'text-right pr-8' : 'text-left pl-8'}`}
+                      ${isMobile ? 'ml-8 w-[calc(100%-2rem)]' : `w-1/2 ${step.align === 'left' ? 'text-right pr-8' : 'text-left pl-8'}`}
                     `}
                   >
                     <div className="glass-card p-6 rounded-lg shadow-lg space-y-4">
