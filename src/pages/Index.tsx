@@ -53,9 +53,40 @@ const Index = () => {
               <AccordionContent className="px-6 pb-6">
                 <div className="flex gap-6 items-start">
                   <div className="flex-1 pl-14">
-                    <p className="text-gray-600 text-lg leading-relaxed">
-                      MyUCAT is a leading provider of UCAT preparation resources and medical school application support. We specialize in helping students achieve their dreams of entering medical and dental schools through comprehensive tutoring, strategic guidance, and proven preparation methods.
-                    </p>
+                    <div className="space-y-4">
+                      <h4 className="text-xl font-semibold text-primary">Unparalleled expertise in medical and dental admissions</h4>
+                      
+                      <div className="space-y-4 text-gray-600">
+                        <p>
+                          MyUCAT was initially founded by Ojas Rajkumar to share his secrets after exceptional success in the admissions game:
+                        </p>
+                        <ul className="list-disc pl-6 space-y-2">
+                          <li>Medical student at University of Oxford</li>
+                          <li>One of the highest-scoring tutors ever (3470, SJT 1)</li>
+                          <li>Formerly the highest – many of my students surpassed me in 2023-24 and are now on track to join as tutors!</li>
+                          <li>Offers from 4/4 medical schools: Oxford, Imperial, KCL, Birmingham</li>
+                          <li>Personally assisted several thousand students from across the world with applying to UK institutions</li>
+                        </ul>
+                        
+                        <p>
+                          Over the years, MyUCAT has grown from his personal project to a hand-picked, nationwide network of experienced tutors, including doctors and students from every UK medical and dental school. Ojas continues to take an active role at the head of the team and we remain true to our founding principles: offering unbeatable value and delivering unbeatable results. We design specific, evidence-based strategies to ensure that all students are able to secure a coveted place.
+                        </p>
+                        
+                        <div>
+                          <p className="font-semibold mb-2">We cover all aspects of medical & dental school admissions:</p>
+                          <ul className="list-disc pl-6 space-y-2">
+                            <li>MMI Mock Interview Circuits</li>
+                            <li>1-1 University Specific: Oxbridge, Panel, MMI interview preparation sessions</li>
+                            <li>1-1 UCAT Tuition exclusively with top 3000+ scorers (unlike any other UK company)</li>
+                            <li>Exam-oriented A Level tuition</li>
+                          </ul>
+                        </div>
+                        
+                        <p>
+                          We don't want money to ever be a barrier to education and seek to be as accessible as possible. This includes through a variety of FREE seminars & resources, in addition to affordable teaching sessions in small-group settings.
+                        </p>
+                      </div>
+                    </div>
                   </div>
                   <div className="flex-shrink-0 w-56">
                     <img 
