@@ -16,10 +16,10 @@ const Hero = () => {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
             <Button className="bg-primary hover:bg-primary-dark text-white px-8 py-6 text-lg transition-all transform hover:scale-105">
-              Start Your Journey
+              Join Our Medical Interview Group
             </Button>
             <Button variant="outline" className="border-primary text-primary hover:bg-primary-light px-8 py-6 text-lg">
-              Learn More
+              Dental Interview Group
             </Button>
           </div>
         </div>
