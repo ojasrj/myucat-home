@@ -17,7 +17,7 @@ const Hero = () => {
           <p className="text-lg font-medium text-primary-dark">
             Start your journey by joining our free advice groups:
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button className="bg-primary hover:bg-primary-dark text-white px-8 py-6 text-lg transition-all transform hover:scale-105">
               Medical Interviews
             </Button>
