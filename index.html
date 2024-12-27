@@ -1,17 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>tutoring-trove-landing</title>
-    <meta name="description" content="Lovable Generated Project" />
-    <meta name="author" content="Lovable" />
-    <meta property="og:image" content="/og-image.png" />
-  </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyUCAT Landing Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">MyUCAT</div>
+                <div class="nav-links">
+                    <a href="#faqs">FAQs</a>
+                    <a href="https://uk.trustpilot.com/review/myucat.co.uk" target="_blank">Testimonials</a>
+                    <a href="https://www.guessandflag.co.uk/ucat-resources" target="_blank">UCAT</a>
+                    <a href="https://www.guessandflag.co.uk/interviews" target="_blank">Interviews</a>
+                    <a href="https://www.guessandflag.co.uk/strategic-applications" target="_blank">Strategic Guide</a>
+                </div>
+                <button class="contact-btn" onclick="window.open('https://wa.me/447443341420', '_blank')">
+                    Contact Us
+                </button>
+            </div>
+        </div>
+    </nav>
 
-  <body>
-    <div id="root"></div>
-    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <button class="outline-btn" onclick="window.open('https://www.guessandflag.co.uk/interviews', '_blank')">
+                    Book 1-1 Mock Interviews
+                </button>
+                <h1>MyUCAT Admissions Specialists</h1>
+                <p class="hero-desc">
+                    An evidence-based approach to the university application process - your expert-led journey to medical or dental school begins today!
+                </p>
+                <p class="join-text">
+                    Start your journey by joining our free advice groups:
+                </p>
+                <div class="hero-buttons">
+                    <button class="primary-btn" onclick="window.open('https://chat.whatsapp.com/EYQbvty2opY4YWXqq0hXhC', '_blank')">
+                        Medical Interviews
+                    </button>
+                    <button class="secondary-btn" onclick="window.open('https://chat.whatsapp.com/KFDV6tP2Fpo6ksGjTmNx5V', '_blank')">
+                        Y12 UCAT Group
+                    </button>
+                    <button class="primary-btn" onclick="window.open('https://chat.whatsapp.com/JYJO6RyCpKqCTuM1kaolcl', '_blank')">
+                        Dental Interviews
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="timeline">
+        <div class="container">
+            <h2>Your Path to Medical/Dental Success</h2>
+            <div class="timeline-content">
+                <!-- Timeline items will be dynamically inserted by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faqs" class="faqs">
+        <div class="container">
+            <div class="faq-content">
+                <div class="faq-item">
+                    <div class="faq-trigger" onclick="toggleFaq(this)">
+                        <div class="faq-header">
+                            <div class="faq-icon">
+                                <i data-lucide="help-circle"></i>
+                            </div>
+                            <h3>Who/what is MyUCAT?</h3>
+                        </div>
+                        <i data-lucide="chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-grid">
+                            <div class="faq-text">
+                                <h4>Unparalleled expertise in medical and dental admissions</h4>
+                                <p>MyUCAT was initially founded by Ojas Rajkumar to share his secrets after exceptional success in the admissions game:</p>
+                                <ul>
+                                    <li>Medical student at University of Oxford</li>
+                                    <li>One of the highest-scoring tutors ever (3470, SJT 1)</li>
+                                    <li>Formerly the highest in the UK – many of my students surpassed me in 2023-24 and are now on track to join as tutors!</li>
+                                    <li>Offers from 4/4 medical schools: Oxford, Imperial, KCL, Birmingham</li>
+                                    <li>Personally assisted several thousand students from across the world with applying to UK institutions</li>
+                                </ul>
+                                <p>Over the years, MyUCAT has grown from his personal project to a hand-picked, nationwide network of experienced tutors, including doctors and students from every UK medical and dental school.</p>
+                            </div>
+                            <div class="faq-image">
+                                <img src="/lovable-uploads/4672534e-030c-4a2a-9b2f-9b6044d097a8.png" alt="MyUCAT Team Member">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Links Section -->
+    <section class="social">
+        <div class="container">
+            <h2>Any questions?</h2>
+            <div class="contact-buttons">
+                <button class="primary-btn" onclick="window.open('https://wa.me/447443341420', '_blank')">
+                    WhatsApp us
+                </button>
+                <button class="outline-btn" onclick="window.open('https://uk.trustpilot.com/review/myucat.co.uk', '_blank')">
+                    Testimonials
+                </button>
+            </div>
+            <div class="social-links">
+                <a href="https://www.instagram.com/myucat.co.uk/" target="_blank" class="social-icon">
+                    <i data-lucide="instagram"></i>
+                </a>
+                <a href="https://www.tiktok.com/@my_ucat" target="_blank" class="social-icon">
+                    <i data-lucide="music"></i>
+                </a>
+                <a href="https://www.linkedin.com/company/myucat/" target="_blank" class="social-icon">
+                    <i data-lucide="linkedin"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
 </html>

@@ -1,0 +1,122 @@
+/* ... keep existing code */
+
+/* Timeline Styles */
+.timeline-line {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 100%;
+    border-left: 2px dashed rgba(50, 43, 127, 0.3);
+}
+
+.timeline-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 5rem;
+    opacity: 0;
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.timeline-item.right {
+    flex-direction: row-reverse;
+}
+
+.timeline-number {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2.5rem;
+    height: 2.5rem;
+    background: var(--primary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    z-index: 1;
+}
+
+.timeline-card {
+    width: calc(50% - 2rem);
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(8px);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-card h3 {
+    font-size: 1.5rem;
+    color: var(--primary-dark);
+    margin-bottom: 0.5rem;
+}
+
+.timeline-card p {
+    color: #4b5563;
+    margin-bottom: 1rem;
+}
+
+.timeline-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.timeline-icon {
+    width: 4rem;
+    height: 4rem;
+    background: rgba(50, 43, 127, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+}
+
+/* Mobile Timeline Styles */
+.timeline-item-mobile {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.timeline-number-mobile {
+    position: absolute;
+    left: -1.25rem;
+    top: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+    background: var(--primary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.timeline-card-mobile {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(8px);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-icon-mobile {
+    width: 3rem;
+    height: 3rem;
+    background: rgba(50, 43, 127, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    margin-top: 1rem;
+}
+
+/* ... keep existing code */
