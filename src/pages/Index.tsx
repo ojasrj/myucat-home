@@ -18,14 +18,14 @@ const Index = () => {
       
       <section className="bg-secondary relative overflow-hidden py-16">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent"></div>
-        <div className="container mx-auto px-6 relative">
+        <div className="container mx-auto px-4 sm:px-6 relative">
           <Accordion 
             type="single" 
             collapsible 
             className="w-full max-w-2xl mx-auto bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-primary/10 overflow-hidden"
           >
             <AccordionItem value="who-is-myucat" className="border-none">
-              <AccordionTrigger className="px-6 py-4 hover:no-underline group">
+              <AccordionTrigger className="px-4 sm:px-6 py-4 hover:no-underline group">
                 <div className="flex items-center gap-4">
                   <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                     <svg 
@@ -50,9 +50,9 @@ const Index = () => {
                   </h3>
                 </div>
               </AccordionTrigger>
-              <AccordionContent className="px-6 pb-6">
-                <div className="flex gap-6 items-start">
-                  <div className="flex-1 pl-14">
+              <AccordionContent className="px-4 sm:px-6 pb-6">
+                <div className="flex flex-col md:flex-row gap-6 items-start">
+                  <div className="flex-1 md:pl-14">
                     <div className="space-y-4">
                       <h4 className="text-xl font-semibold text-primary">Unparalleled expertise in medical and dental admissions</h4>
                       
@@ -88,7 +88,7 @@ const Index = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="flex-shrink-0 w-32">
+                  <div className="w-32 mx-auto md:mx-0">
                     <img 
                       src="/lovable-uploads/4672534e-030c-4a2a-9b2f-9b6044d097a8.png" 
                       alt="MyUCAT Team Member"
