@@ -265,6 +265,8 @@ body {
 }
 
 /* FAQ Section */
+
+/* FAQ Section */
 .faqs {
     padding: 5rem 0;
     background: var(--secondary);
@@ -312,7 +314,7 @@ body {
 }
 
 .faq-answer.active {
-    max-height: 1000px;
+    max-height: 2000px;
     padding-bottom: 1.5rem;
 }
 
@@ -326,17 +328,44 @@ body {
 .faq-text h4 {
     color: var(--primary);
     margin-bottom: 1rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.faq-text p {
+    color: #4b5563;
+    line-height: 1.6;
+    margin-bottom: 1rem;
 }
 
 .faq-text ul {
     list-style-type: disc;
     padding-left: 1.5rem;
     margin: 1rem 0;
+    color: #4b5563;
+    line-height: 1.6;
+}
+
+.faq-text li {
+    margin-bottom: 0.5rem;
 }
 
 .faq-image img {
     width: 200px;
     border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.mt-6 {
+    margin-top: 1.5rem;
+}
+
+.mb-2 {
+    margin-bottom: 0.5rem;
+}
+
+.font-semibold {
+    font-weight: 600;
 }
 
 /* Social Section */
@@ -441,3 +470,4 @@ body {
         gap: 2rem;
     }
 }
+
