@@ -1,6 +1,5 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import Process from "@/components/Process";
 import Timeline from "@/components/Timeline";
 
 const Index = () => {
@@ -9,7 +8,6 @@ const Index = () => {
       <Navbar />
       <Hero />
       <Timeline />
-      <Process />
     </main>
   );
 };
