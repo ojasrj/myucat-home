@@ -3,7 +3,7 @@ import { GraduationCap, ClipboardCheck, Target, Handshake } from "lucide-react";
 const steps = [
   {
     number: 1,
-    title: "GCSE & A-Levels",
+    title: "Academics: GCSEs, A Levels & IB",
     description: "Build strong academic foundations and choose the right subjects for medical school.",
     Icon: GraduationCap,
     align: "left",
