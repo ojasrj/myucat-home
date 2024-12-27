@@ -8,7 +8,7 @@ const Hero = () => {
           <Button
             variant="outline"
             className="px-4 py-2 bg-white/80 backdrop-blur rounded-full text-primary-dark text-sm font-medium"
-            onClick={() => window.open('https://calendly.com', '_blank')}
+            onClick={() => window.open('https://www.guessandflag.co.uk/interviews', '_blank')}
           >
             1-1 Mock Interviews
           </Button>
