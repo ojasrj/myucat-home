@@ -4,28 +4,28 @@ import { useIsMobile } from "@/hooks/use-mobile";
 const steps = [
   {
     number: 1,
-    title: "Academics: GCSEs, A Levels & IB",
+    title: "GCSEs & A Levels",
     description: "Build strong academic foundations and choose the right subjects for medical school.",
     Icon: GraduationCap,
     align: "left",
   },
   {
     number: 2,
-    title: "UCAT & BMAT",
+    title: "UCAT",
     description: "Expert preparation for medical admissions tests with proven strategies.",
     Icon: ClipboardCheck,
     align: "right",
   },
   {
     number: 3,
-    title: "Strategic Application",
+    title: "UCAS Applications",
     description: "Comprehensive guidance on personal statements and school selection strategy.",
     Icon: Target,
     align: "left",
   },
   {
     number: 4,
-    title: "Interview",
+    title: "Interviews",
     description: "Professional preparation for MMI and panel interviews with experienced mentors.",
     Icon: Handshake,
     align: "right",
