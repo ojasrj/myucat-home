@@ -9,7 +9,7 @@ const Hero = () => {
             Lightbox 21 bold
           </span>
           <h1 className="text-5xl md:text-6xl font-bold text-secondary-dark leading-tight">
-            Medical and dental admissions... by the experts
+            MyUCAT Admissions Specialists
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             An evidence based approach to the university application process.
