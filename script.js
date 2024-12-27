@@ -94,11 +94,11 @@ function createTimelineItems() {
     } else {
         timelineContent.innerHTML = `
             ${timelineSteps.map((step, index) => `
-                <div class="timeline-item-mobile" style="animation-delay: ${index * 0.1}s">
-                    <div class="timeline-number-mobile">
+                <div class="timeline-item" style="animation-delay: ${index * 0.1}s">
+                    <div class="timeline-number">
                         <span>${step.number}</span>
                     </div>
-                    <div class="timeline-card-mobile">
+                    <div class="timeline-card">
                         <h3>${step.title}</h3>
                         <p>${step.description}</p>
                         <div class="timeline-buttons">
@@ -107,9 +107,6 @@ function createTimelineItems() {
                                     ${button.label}
                                 </button>
                             `).join('')}
-                        </div>
-                        <div class="timeline-icon-mobile">
-                            <i data-lucide="${step.icon}"></i>
                         </div>
                     </div>
                 </div>
