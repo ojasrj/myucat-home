@@ -92,9 +92,9 @@ const Timeline = () => {
                             variant="outline"
                             size="sm"
                             className="bg-white hover:bg-primary hover:text-white transition-colors"
-                            asChild
+                            onClick={() => window.open(button.href, '_blank')}
                           >
-                            <a href={button.href}>{button.label}</a>
+                            {button.label}
                           </Button>
                         ))}
                       </div>
