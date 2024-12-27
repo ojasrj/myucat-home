@@ -65,9 +65,14 @@ const Timeline = () => {
                       ${isMobile ? 'ml-8 w-full' : `w-1/2 ${step.align === 'left' ? 'text-right pr-16' : 'text-left pl-16'}`}
                     `}
                   >
-                    <div className="space-y-4">
+                    <div className="glass-card p-6 rounded-lg shadow-lg space-y-4">
                       <h3 className="text-2xl font-bold text-primary-dark">{step.title}</h3>
                       <p className="text-gray-600">{step.description}</p>
+                      {isMobile && (
+                        <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mt-4">
+                          <step.Icon className="w-6 h-6 text-primary" />
+                        </div>
+                      )}
                     </div>
                   </div>
                   
