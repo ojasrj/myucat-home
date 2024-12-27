@@ -18,13 +18,23 @@ const Hero = () => {
             Start your journey by joining our free advice groups:
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button className="bg-primary hover:bg-primary-dark text-white px-8 py-6 text-lg transition-all transform hover:scale-105">
+            <Button 
+              className="bg-primary hover:bg-primary-dark text-white px-8 py-6 text-lg transition-all transform hover:scale-105"
+              onClick={() => window.open('https://chat.whatsapp.com/EYQbvty2opY4YWXqq0hXhC', '_blank')}
+            >
               Medical Interviews
             </Button>
-            <Button variant="outline" className="border-primary text-primary hover:bg-primary-light px-8 py-6 text-lg">
+            <Button 
+              variant="outline" 
+              className="border-primary text-primary hover:bg-primary-light px-8 py-6 text-lg"
+              onClick={() => window.open('https://chat.whatsapp.com/KFDV6tP2Fpo6ksGjTmNx5V', '_blank')}
+            >
               Y12 UCAT Group
             </Button>
-            <Button className="bg-primary hover:bg-primary-dark text-white px-8 py-6 text-lg transition-all transform hover:scale-105">
+            <Button 
+              className="bg-primary hover:bg-primary-dark text-white px-8 py-6 text-lg transition-all transform hover:scale-105"
+              onClick={() => window.open('https://chat.whatsapp.com/JYJO6RyCpKqCTuM1kaolcl', '_blank')}
+            >
               Dental Interviews
             </Button>
           </div>
