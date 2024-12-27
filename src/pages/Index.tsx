@@ -57,11 +57,11 @@ const Index = () => {
                       MyUCAT is a leading provider of UCAT preparation resources and medical school application support. We specialize in helping students achieve their dreams of entering medical and dental schools through comprehensive tutoring, strategic guidance, and proven preparation methods.
                     </p>
                   </div>
-                  <div className="flex-shrink-0 w-48">
+                  <div className="flex-shrink-0 w-56">
                     <img 
                       src="/lovable-uploads/4672534e-030c-4a2a-9b2f-9b6044d097a8.png" 
                       alt="MyUCAT Team Member"
-                      className="rounded-lg shadow-md w-full h-auto object-cover aspect-[4/3] animate-fade-in"
+                      className="rounded-lg shadow-md w-full h-auto object-cover aspect-[3/4] animate-fade-in"
                     />
                   </div>
                 </div>
