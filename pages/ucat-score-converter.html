@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .input-group-text {
+            background-color: #007bff;
+            color: white;
+            border-radius: 50px;
+            min-width: 200px;
+            justify-content: center;
+        }
+        .input-group .form-control {
+            border-radius: 50px;
+            text-align: center;
+        }
+        .list-group-item {
+            border-radius: 50px;
+            margin-bottom: 10px;
+        }
+        .list-group-item.active {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .badge-pill {
+            font-size: 1.2em;
+            min-width: 60px;
+        }
+        h1, h3, p {
+            margin-bottom: 20px;
+        }
+        .link-primary {
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .link-primary:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+        .input-group {
+            max-width: 600px;
+            margin: 0 auto 1rem;
+        }
+        .list-group {
+            max-width: 500px;
+            margin: 2rem auto;
+        }
+        input:focus {
+            box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25) !important;
+            border-color: #80bdff !important;
+        }
+    </style>
+    <title>UCAT Score Calculator</title>
+</head>
+
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col text-center">
+            <h1>UCAT Score Calculator</h1>
+            <h3>Updated for UCAT 2025</h3>
+            <p>Please join my UCAT group for advice, completely free, if you have any questions relating to the UCAT or med admissions in general: <a class="link-primary" href="https://ucat.me">www.ucat.me</a></p>
+            <p>By Ojas @ <a class="link-primary" href="https://www.myucat.co.uk">MyUCAT: UCAT Lessons by One of the World's Highest Scoring UCAT Tutors (3470 Scorer & Oxford Med Student)</a></p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Verbal Reasoning Score</span>
+                </div>
+                <input type="text" class="form-control" placeholder="from 0 to 44" aria-label="Verbal Reasoning Score" id="vr">
+            </div>
+
+            <!-- Decision Making Section -->
+            <div class="card mb-3">
+                <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                    <span>Decision Making Score Calculator</span>
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="scoringMode">
+                        <label class="custom-control-label text-white" for="scoringMode">Complex Mode</label>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <!-- Simple Scoring Mode (Default) -->
+                    <div id="simpleScoring">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Score (out of 35)</span>
+                            </div>
+                            <input type="number" class="form-control" placeholder="Enter score (0-35)" id="simpleDM" min="0" max="35">
+                        </div>
+                    </div>
+
+                    <!-- Detailed Scoring Mode -->
+                    <div id="detailedScoring" style="display: none;">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Number of 2 Mark Questions</span>
+                            </div>
+                            <input type="number" class="form-control" placeholder="Enter number (0-35)" id="twoMarkQuestions" min="0" max="35">
+                            <small class="form-text text-muted d-block w-100 text-center mt-2">One Mark Questions: <span id="oneMarkValue">35</span></small>
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Correct One Mark Answers</span>
+                            </div>
+                            <input type="number" class="form-control" placeholder="Number of correct 1 mark answers" id="correctOneMark">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Fully Correct Two Mark</span>
+                            </div>
+                            <input type="number" class="form-control" placeholder="Number of fully correct 2 mark answers" id="correctTwoMarkFull">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Partially Correct Two Mark</span>
+                            </div>
+                            <input type="number" class="form-control" placeholder="Number of partially correct 2 mark answers" id="correctTwoMarkPartial">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Quantitative Reasoning Score</span>
+                </div>
+                <input type="text" class="form-control" placeholder="from 0 to 36" aria-label="Quantitative Reasoning Score" id="qr">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <ul class="list-group">
+                <li class="list-group-item text-center"><b>Calculated Scores:</b></li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Verbal Reasoning: <span class="badge badge-primary badge-pill" id="vr_t">?</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Decision Making: <span class="badge badge-primary badge-pill" id="dm_t">?</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Quantitative Reasoning: <span class="badge badge-primary badge-pill" id="qr_t">?</span>
+                </li>
+                <li class="list-group-item active d-flex justify-content-between align-items-center">
+                    Total (out of 2700): <b id="total">-</b>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(function() {
+    // Toggle between scoring modes
+    $("#scoringMode").change(function() {
+        if ($(this).is(":checked")) {
+            $("#simpleScoring").hide();
+            $("#detailedScoring").show();
+        } else {
+            $("#simpleScoring").show();
+            $("#detailedScoring").hide();
+        }
+        recalc(); // Recalculate when switching modes
+    });
+
+    // Initialize with simple mode
+    $("#simpleScoring").show();
+    $("#detailedScoring").hide();
+
+    // Initialize two mark questions input functionality
+    $("#twoMarkQuestions").on('input', function() {
+        const twoMarkValue = parseInt($(this).val()) || 0;
+        const oneMarkValue = 35 - twoMarkValue;
+        $("#oneMarkValue").text(oneMarkValue);
+        
+        // Reset related inputs when two mark questions change
+        $("#correctOneMark").attr("max", oneMarkValue);
+        $("#correctTwoMarkFull").attr("max", twoMarkValue);
+        $("#correctTwoMarkPartial").attr("max", twoMarkValue);
+        
+        // Clear inputs if they exceed new maximums
+        if (parseInt($("#correctOneMark").val()) > oneMarkValue) {
+            $("#correctOneMark").val('');
+        }
+        if (parseInt($("#correctTwoMarkFull").val()) > twoMarkValue) {
+            $("#correctTwoMarkFull").val('');
+        }
+        if (parseInt($("#correctTwoMarkPartial").val()) > twoMarkValue) {
+            $("#correctTwoMarkPartial").val('');
+        }
+        
+        recalc();
+    });
+
+    // Add input handlers for all DM inputs
+    $("#simpleDM, #correctOneMark, #correctTwoMarkFull, #correctTwoMarkPartial").on('input', recalc);
+
+    function recalc() {
+        var total = 0,
+            vr = 0,
+            qr = 0,
+            dm = 0,
+            cnt = 0;
+
+        // VR calculation
+        var v = parseInt($("#vr").val().trim())
+        if (v <= 5) vr = 300;
+        else if (v <= 7) vr = 330;
+        else if (v <= 8) vr = 350;
+        else if (v <= 10) vr = 370;
+        else if (v <= 11) vr = 400;
+        else if (v <= 12) vr = 430;
+        else if (v <= 14) vr = 450;
+        else if (v <= 15) vr = 470;
+        else if (v <= 17) vr = 500;
+        else if (v <= 18) vr = 530;
+        else if (v <= 20) vr = 550;
+        else if (v <= 22) vr = 570;
+        else if (v <= 23) vr = 600;
+        else if (v <= 25) vr = 630;
+        else if (v <= 27) vr = 650;
+        else if (v <= 29) vr = 670;
+        else if (v <= 31) vr = 700;
+        else if (v <= 32) vr = 730;
+        else if (v <= 33) vr = 750;
+        else if (v <= 34) vr = 770;
+        else if (v <= 36) vr = 800;
+        else if (v <= 38) vr = 830;
+        else if (v <= 39) vr = 850;
+        else if (v <= 41) vr = 870;
+        else if (v <= 44) vr = 900;
+
+        if (!v || v < 0 || v > 44) vr = "?";
+        else cnt += 1
+        $("#vr_t").text(vr)
+
+        // DM calculation
+        if (!$("#scoringMode").is(":checked")) {
+            // Simple scoring mode
+            let v = parseInt($("#simpleDM").val().trim());
+            if (!v || v < 0 || v > 35) {
+                $("#dm_t").text("?");
+            } else {
+                if (v === 0) {
+                    dm = 300;
+                } else if (v === 35) {
+                    dm = 900;
+                } else {
+                    dm = 300 + (v / 35) * (900 - 300);
+                    dm = Math.round(dm / 10) * 10;
+                }
+                $("#dm_t").text(dm);
+                cnt += 1;
+            }
+        } else {
+            // Detailed scoring mode
+            let totalQuestions = 35;
+            let twoMarkQuestions = parseInt($("#twoMarkQuestions").val().trim()) || 0;
+            let oneMarkQuestions = totalQuestions - twoMarkQuestions;
+            let correctOneMark = parseInt($("#correctOneMark").val().trim()) || 0;
+            let correctTwoMarkFull = parseInt($("#correctTwoMarkFull").val().trim()) || 0;
+            let correctTwoMarkPartial = parseInt($("#correctTwoMarkPartial").val().trim()) || 0;
+
+            // Validate inputs
+            if (correctOneMark > oneMarkQuestions || 
+                correctTwoMarkFull > twoMarkQuestions || 
+                correctTwoMarkPartial > twoMarkQuestions ||
+                (correctTwoMarkFull + correctTwoMarkPartial) > twoMarkQuestions) {
+                $("#dm_t").text("?");
+            } else {
+                // Calculate scores separately
+                let oneMarkMaxScore = oneMarkQuestions * 1;
+                let twoMarkMaxScore = twoMarkQuestions * 2;
+                let totalMaxScore = oneMarkMaxScore + twoMarkMaxScore;
+
+                // Calculate actual scores
+                let oneMarkActualScore = correctOneMark * 1;
+                let twoMarkActualScore = (correctTwoMarkFull * 2) + (correctTwoMarkPartial * 1);
+                let totalActualScore = oneMarkActualScore + twoMarkActualScore;
+
+                // Scale to 300-900 range
+                if (totalActualScore === 0) {
+                    dm = 300;
+                } else if (totalActualScore === totalMaxScore) {
+                    dm = 900;
+                } else {
+                    let scaleFactor = (900 - 300) / totalMaxScore;
+                    dm = 300 + totalActualScore * scaleFactor;
+                }
+
+                dm = Math.round(dm / 10) * 10;
+                $("#dm_t").text(dm);
+                cnt += 1;
+            }
+        }
+
+        // QR calculation
+        v = parseInt($("#qr").val().trim())
+        if (v <= 3) qr = 300;
+        else if (v <= 5) qr = 330;
+        else if (v <= 7) qr = 350;
+        else if (v <= 8) qr = 370;
+        else if (v <= 9) qr = 400;
+        else if (v <= 10) qr = 430;
+        else if (v <= 11) qr = 450;
+        else if (v <= 13) qr = 470;
+        else if (v <= 15) qr = 500;
+        else if (v <= 17) qr = 530;
+        else if (v <= 19) qr = 550;
+        else if (v <= 20) qr = 570;
+        else if (v <= 21) qr = 600;
+        else if (v <= 22) qr = 630;
+        else if (v <= 23) qr = 650;
+        else if (v <= 24) qr = 670;
+        else if (v <= 25) qr = 700;
+        else if (v <= 26) qr = 730;
+        else if (v <= 27) qr = 750;
+        else if (v <= 28) qr = 770;
+        else if (v <= 29) qr = 800;
+        else if (v <= 30) qr = 830;
+        else if (v <= 32) qr = 850;
+        else if (v <= 33) qr = 870;
+        else if (v <= 36) qr = 900;
+
+        if (!v || v < 0 || v > 36) qr = "?";
+        else cnt += 1
+        $("#qr_t").text(qr)
+
+        if (cnt > 2) $("#total").text(parseInt((qr + dm + vr)))
+    }
+
+    $("#vr, #qr").change(recalc);
+    $("#vr, #qr").keyup(recalc);
+});
+</script>
+</body>
+</html>
