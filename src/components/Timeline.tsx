@@ -11,7 +11,7 @@ const steps = [
     align: "left",
     buttons: [
       { label: "1-1 Tutoring", href: "https://www.guessandflag.co.uk/a-level-1-1" },
-      { label: "Free Group Lessons", href: "https://www.guessandflag.co.uk/a-level-tuition" },
+      { label: "A Level Group Lessons", href: "https://www.guessandflag.co.uk/a-level-tuition" },
     ],
   },
   {
