@@ -22,7 +22,8 @@ const timelineSteps = [
             { label: "Free UCAT Course", href: "https://questions.ucat.com/courses" },
             { label: "UCAT Programme", href: "https://www.guessandflag.co.uk/summer-programme" },
             { label: "1-1 Tutoring", href: "https://www.guessandflag.co.uk/ucat-1-1" },
-            { label: "Score Calculator", href: "https://www.guessandflag.co.uk/score-converter" },
+            { label: "Question Bank", href: "https://questions.ucat.com/" },
+            { label: "Score Calculator", href: "https://myucat.co.uk/pages/ucat-score-converter" },
         ]
     },
     {
