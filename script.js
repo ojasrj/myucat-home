@@ -1,3 +1,4 @@
+
 // Timeline data
 const timelineSteps = [
     {
@@ -18,7 +19,8 @@ const timelineSteps = [
         icon: "clipboard-check",
         align: "right",
         buttons: [
-            { label: "UCAT Course", href: "https://www.guessandflag.co.uk/ucat-resources" },
+            { label: "Free UCAT Course", href: "https://questions.ucat.com/courses" },
+            { label: "UCAT Programme", href: "https://www.guessandflag.co.uk/summer-programme" },
             { label: "1-1 Tutoring", href: "https://www.guessandflag.co.uk/ucat-1-1" },
             { label: "Score Calculator", href: "https://www.guessandflag.co.uk/score-converter" },
         ]
