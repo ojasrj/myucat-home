@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UCAT Score Comparison Tool</title>
+  <meta name="description" content="Estimate how your UCAT score out of 2700 compares to historic 2024 thresholds using our reliable mathematical model. Assess chances at top medical schools.">
+  <meta property="og:title" content="UCAT Score Comparison (2024 → 2025 and Vice Versa)" />
+  <meta property="og:description" content="Estimate how your UCAT score out of 2700 compares to historic 2024 thresholds using our reliable mathematical model."/>
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://myucat.co.uk/ucat-score-comparison" />
+  <meta property="og:image" content="https://www.myucat.co.uk/454878696_489134560504959_4720613160962357161_n.jpg" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+        :root {
+      --primary: #4b3fbc;
+      --primary-dark: #372e9c;
+      --bg: #f8f9ff;
+      --text: #1e1e2f;
+      --muted: #6b6b8c;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+    }
+    header {
+      background: white;
+      border-bottom: 1px solid #e3e3f0;
+      padding: 1.2rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      font-size: 1.6rem;
+      color: var(--primary);
+    }
+    .blog-container {
+      max-width: 850px;
+      margin: 3rem auto;
+      background: white;
+      padding: 2rem 3rem;
+      border-radius: 1.25rem;
+      box-shadow: 0 15px 25px rgba(0,0,0,0.06);
+    }
+    .blog-title {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+    }
+    .blog-meta {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+    .blog-content p {
+      line-height: 1.7;
+      margin: 1.5rem 0;
+    }
+    .blog-content h2 {
+      margin-top: 2rem;
+      color: var(--primary);
+      font-size: 1.4rem;
+    }
+    .blog-content ul {
+      padding-left: 1.2rem;
+    }
+    .blog-content ul li {
+      margin: 0.6rem 0;
+    }
+    .blog-footer {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid #eee;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    .cta-button {
+      padding: 0.8rem 1.4rem;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .cta-button:hover {
+      background-color: var(--primary-dark);
+    }
+    @media (max-width: 600px) {
+      .blog-container {
+        padding: 1.5rem;
+      }
+    }
+
+  </style>
+  
+    <style>
+   .ucat-tool body {
+      background-color: #f8f9fa;
+      padding: 20px;
+    }
+   .ucat-tool .container {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+  .ucat-tool  .input-group-text {
+      background-color: #007bff;
+      color: white;
+      border-radius: 50px;
+      min-width: 240px;
+      justify-content: center;
+    }
+    
+   .ucat-tool .input-group .form-control {
+      border-radius: 50px;
+      text-align: center;
+    }
+   .ucat-tool h1, p {
+      text-align: center;
+    }
+   .ucat-tool .badge-value {
+      background-color: #007bff;
+      color: white;
+      padding: 6px 12px;
+      font-size: 1.1rem;
+      border-radius: 50px;
+    }
+  .ucat-tool  .result-sentence {
+      margin-top: 30px;
+      font-size: 1.2rem;
+      text-align: center;
+    }
+  </style>
+
+<body>
+  <header>
+    <h1><b>MyUCAT Blog</b></h1>
+    <button class="cta-button" onclick="window.location.href='https://ucat.me/'">Join the WhatsApp Group!</button>
+  </header>
+  <main class="blog-container">
+    <div class="blog-title">Convert UCAT score out of 2700 --> 3600</div>
+
+    <div class="blog-content">
+<div class="ucat-tool">
+
+<br>
+
+  <div class="container">
+    <h1><b>UCAT Score Comparison Tool</b></h1>
+    <p>Enter your score in either format to see its equivalent in the other. This helps you compare your performance across the 2024 and 2025 UCAT scoring systems using a quadratic model built from percentile data.</p>
+
+    <div class="input-group mb-4">
+      <div class="input-group-prepend">
+        <span class="input-group-text">2025 Score (out of 2700)</span>
+      </div>
+      <input type="number" class="form-control" id="score2025" placeholder="e.g., 1980" min="1200" max="2700">
+    </div>
+
+    <div class="input-group mb-4">
+      <div class="input-group-prepend">
+        <span class="input-group-text">2024 Score (out of 3600)</span>
+      </div>
+      <input type="number" class="form-control" id="score2024" placeholder="e.g., 2680" min="1200" max="3600">
+    </div>
+
+    <div class="result-sentence" id="result"></div>
+
+    <hr>
+
+<div class="mt-5">
+  <h3 class="text-center">💡 What Is This Tool and Why Use It?</h3>
+  <p>This converter helps bridge the gap between the old and new UCAT scoring systems using a carefully modelled mathematical relationship based on real percentile data.</p>
+
+  <h5>🎯 Why use it?</h5>
+
+  <h6>1️⃣ Compare your performance to past UCAT university cutoffs</h6>
+  <p>Most UCAT medical school thresholds are based on historic scores from 2024 and earlier. If you're applying in 2025, you can use this tool to estimate what your new score would have looked like in the old system — allowing you to compare your chances against real past offers from your dream universities.</p>
+
+  <h6>2️⃣ Compare with friends (just for fun!)</h6>
+  <p>We know students love to compare scores — this tool lets you match your performance with friends who sat the UCAT under the old system. You can finally answer the burning question: “Who actually did better?” with a fair score translation.</p>
+
+  <h6>3️⃣ Internal use at MyUCAT (e.g. tutor recruitment)</h6>
+  <p>At MyUCAT, we’ve always upheld extremely high standards for our tutors — most have scored 3000+, with many 3400+ under the old system. This tool ensures we maintain that same level of excellence by converting scores for candidates in the future applying to become tutors. We’ll continue to use 2024-equivalent scores as a benchmark for consistency.</p>
+</div>
+
+</div>
+
+<section class="mt-5">
+  <h2 class="text-center mb-4">🔍 UCAT Score FAQs</h2>
+  <div class="accordion" id="ucatFAQ">
+
+    <div class="card">
+      <div class="card-header" id="faq1">
+        <h2 class="mb-0">
+          <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+            ❓ What UCAT score do I need for Imperial College London?
+          </button>
+        </h2>
+      </div>
+      <div id="collapse1" class="collapse" aria-labelledby="faq1" data-parent="#ucatFAQ">
+        <div class="card-body">
+          For 2025 entry, Imperial's UCAT cutoff for Medicine (non-contextual home students) was <strong>3020</strong> and band 3, which translates to approximately <strong>2250</strong> in the 2025 UCAT format using our converter. Contextual applicants required 2830 and band 3, or 2100 in the current format. This was one of the highest UCAT thresholds in the UK. <a href="https://learn.myucat.co.uk/strategic-applications">Do check out our strategic application guide for more information about the Imperial selection process.</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header" id="faq2">
+        <h2 class="mb-0">
+          <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+            ❓ What UCAT score do I need for UCL?
+          </button>
+        </h2>
+      </div>
+      <div id="collapse2" class="collapse" aria-labelledby="faq2" data-parent="#ucatFAQ">
+        <div class="card-body">
+          University College London (UCL) had a Medicine UCAT cutoff of around <strong>2800</strong> for non-contextual home students — this is about <strong>2080</strong> in the new 2025 UCAT scoring system. International applicants needed 3060, or 2280 in the new UCAT format. Access UCL (contextual) applicants needed 2600, or 1920 in the new UCAT format. <a href="https://learn.myucat.co.uk/strategic-applications">Do check out our strategic application guide for more information about the UCL shortlisting process.</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header" id="faq3">
+        <h2 class="mb-0">
+          <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+            ❓ What UCAT score do I need for Oxford?
+          </button>
+        </h2>
+      </div>
+      <div id="collapse3" class="collapse" aria-labelledby="faq3" data-parent="#ucatFAQ">
+        <div class="card-body">
+          For undergraduate medicine, Oxford University algorithmically scores both UCAT and GCSEs at 50% each. There is a 25% weighting on the percentage of grade 8s and 9s at GCSE, and a 25% weighting on the number. Personal statements are included in the algorithmic score, while A level predictions are not used beyond minimum requirements of A*AA. Most competitive home applicants had scores above <strong>3000</strong> (~<strong>2200–2300</strong> in the 2025 scale) alongside majority grade 8s and 9s at GCSE. However, this is contextualised to the school performance - a minority of applicants with lower scores were also interviewed. Competitive international applicants had scores 3200-3300+, or around 2400+ in the new UCAT format. SJT band is not used in shortlisting. <a href="https://learn.myucat.co.uk/strategic-applications">Do check out our strategic application guide for more information about the Oxford selection process.</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header" id="faq4">
+        <h2 class="mb-0">
+          <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+            ❓ What UCAT score do I need for Cambridge?
+          </button>
+        </h2>
+      </div>
+      <div id="collapse4" class="collapse" aria-labelledby="faq4" data-parent="#ucatFAQ">
+        <div class="card-body">
+          Cambridge University shortlists holistically by college, but most successful undergraduate Medicine applicants had UCAT scores above <strong>~2800</strong> (~<strong>2100</strong> in 2025 terms). Note that personal statements are not used for shortlisting. Cambridge interviews a far larger proportion of medical applicants than Oxford for medicine (around ~80-85% across colleges). However, this results in greater post-interview competition. SJT band is not used in shortlisting.  <a href="https://learn.myucat.co.uk/strategic-applications">Do check out our strategic application guide for more information about the Cambridge selection process.</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header" id="faq5">
+        <h2 class="mb-0">
+          <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+            ❓ What UCAT score do I need to get into medicine?
+          </button>
+        </h2>
+      </div>
+      <div id="collapse5" class="collapse" aria-labelledby="faq5" data-parent="#ucatFAQ">
+        <div class="card-body">
+          There is no fixed UCAT score that guarantees a place in medical school. Entry requirements vary widely by university. With a strategic application, even those scoring <strong>below the national median</strong> (~<strong>1860 in the 2025 scoring system</strong>) can still receive interviews and offers by applying to less UCAT-heavy medical schools that place greater weighting on GCSEs (e.g. Belfast/Leicester/Kent), personal statement (e.g. Keele), or part time work/volunteering (e.g. Sunderland). <a href="https://learn.myucat.co.uk/strategic-applications">Do check out our strategic application guide, which will be updated in Sept/Oct 2025.</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="card-header" id="faq5">
+        <h2 class="mb-0">
+          <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+            ❓  How do I maximise my chances of getting a high UCAT score?
+          </button>
+        </h2>
+      </div>
+      <div id="collapse5" class="collapse" aria-labelledby="faq5" data-parent="#ucatFAQ">
+        <div class="card-body">
+          The UCAT is a skill-based exam and does not require any specific factual knowledge. One improves with any such exam with consistent and regular practice over an extended period of time - it is advisable to start early to avoid burnout and to provide yourself with time to develop the prerequisite skills. Reflecting on mistakes is vital to assess where you may be going wrong. This is in terms of (1) accuracy - remedied via untimed practice until you are able to answer questions correctly; and (2) timings - remedied via timed practice, learning to estimate/take shortcuts, and implement time-saving strategies. We offer extensive guidance on all aspects of UCAT, UCAS applications & interview preparation for medicine and dentistry, including on our <a href="https://ucat.me/"> free WhatsApp advice groups,</a>  <a href="https://questions.ucat.com/courses">free introductory courses,</a> and <a href="https://learn.myucat.co.uk/summer-programme">flagship UCAT summer programme.</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header" id="faq6">
+        <h2 class="mb-0">
+          <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
+            ❓ What is considered an exceptional UCAT score?
+          </button>
+        </h2>
+      </div>
+      <div id="collapse6" class="collapse" aria-labelledby="faq6" data-parent="#ucatFAQ">
+        <div class="card-body">
+          An exceptional UCAT score is typically what 3000+ used to represent in the old system — around <strong>2230-2250+</strong> in the new UCAT format. This puts you into the top 7% nationally and is competitive for interviews at all top medical and dental schools, including Oxford, Cambridge, Imperial, UCL, KCL and more! Note that a small number of medical schools including UEA/Aston/Newcastle/Edinburgh/Aberdeen use the UCAT in offer-making after the interview. <a href="https://learn.myucat.co.uk/summer-programme"> Many MyUCAT students and tutors have achieved far higher scores: 3400+ and even 3500+, which are in the top 0.1%!<a> </a>MyUCAT founder Ojas achieved subsection scores totalling <strong>2640</strong> (VR:870/900, DM:870/900, QR:900/900), which placed him as #2 in the UK that year! </a> 
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header" id="faq7">
+        <h2 class="mb-0">
+          <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse7" aria-expanded="false" aria-controls="collapse7">
+            ❓ What is a strong UCAT score?
+          </button>
+        </h2>
+      </div>
+      <div id="collapse7" class="collapse" aria-labelledby="faq7" data-parent="#ucatFAQ">
+        <div class="card-body">
+          A strong UCAT score is one that places you in the <strong>top 20%</strong> of applicants, which provides applicants a range of university options. This was around <strong>2780</strong> under the old scoring system and equates to roughly <strong>2060</strong> on the new 2025 scale.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+  </div> 
+
+<div class="mt-5">
+  <h3 class="text-center">📊 Is This Tool Reliable?</h3>
+  <p><strong>Quadratic Model Explanation</strong><br>
+  Because the relationship between the 2024 and 2025 scores wasn’t perfectly linear — with the linear model showing a slight bias at the lower end — a quadratic model was used. A quadratic model takes the form:</p>
+
+  <p>\[ \text{2025 Score} = a \cdot (\text{2024 Score})^2 + b \cdot (\text{2024 Score}) + c \]</p>
+
+  <p>Using the paired data from the percentile thresholds, we fitted the following quadratic equation:</p>
+  <p>\[ \text{2025 Score} \approx -0.000056 \cdot (\text{2024 Score})^2 + 1.536980 \cdot (\text{2024 Score}) - 148.88 \]</p>
+
+  <p>This equation provides a closer approximation across the spectrum of scores since it allows for curvature in the relationship.</p>
+
+  <p><strong>Rearranged Equation</strong><br>
+  For cases where you might want to input a 2025 score and predict the corresponding 2024 score, we solved the quadratic equation for the 2024 score. The rearranged equation is:</p>
+
+  <p>\[ \text{2024 Score} \approx 13723.04 - 13625.83 \cdot \sqrt{1 - 0.00009618 \cdot (\text{2025 Score})} \]</p>
+
+  <p>(We use the minus version of the +- solution because the resulting values fall into the expected range for 2024 scores.)</p>
+</div>
+
+<div class="mt-4">
+  <h5 class="text-center">📈 Error Table: Predicted vs. Actual 2025 Scores</h5>
+  <div class="table-responsive">
+    <table class="table table-bordered table-sm text-center">
+      <thead class="thead-light">
+        <tr>
+          <th>Percentile</th>
+          <th>2024 Score</th>
+          <th>2025 Score (Actual)</th>
+          <th>2025 Score (Predicted)</th>
+          <th>Difference</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>To be in the top 10%</td><td>2170</td><td>2920</td><td>2921.8</td><td>+1.8</td></tr>
+        <tr><td>To be in the top 20%</td><td>2060</td><td>2780</td><td>2778.9</td><td>−1.1</td></tr>
+        <tr><td>To be in the top 30%</td><td>1980</td><td>2680</td><td>2674.1</td><td>−5.9</td></tr>
+        <tr><td>To be in the top 40%</td><td>1920</td><td>2590</td><td>2595.0</td><td>+5.0</td></tr>
+        <tr><td>To be in the top 50%</td><td>1860</td><td>2520</td><td>2515.5</td><td>−4.5</td></tr>
+        <tr><td>To be in the top 60%</td><td>1810</td><td>2440</td><td>2433.8</td><td>−6.2</td></tr>
+        <tr><td>To be in the top 70%</td><td>1740</td><td>2360</td><td>2350.4</td><td>−9.6</td></tr>
+        <tr><td>To be in the top 80%</td><td>1670</td><td>2260</td><td>2250.2</td><td>−9.8</td></tr>
+        <tr><td>To be in the top 90%</td><td>1580</td><td>2140</td><td>2139.1</td><td>−0.9</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+  <script>
+    function roundTo10(x) {
+      return Math.round(x / 10) * 10;
+    }
+
+    // 2025 ➔ 2024 (should go UP)
+    function convert2025to2024(score2025) {
+      return roundTo10(-0.000056 * score2025 ** 2 + 1.53698 * score2025 - 148.88);
+    }
+
+    // 2024 ➔ 2025 (should go DOWN)
+    function convert2024to2025(score2024) {
+      let val = 1 - 0.00009618 * score2024;
+      if (val < 0) return null;
+      return roundTo10(13723.04 - 13625.83 * Math.sqrt(val));
+    }
+
+    const input2024 = document.getElementById('score2024');
+    const input2025 = document.getElementById('score2025');
+    const resultDiv = document.getElementById('result');
+
+    function updateResult() {
+      const score2024 = parseFloat(input2024.value);
+      const score2025 = parseFloat(input2025.value);
+      let output = "";
+
+      if (!isNaN(score2024) && score2024 >= 1200 && score2024 <= 3600) {
+        const converted = convert2024to2025(score2024);
+        if (converted >= 1200 && converted <= 2700) {
+          output = `If I scored <span class="badge badge-value">${roundTo10(score2024)}</span> on the 2024 UCAT, that would be about as strong as <span class="badge badge-value">${converted}</span> on the 2025 UCAT.`;
+        } else {
+          output = "That score is outside the convertible range.";
+        }
+      } else if (!isNaN(score2025) && score2025 >= 1200 && score2025 <= 2700) {
+        const converted = convert2025to2024(score2025);
+        if (converted && converted >= 1200 && converted <= 3600) {
+          output = `If I scored <span class="badge badge-value">${roundTo10(score2025)}</span> on the 2025 UCAT, that would be about as strong as <span class="badge badge-value">${converted}</span> on the 2024 UCAT.`;
+        } else {
+          output = "That score is outside the convertible range.";
+        }
+      } else if (score2024 || score2025) {
+        output = "Please enter a valid score in the allowed range.";
+      }
+
+      resultDiv.innerHTML = output;
+    }
+
+    input2024.addEventListener("input", () => {
+      input2025.value = "";
+      updateResult();
+    });
+
+    input2025.addEventListener("input", () => {
+      input2024.value = "";
+      updateResult();
+    });
+  </script>
+</body>
+</html>
+
+
+    <div class="blog-footer">
+      <span>&copy; 2025 MyUCAT</span>
+      <button class="cta-button" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">Back to top</button>
+    </div>
+  </main>
+</body>
+</html>
