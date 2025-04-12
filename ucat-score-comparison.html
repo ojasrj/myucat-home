@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,12 +40,10 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
     }
     header h1 {
       font-size: 1.6rem;
       color: var(--primary);
-      margin-bottom: 0.5rem;
     }
     .blog-container {
       max-width: 850px;
@@ -91,8 +88,6 @@
       align-items: center;
       font-size: 0.9rem;
       color: var(--muted);
-      flex-wrap: wrap;
-      gap: 1rem;
     }
     .cta-button {
       padding: 0.8rem 1.4rem;
@@ -103,31 +98,13 @@
       font-weight: 600;
       cursor: pointer;
       transition: background 0.3s;
-      white-space: nowrap;
     }
     .cta-button:hover {
       background-color: var(--primary-dark);
-      color: white;
-      text-decoration: none;
     }
     @media (max-width: 600px) {
       .blog-container {
         padding: 1.5rem;
-        margin: 1rem;
-      }
-      header {
-        padding: 1rem;
-      }
-      .blog-title {
-        font-size: 1.5rem;
-      }
-      .blog-footer {
-        justify-content: center;
-        text-align: center;
-      }
-      .blog-footer span {
-        width: 100%;
-        margin-bottom: 0.5rem;
       }
     }
 
@@ -154,42 +131,12 @@
       justify-content: center;
     }
     .ucat-tool   .input-group-text {
-      min-width: 150px;
-      white-space: normal;
-      word-break: break-word;
-      text-align: center;
-    }
-    
-    @media (max-width: 768px) {
-      .ucat-tool .input-group {
-        flex-direction: column;
-      }
-      .ucat-tool .input-group-prepend {
-        width: 100%;
-        margin-bottom: 0.5rem;
-      }
-      .ucat-tool .input-group-text {
-        width: 100%;
-        border-radius: 50px 50px 0 0;
-      }
-      .ucat-tool .form-control {
-        border-radius: 0 0 50px 50px !important;
-        width: 100%;
-      }
-      .accordion .btn-link {
-        white-space: normal;
-        text-align: left;
-      }
-      .table-responsive {
-        font-size: 0.9rem;
-      }
-      .badge-value {
-        font-size: 1rem !important;
-      }
-      .result-sentence {
-        font-size: 1rem !important;
-      }
-    }
+  min-width: 150px;
+  white-space: normal;
+  word-break: break-word;
+  text-align: center;
+}
+
     
    .ucat-tool .input-group .form-control {
       border-radius: 50px;
@@ -257,10 +204,10 @@
   <p>Most UCAT medical school thresholds are based on historic scores from 2024 and earlier. If you're applying in 2025, you can use this tool to estimate what your new score would have looked like in the old system — allowing you to compare your chances against real past offers from your dream universities.</p>
 
   <h6>2️⃣ Compare with friends (just for fun!)</h6>
-  <p>We know students love to compare scores — this tool lets you match your performance with friends who sat the UCAT under the old system. You can finally answer the burning question: "Who actually did better?" with a fair score translation.</p>
+  <p>We know students love to compare scores — this tool lets you match your performance with friends who sat the UCAT under the old system. You can finally answer the burning question: “Who actually did better?” with a fair score translation.</p>
 
   <h6>3️⃣ Internal use at MyUCAT (e.g. tutor recruitment)</h6>
-  <p>At MyUCAT, we've always upheld extremely high standards for our tutors — most have scored 3000+, with many 3400+ under the old system. This tool ensures we maintain that same level of excellence by converting scores for candidates in the future applying to become tutors. We'll continue to use 2024-equivalent scores as a benchmark for consistency.</p>
+  <p>At MyUCAT, we’ve always upheld extremely high standards for our tutors — most have scored 3000+, with many 3400+ under the old system. This tool ensures we maintain that same level of excellence by converting scores for candidates in the future applying to become tutors. We’ll continue to use 2024-equivalent scores as a benchmark for consistency.</p>
 </div>
 
 </div>
@@ -398,19 +345,19 @@
 <div class="mt-5">
   <h3 class="text-center">📊 Is This Tool Reliable?</h3>
   <p><strong>Quadratic Model Explanation</strong><br>
-  Because the relationship between the 2024 and 2025 scores wasn't perfectly linear — with the linear model showing a slight bias at the lower end — a quadratic model was used. A quadratic model takes the form:</p>
+  Because the relationship between the 2024 and 2025 scores wasn’t perfectly linear — with the linear model showing a slight bias at the lower end — a quadratic model was used. A quadratic model takes the form:</p>
 
-  <p class="text-center">\[ \text{2025 Score} = a \cdot (\text{2024 Score})^2 + b \cdot (\text{2024 Score}) + c \]</p>
+  <p>\[ \text{2025 Score} = a \cdot (\text{2024 Score})^2 + b \cdot (\text{2024 Score}) + c \]</p>
 
   <p>Using the paired data from the percentile thresholds, we fitted the following quadratic equation:</p>
-  <p class="text-center">\[ \text{2025 Score} \approx -0.000056 \cdot (\text{2024 Score})^2 + 1.536980 \cdot (\text{2024 Score}) - 148.88 \]</p>
+  <p>\[ \text{2025 Score} \approx -0.000056 \cdot (\text{2024 Score})^2 + 1.536980 \cdot (\text{2024 Score}) - 148.88 \]</p>
 
   <p>This equation provides a closer approximation across the spectrum of scores since it allows for curvature in the relationship.</p>
 
   <p><strong>Rearranged Equation</strong><br>
   For cases where you might want to input a 2025 score and predict the corresponding 2024 score, we solved the quadratic equation for the 2024 score. The rearranged equation is:</p>
 
-  <p class="text-center">\[ \text{2024 Score} \approx 13723.04 - 13625.83 \cdot \sqrt{1 - 0.00009618 \cdot (\text{2025 Score})} \]</p>
+  <p>\[ \text{2024 Score} \approx 13723.04 - 13625.83 \cdot \sqrt{1 - 0.00009618 \cdot (\text{2025 Score})} \]</p>
 
   <p>(We use the minus version of the +- solution because the resulting values fall into the expected range for 2024 scores.)</p>
 </div>
