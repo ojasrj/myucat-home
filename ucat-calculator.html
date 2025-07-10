@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -88,6 +87,159 @@
             margin-bottom: 20px;
             font-size: 0.9em;
         }
+
+        /* Popup Styles */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .popup-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .popup-card {
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .popup-overlay.show .popup-card {
+            transform: scale(1);
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+            padding: 5px;
+            line-height: 1;
+        }
+
+        .popup-close:hover {
+            color: #000;
+        }
+
+        .popup-badge {
+            background: #e11d48;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 9999px;
+            display: inline-block;
+            margin-bottom: 20px;
+            animation: pulse 1.6s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.7; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .popup-title {
+            font-size: 30px;
+            color: #1e293b;
+            margin-bottom: 16px;
+            font-weight: bold;
+        }
+
+        .popup-cta-button {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: white;
+            font-size: 18px;
+            padding: 16px 28px;
+            border: none;
+            border-radius: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 16px rgba(37, 99, 235, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 10px 5px;
+        }
+
+        .popup-cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 24px rgba(37, 99, 235, 0.6);
+            text-decoration: none;
+            color: white;
+        }
+
+        .popup-description {
+            font-size: 16px;
+            color: #334155;
+            margin-top: 24px;
+            line-height: 1.7;
+        }
+
+        .popup-description strong {
+            color: #111827;
+        }
+
+        .popup-testimonial {
+            font-style: italic;
+            font-size: 14px;
+            color: #64748b;
+            margin-top: 20px;
+        }
+
+        /* Mobile styles for popup */
+        @media (max-width: 600px) {
+            .popup-card {
+                padding: 24px 18px;
+                border-radius: 16px;
+                margin: 20px;
+            }
+
+            .popup-title {
+                font-size: 24px;
+            }
+
+            .popup-cta-button {
+                width: 100%;
+                justify-content: center;
+                margin: 10px 0;
+            }
+
+            .popup-description {
+                font-size: 14px;
+            }
+
+            .popup-testimonial {
+                font-size: 12px;
+            }
+        }
     </style>
     <title>UCAT Score Calculator for 2024 AND 2025 | New UCAT Score Converter</title>
 
@@ -109,6 +261,39 @@
 </head>
 
 <body>
+
+<!-- Popup Overlay -->
+<div class="popup-overlay" id="welcomePopup">
+    <div class="popup-card">
+        <button class="popup-close" id="closePopup">&times;</button>
+        
+        <span class="popup-badge">Limited remaining spots (out of total 3000 for 2025)!</span>
+        <h2 class="popup-title">Free UCAT & Interview Help</h2>
+
+        <a href="https://chat.whatsapp.com/L51Lq9yt5k1HNNXzBsPxfM" target="_blank" class="popup-cta-button">
+            <svg width="22" height="22" fill="white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893A11.821 11.821 0 0020.893 3.488"/>
+            </svg>
+            Join the group now
+        </a>
+
+        <p class="popup-description">
+            <a href="https://chat.whatsapp.com/F6JpDr5vRaVDTjdlHqq9zb" style="color: #007bff;"> WhatsApp group</a> for Q&As, expert advice & strategies from the <strong>highest UCAT scorers out there</strong>. Members get automatic access to <a href="https://questions.ucat.com/courses" style="color: #007bff;">work experience, UCAT, personal statement & interview courses</a>. They are also enrolled in our <strong>free Virtual Medical & Dental Society</strong> - access leadership roles, work experience, and exclusive insight events to strengthen your application.
+        </p>
+
+        <p class="popup-testimonial">
+            "Hands down best company you can work with. Achieved my own dream of a Cambridge offer and couldn't have done it alone. These guys provide so much support and make the whole process seem a lot less daunting." - Student L.J., UK (<a href="https://uk.trustpilot.com/review/myucat.co.uk" style="color: #007bff;">Trustpilot</a>)
+        </p>
+
+        <p class="popup-testimonial">
+            "4/4 med offers from Imperial, UCL, KCL AND SGUL!! Been with Ojas and his course through every step from UCAT, interviews and now A-levels and I couldn't have done it without his and the amazing tutors' help :)" - Student N.P., Qatar (<a href="https://uk.trustpilot.com/review/myucat.co.uk" style="color: #007bff;">Trustpilot</a>)
+        </p>
+
+        <p class="popup-testimonial">
+            "I wholeheartedly recommend you to join the group chat and see what it is like, even for a week, and I'm 99% sure you will be able to appreciate the level of effort he puts in as I do." - Student I.M., UK (<a href="https://uk.trustpilot.com/review/myucat.co.uk" style="color: #007bff;">Trustpilot</a>)
+        </p>
+    </div>
+</div>
 
 <p>I hope that you found this resource useful!</p>
 
@@ -257,7 +442,7 @@
                         <p class="text-muted"></p>
                     </div>
                     <div class="mt-3">
-                        <a href="https://learn.myucat.co.uk/strategic-applications" class="btn btn-primary mx-2" style="border-radius: 50px; min-width: 180px;">Strategic Applications</a>
+                        <a href="https://medsoc.myucat.co.uk/applications" class="btn btn-primary mx-2" style="border-radius: 50px; min-width: 180px;">Strategic Applications</a>
                         <a href="https://learn.myucat.co.uk/strategic-applications/ucat-score-comparison" class="btn btn-outline-primary mx-2" style="border-radius: 50px; min-width: 200px;">Convert Scores /2700 ↔ /3600</a>
                     </div>
                 </div>
@@ -269,6 +454,23 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
 $(function() {
+    // Show popup after 1.5 seconds
+    setTimeout(function() {
+        $('#welcomePopup').addClass('show');
+    }, 1500);
+
+    // Close popup when X is clicked
+    $('#closePopup').click(function() {
+        $('#welcomePopup').removeClass('show');
+    });
+
+    // Close popup when clicking outside
+    $('#welcomePopup').click(function(e) {
+        if (e.target === this) {
+            $(this).removeClass('show');
+        }
+    });
+
     // Toggle between scoring modes
     $("#scoringMode").change(function() {
         if ($(this).is(":checked")) {
