@@ -240,6 +240,22 @@
             </ul>
         </div>
     </div>
+
+    <!-- Score Comparison Section -->
+    <div class="row mt-4">
+        <div class="col">
+            <div class="card">
+                <div class="card-header bg-info text-white text-center">
+                    <h5 class="mb-0">2024 vs 2025 UCAT Score Comparison</h5>
+                </div>
+                <div class="card-body text-center">
+                    <div id="comparison-result" class="alert alert-light">
+                        Calculate your 2025 UCAT score above to see the 2024 equivalent.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -263,6 +279,32 @@ $(function() {
 
     // Add input handlers for all DM inputs
     $("#simpleDM, #oneMarkScore, #correctTwoMarkFull, #correctTwoMarkPartial").on('input', recalc);
+
+    function roundTo10(x) {
+        return Math.round(x / 10) * 10;
+    }
+
+    function convert2025to2024(score2025) {
+        return roundTo10(-0.000056 * score2025 ** 2 + 1.53698 * score2025 - 148.88);
+    }
+
+    function updateComparison(score2025) {
+        const comparisonDiv = $("#comparison-result");
+        
+        if (!isNaN(score2025) && score2025 >= 900 && score2025 <= 2700) {
+            const converted = convert2025to2024(score2025);
+            if (converted && converted >= 1200 && converted <= 3600) {
+                comparisonDiv.html(`If I scored <span class="badge badge-success">${roundTo10(score2025)}</span> on the 2025 UCAT, that would be about as strong as <span class="badge badge-success">${converted}</span> on the 2024 UCAT.`);
+                comparisonDiv.removeClass("alert-light").addClass("alert-success");
+            } else {
+                comparisonDiv.html("That score is outside the convertible range.");
+                comparisonDiv.removeClass("alert-light alert-success").addClass("alert-warning");
+            }
+        } else {
+            comparisonDiv.html("Calculate your 2025 UCAT score above to see the 2024 equivalent.");
+            comparisonDiv.removeClass("alert-success alert-warning").addClass("alert-light");
+        }
+    }
 
     function recalc() {
         var total = 0,
@@ -406,7 +448,13 @@ $(function() {
         
         $("#sjt_band").text(sjtBand);
 
-        if (cnt > 2) $("#total").text(parseInt((qr + dm + vr)))
+        if (cnt > 2) {
+            const totalScore = parseInt((qr + dm + vr));
+            $("#total").text(totalScore);
+            updateComparison(totalScore);
+        } else {
+            updateComparison(NaN);
+        }
     }
 
     $("#vr, #qr, #sjt").change(recalc);
