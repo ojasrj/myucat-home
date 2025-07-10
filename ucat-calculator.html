@@ -222,6 +222,26 @@
                 margin: 20px;
             }
 
+            .popup-close {
+                top: 10px;
+                right: 15px;
+                background: rgba(255, 255, 255, 0.9);
+                border-radius: 50%;
+                width: 35px;
+                height: 35px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #333;
+                font-weight: bold;
+                z-index: 10;
+            }
+
+            .popup-close:hover {
+                background: rgba(255, 255, 255, 1);
+                color: #000;
+            }
+
             .popup-title {
                 font-size: 24px;
             }
@@ -238,6 +258,16 @@
 
             .popup-testimonial {
                 font-size: 12px;
+            }
+
+            /* Mobile input adjustments */
+            .input-group-text {
+                min-width: 140px;
+                font-size: 14px;
+            }
+
+            .input-group .form-control {
+                flex: 1.2;
             }
         }
     </style>
@@ -470,6 +500,23 @@ $(function() {
             $(this).removeClass('show');
         }
     });
+
+    // Set mobile-specific placeholders
+    function setMobilePlaceholders() {
+        if (window.innerWidth <= 600) {
+            $('#vr').attr('placeholder', '/44');
+            $('#qr').attr('placeholder', '/36');
+            $('#sjt').attr('placeholder', '/69');
+        } else {
+            $('#vr').attr('placeholder', 'from 0 to 44');
+            $('#qr').attr('placeholder', 'from 0 to 36');
+            $('#sjt').attr('placeholder', 'from 0 to 69');
+        }
+    }
+
+    // Set placeholders on load and resize
+    setMobilePlaceholders();
+    $(window).resize(setMobilePlaceholders);
 
     // Toggle between scoring modes
     $("#scoringMode").change(function() {
