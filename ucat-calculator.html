@@ -80,6 +80,14 @@
             box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25) !important;
             border-color: #80bdff !important;
         }
+        .explanation-box {
+            background-color: #e7f3ff;
+            border: 1px solid #b3d9ff;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+        }
     </style>
     <title>UCAT Score Calculator for 2024 AND 2025 | New UCAT Score Converter</title>
 
@@ -162,30 +170,30 @@
 
                     <!-- Detailed Scoring Mode -->
                     <div id="detailedScoring" style="display: none;">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Number of 2 Mark Questions</span>
-                            </div>
-                            <input type="number" class="form-control" placeholder="Enter number (0-35)" id="twoMarkQuestions" min="0" max="35">
-                            <small class="form-text text-muted d-block w-100 text-center mt-2">One Mark Questions: <span id="oneMarkValue">35</span></small>
+                        <div class="explanation-box">
+                            <strong>Decision Making Breakdown:</strong><br>
+                            • <strong>12 Yes/No Questions (2 marks each):</strong> You get 2/2 marks for all 5 correct answers, 1/2 marks for 4 correct answers, and 0/2 marks for less than 4 correct.<br>
+                            • <strong>23 Single Questions (1 mark each):</strong> Standard 1 mark per correct answer.
                         </div>
+                        
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <span class="input-group-text">Correct One Mark Answers</span>
+                                <span class="input-group-text">Score on 1 Mark Questions</span>
                             </div>
-                            <input type="number" class="form-control" placeholder="Number of correct 1 mark answers" id="correctOneMark">
+                            <input type="number" class="form-control" placeholder="Score out of 23" id="oneMarkScore" min="0" max="23">
+                            <div class="input-group-append">
+                                <span class="input-group-text">/23</span>
+                            </div>
                         </div>
+                        
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <span class="input-group-text">Fully Correct Two Mark</span>
+                                <span class="input-group-text">Score on 2 Mark Questions</span>
                             </div>
-                            <input type="number" class="form-control" placeholder="Number of fully correct 2 mark answers" id="correctTwoMarkFull">
-                        </div>
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Partially Correct Two Mark</span>
+                            <input type="number" class="form-control" placeholder="Score out of 24" id="twoMarkScore" min="0" max="24">
+                            <div class="input-group-append">
+                                <span class="input-group-text">/24</span>
                             </div>
-                            <input type="number" class="form-control" placeholder="Number of partially correct 2 mark answers" id="correctTwoMarkPartial">
                         </div>
                     </div>
                 </div>
@@ -240,33 +248,8 @@ $(function() {
     $("#simpleScoring").show();
     $("#detailedScoring").hide();
 
-    // Initialize two mark questions input functionality
-    $("#twoMarkQuestions").on('input', function() {
-        const twoMarkValue = parseInt($(this).val()) || 0;
-        const oneMarkValue = 35 - twoMarkValue;
-        $("#oneMarkValue").text(oneMarkValue);
-        
-        // Reset related inputs when two mark questions change
-        $("#correctOneMark").attr("max", oneMarkValue);
-        $("#correctTwoMarkFull").attr("max", twoMarkValue);
-        $("#correctTwoMarkPartial").attr("max", twoMarkValue);
-        
-        // Clear inputs if they exceed new maximums
-        if (parseInt($("#correctOneMark").val()) > oneMarkValue) {
-            $("#correctOneMark").val('');
-        }
-        if (parseInt($("#correctTwoMarkFull").val()) > twoMarkValue) {
-            $("#correctTwoMarkFull").val('');
-        }
-        if (parseInt($("#correctTwoMarkPartial").val()) > twoMarkValue) {
-            $("#correctTwoMarkPartial").val('');
-        }
-        
-        recalc();
-    });
-
     // Add input handlers for all DM inputs
-    $("#simpleDM, #correctOneMark, #correctTwoMarkFull, #correctTwoMarkPartial").on('input', recalc);
+    $("#simpleDM, #oneMarkScore, #twoMarkScore").on('input', recalc);
 
     function recalc() {
         var total = 0,
@@ -327,29 +310,15 @@ $(function() {
             }
         } else {
             // Detailed scoring mode
-            let totalQuestions = 35;
-            let twoMarkQuestions = parseInt($("#twoMarkQuestions").val().trim()) || 0;
-            let oneMarkQuestions = totalQuestions - twoMarkQuestions;
-            let correctOneMark = parseInt($("#correctOneMark").val().trim()) || 0;
-            let correctTwoMarkFull = parseInt($("#correctTwoMarkFull").val().trim()) || 0;
-            let correctTwoMarkPartial = parseInt($("#correctTwoMarkPartial").val().trim()) || 0;
-
+            let oneMarkScore = parseInt($("#oneMarkScore").val().trim()) || 0;
+            let twoMarkScore = parseInt($("#twoMarkScore").val().trim()) || 0;
+            
             // Validate inputs
-            if (correctOneMark > oneMarkQuestions || 
-                correctTwoMarkFull > twoMarkQuestions || 
-                correctTwoMarkPartial > twoMarkQuestions ||
-                (correctTwoMarkFull + correctTwoMarkPartial) > twoMarkQuestions) {
+            if (oneMarkScore > 23 || twoMarkScore > 24 || oneMarkScore < 0 || twoMarkScore < 0) {
                 $("#dm_t").text("?");
             } else {
-                // Calculate scores separately
-                let oneMarkMaxScore = oneMarkQuestions * 1;
-                let twoMarkMaxScore = twoMarkQuestions * 2;
-                let totalMaxScore = oneMarkMaxScore + twoMarkMaxScore;
-
-                // Calculate actual scores
-                let oneMarkActualScore = correctOneMark * 1;
-                let twoMarkActualScore = (correctTwoMarkFull * 2) + (correctTwoMarkPartial * 1);
-                let totalActualScore = oneMarkActualScore + twoMarkActualScore;
+                let totalActualScore = oneMarkScore + twoMarkScore;
+                let totalMaxScore = 23 + 24; // 47 total marks possible
 
                 // Scale to 300-900 range
                 if (totalActualScore === 0) {
