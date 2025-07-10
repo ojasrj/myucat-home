@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="noindex, nofollow">
     <meta name="description" content="Enter your raw UCAT scores to work out a predicted scaled score out of 2700 in UCAT 2025. Updated for 2025 and uses partial DM marks (unlike others on Google!)">
 
     <meta property="og:site_name" content="My UCAT">
@@ -222,6 +221,26 @@
                 margin: 20px;
             }
 
+            .popup-close {
+                top: 10px;
+                right: 15px;
+                background: rgba(255, 255, 255, 0.9);
+                border-radius: 50%;
+                width: 35px;
+                height: 35px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #333;
+                font-weight: bold;
+                z-index: 10;
+            }
+
+            .popup-close:hover {
+                background: rgba(255, 255, 255, 1);
+                color: #000;
+            }
+
             .popup-title {
                 font-size: 24px;
             }
@@ -238,6 +257,16 @@
 
             .popup-testimonial {
                 font-size: 12px;
+            }
+
+            /* Mobile input adjustments */
+            .input-group-text {
+                min-width: 140px;
+                font-size: 14px;
+            }
+
+            .input-group .form-control {
+                flex: 1.2;
             }
         }
     </style>
@@ -442,334 +471,4 @@
                         <p class="text-muted"></p>
                     </div>
                     <div class="mt-3">
-                        <a href="https://medsoc.myucat.co.uk/applications" class="btn btn-primary mx-2" style="border-radius: 50px; min-width: 180px;">Strategic Applications</a>
-                        <a href="https://learn.myucat.co.uk/strategic-applications/ucat-score-comparison" class="btn btn-outline-primary mx-2" style="border-radius: 50px; min-width: 200px;">Convert Scores /2700 ↔ /3600</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-$(function() {
-    // Show popup after 1.5 seconds
-    setTimeout(function() {
-        $('#welcomePopup').addClass('show');
-    }, 1500);
-
-    // Close popup when X is clicked
-    $('#closePopup').click(function() {
-        $('#welcomePopup').removeClass('show');
-    });
-
-    // Close popup when clicking outside
-    $('#welcomePopup').click(function(e) {
-        if (e.target === this) {
-            $(this).removeClass('show');
-        }
-    });
-
-    // Toggle between scoring modes
-    $("#scoringMode").change(function() {
-        if ($(this).is(":checked")) {
-            $("#simpleScoring").hide();
-            $("#detailedScoring").show();
-        } else {
-            $("#simpleScoring").show();
-            $("#detailedScoring").hide();
-        }
-        recalc(); // Recalculate when switching modes
-    });
-
-    // Initialize with simple mode
-    $("#simpleScoring").show();
-    $("#detailedScoring").hide();
-
-    // Add input handlers for all DM inputs
-    $("#simpleDM, #oneMarkScore, #correctTwoMarkFull, #correctTwoMarkPartial").on('input', recalc);
-
-    function roundTo10(x) {
-        return Math.round(x / 10) * 10;
-    }
-
-    function convert2025to2024(score2025) {
-        return roundTo10(-0.000056 * score2025 ** 2 + 1.53698 * score2025 - 148.88);
-    }
-
-    // Percentile lookup table based on 2024 scores
-    const percentileTable = [
-        {percentile: 1, min: 1200, max: 1910}, {percentile: 2, score: 1920}, {percentile: 3, score: 1970},
-        {percentile: 4, score: 2000}, {percentile: 5, score: 2030}, {percentile: 6, score: 2060},
-        {percentile: 7, score: 2080}, {percentile: 8, score: 2100}, {percentile: 9, score: 2120},
-        {percentile: 10, score: 2140}, {percentile: 11, score: 2150}, {percentile: 12, score: 2170},
-        {percentile: 13, score: 2180}, {percentile: 14, score: 2190}, {percentile: 15, score: 2210},
-        {percentile: 16, score: 2220}, {percentile: 17, score: 2230}, {percentile: 18, score: 2240},
-        {percentile: 19, score: 2250}, {percentile: 20, score: 2260}, {percentile: 21, score: 2270},
-        {percentile: 22, score: 2280}, {percentile: 23, score: 2290}, {percentile: 24, score: 2300},
-        {percentile: 25, score: 2310}, {percentile: 26, score: 2330}, {percentile: 27, score: 2330},
-        {percentile: 28, score: 2340}, {percentile: 29, score: 2350}, {percentile: 30, score: 2360},
-        {percentile: 31, score: 2360}, {percentile: 32, score: 2370}, {percentile: 33, score: 2380},
-        {percentile: 34, score: 2390}, {percentile: 35, score: 2400}, {percentile: 36, score: 2410},
-        {percentile: 37, score: 2410}, {percentile: 38, score: 2420}, {percentile: 39, score: 2430},
-        {percentile: 40, score: 2440}, {percentile: 41, score: 2440}, {percentile: 42, score: 2450},
-        {percentile: 43, score: 2460}, {percentile: 44, score: 2470}, {percentile: 45, score: 2470},
-        {percentile: 46, score: 2480}, {percentile: 47, score: 2490}, {percentile: 48, score: 2500},
-        {percentile: 49, score: 2510}, {percentile: 50, score: 2520}, {percentile: 51, score: 2520},
-        {percentile: 52, score: 2530}, {percentile: 53, score: 2540}, {percentile: 54, score: 2540},
-        {percentile: 55, score: 2550}, {percentile: 56, score: 2560}, {percentile: 57, score: 2570},
-        {percentile: 58, score: 2580}, {percentile: 59, score: 2580}, {percentile: 60, score: 2590},
-        {percentile: 61, score: 2600}, {percentile: 62, score: 2610}, {percentile: 63, score: 2620},
-        {percentile: 64, score: 2630}, {percentile: 65, score: 2630}, {percentile: 66, score: 2640},
-        {percentile: 67, score: 2650}, {percentile: 68, score: 2660}, {percentile: 69, score: 2670},
-        {percentile: 70, score: 2680}, {percentile: 71, score: 2690}, {percentile: 72, score: 2700},
-        {percentile: 73, score: 2710}, {percentile: 74, score: 2710}, {percentile: 75, score: 2720},
-        {percentile: 76, score: 2740}, {percentile: 77, score: 2750}, {percentile: 78, score: 2760},
-        {percentile: 79, score: 2770}, {percentile: 80, score: 2780}, {percentile: 81, score: 2790},
-        {percentile: 82, score: 2800}, {percentile: 83, score: 2810}, {percentile: 84, score: 2830},
-        {percentile: 85, score: 2840}, {percentile: 86, score: 2860}, {percentile: 87, score: 2870},
-        {percentile: 88, score: 2890}, {percentile: 89, score: 2910}, {percentile: 90, score: 2920},
-        {percentile: 91, score: 2950}, {percentile: 92, score: 2970}, {percentile: 93, score: 2990},
-        {percentile: 94, score: 3020}, {percentile: 95, score: 3040}, {percentile: 96, score: 3080},
-        {percentile: 97, score: 3120}, {percentile: 98, score: 3170}, {percentile: 99, score: 3260}
-    ];
-
-    function getPercentileFromScore(score2024) {
-        // Handle the 1st percentile range
-        if (score2024 >= 1200 && score2024 <= 1910) {
-            return 1;
-        }
-
-        // Find the closest percentile
-        for (let i = 1; i < percentileTable.length; i++) {
-            if (score2024 <= percentileTable[i].score) {
-                return percentileTable[i].percentile;
-            }
-        }
-
-        // If score is higher than 99th percentile
-        if (score2024 > 3260) {
-            return 99;
-        }
-
-        return null;
-    }
-
-    function getDecileFromPercentile(percentile) {
-        if (percentile >= 90) return "9th";
-        if (percentile >= 80) return "8th";
-        if (percentile >= 70) return "7th";
-        if (percentile >= 60) return "6th";
-        if (percentile >= 50) return "5th";
-        if (percentile >= 40) return "4th";
-        if (percentile >= 30) return "3rd";
-        if (percentile >= 20) return "2nd";
-        if (percentile >= 10) return "1st";
-        return "0th";
-    }
-
-    function updateComparison(score2025) {
-        const comparisonDiv = $("#comparison-result");
-        const percentileDiv = $("#percentile-analysis");
-        
-        if (!isNaN(score2025) && score2025 >= 900 && score2025 <= 2700) {
-            const converted = convert2025to2024(score2025);
-            if (converted && converted >= 1200 && converted <= 3600) {
-                comparisonDiv.html(`If I scored <span class="badge badge-success">${roundTo10(score2025)}</span> on the 2025 UCAT, that would be about as strong as <span class="badge badge-success">${converted}</span> on the 2024 UCAT.`);
-                comparisonDiv.removeClass("alert-light").addClass("alert-success");
-                
-                // Calculate and display percentile information
-                const percentile = getPercentileFromScore(converted);
-                if (percentile) {
-                    const topPercent = 100 - percentile;
-                    const decile = getDecileFromPercentile(percentile);
-                    percentileDiv.html(`That would be approximately equal to the <strong>${percentile}${getOrdinalSuffix(percentile)} percentile</strong> in 2024, placing you in the <strong>top ${topPercent}%</strong> of applicants. This would be a score in the <strong>${decile} decile</strong>.`);
-                    percentileDiv.show();
-                } else {
-                    percentileDiv.hide();
-                }
-            } else {
-                comparisonDiv.html("That score is outside the convertible range.");
-                comparisonDiv.removeClass("alert-light alert-success").addClass("alert-warning");
-                percentileDiv.hide();
-            }
-        } else {
-            comparisonDiv.html("Calculate your 2025 UCAT score above to see the 2024 equivalent.");
-            comparisonDiv.removeClass("alert-success alert-warning").addClass("alert-light");
-            percentileDiv.hide();
-        }
-    }
-
-    function getOrdinalSuffix(number) {
-        const j = number % 10;
-        const k = number % 100;
-        if (j === 1 && k !== 11) {
-            return "st";
-        }
-        if (j === 2 && k !== 12) {
-            return "nd";
-        }
-        if (j === 3 && k !== 13) {
-            return "rd";
-        }
-        return "th";
-    }
-
-    function recalc() {
-        var total = 0,
-            vr = 0,
-            qr = 0,
-            dm = 0,
-            cnt = 0;
-
-        // VR calculation
-        var v = parseInt($("#vr").val().trim())
-        if (v <= 5) vr = 300;
-        else if (v <= 7) vr = 330;
-        else if (v <= 8) vr = 350;
-        else if (v <= 10) vr = 370;
-        else if (v <= 11) vr = 400;
-        else if (v <= 12) vr = 430;
-        else if (v <= 14) vr = 450;
-        else if (v <= 15) vr = 470;
-        else if (v <= 17) vr = 500;
-        else if (v <= 18) vr = 530;
-        else if (v <= 20) vr = 550;
-        else if (v <= 22) vr = 570;
-        else if (v <= 23) vr = 600;
-        else if (v <= 25) vr = 630;
-        else if (v <= 27) vr = 650;
-        else if (v <= 29) vr = 670;
-        else if (v <= 31) vr = 700;
-        else if (v <= 32) vr = 730;
-        else if (v <= 33) vr = 750;
-        else if (v <= 34) vr = 770;
-        else if (v <= 36) vr = 800;
-        else if (v <= 38) vr = 830;
-        else if (v <= 39) vr = 850;
-        else if (v <= 41) vr = 870;
-        else if (v <= 44) vr = 900;
-
-        if (!v || v < 0 || v > 44) vr = "?";
-        else cnt += 1
-        $("#vr_t").text(vr)
-
-        // DM calculation
-        if (!$("#scoringMode").is(":checked")) {
-            // Simple scoring mode
-            let v = parseInt($("#simpleDM").val().trim());
-            if (!v || v < 0 || v > 35) {
-                $("#dm_t").text("?");
-            } else {
-                if (v === 0) {
-                    dm = 300;
-                } else if (v === 35) {
-                    dm = 900;
-                } else {
-                    dm = 300 + (v / 35) * (900 - 300);
-                    dm = Math.round(dm / 10) * 10;
-                }
-                $("#dm_t").text(dm);
-                cnt += 1;
-            }
-        } else {
-            // Detailed scoring mode
-            let oneMarkScore = parseInt($("#oneMarkScore").val().trim()) || 0;
-            let correctTwoMarkFull = parseInt($("#correctTwoMarkFull").val().trim()) || 0;
-            let correctTwoMarkPartial = parseInt($("#correctTwoMarkPartial").val().trim()) || 0;
-            
-            // Validate inputs
-            if (oneMarkScore > 23 || 
-                correctTwoMarkFull > 12 || 
-                correctTwoMarkPartial > 12 ||
-                (correctTwoMarkFull + correctTwoMarkPartial) > 12) {
-                $("#dm_t").text("?");
-            } else {
-                // Calculate total score based on the new breakdown
-                let totalActualScore = oneMarkScore + (correctTwoMarkFull * 2) + (correctTwoMarkPartial * 1);
-                let totalMaxScore = 23 + 24; // 23 single marks + 24 possible marks from 12 two-mark questions
-
-                // Scale to 300-900 range
-                if (totalActualScore === 0) {
-                    dm = 300;
-                } else if (totalActualScore === totalMaxScore) {
-                    dm = 900;
-                } else {
-                    let scaleFactor = (900 - 300) / totalMaxScore;
-                    dm = 300 + totalActualScore * scaleFactor;
-                }
-
-                dm = Math.round(dm / 10) * 10;
-                $("#dm_t").text(dm);
-                cnt += 1;
-            }
-        }
-
-        // QR calculation
-        v = parseInt($("#qr").val().trim())
-        if (v <= 3) qr = 300;
-        else if (v <= 5) qr = 330;
-        else if (v <= 7) qr = 350;
-        else if (v <= 8) qr = 370;
-        else if (v <= 9) qr = 400;
-        else if (v <= 10) qr = 430;
-        else if (v <= 11) qr = 450;
-        else if (v <= 13) qr = 470;
-        else if (v <= 15) qr = 500;
-        else if (v <= 17) qr = 530;
-        else if (v <= 19) qr = 550;
-        else if (v <= 20) qr = 570;
-        else if (v <= 21) qr = 600;
-        else if (v <= 22) qr = 630;
-        else if (v <= 23) qr = 650;
-        else if (v <= 24) qr = 670;
-        else if (v <= 25) qr = 700;
-        else if (v <= 26) qr = 730;
-        else if (v <= 27) qr = 750;
-        else if (v <= 28) qr = 770;
-        else if (v <= 29) qr = 800;
-        else if (v <= 30) qr = 830;
-        else if (v <= 32) qr = 850;
-        else if (v <= 33) qr = 870;
-        else if (v <= 36) qr = 900;
-
-        if (!v || v < 0 || v > 36) qr = "?";
-        else cnt += 1
-        $("#qr_t").text(qr)
-
-        // SJT Band calculation
-        var sjtScore = parseInt($("#sjt").val().trim());
-        var sjtBand = "-";
-        
-        if (sjtScore >= 0 && sjtScore <= 69) {
-            if (sjtScore >= 57) {
-                sjtBand = "Band 1";
-            } else if (sjtScore >= 42) {
-                sjtBand = "Band 2";
-            } else if (sjtScore >= 28) {
-                sjtBand = "Band 3";
-            } else {
-                sjtBand = "Band 4";
-            }
-        } else if (sjtScore > 69 || sjtScore < 0) {
-            sjtBand = "?";
-        }
-        
-        $("#sjt_band").text(sjtBand);
-
-        if (cnt > 2) {
-            const totalScore = parseInt((qr + dm + vr));
-            $("#total").text(totalScore);
-            updateComparison(totalScore);
-        } else {
-            updateComparison(NaN);
-        }
-    }
-
-    $("#vr, #qr, #sjt").change(recalc);
-    $("#vr, #qr, #sjt").keyup(recalc);
-});
-</script>
-</body>
-</html>
+    
