@@ -178,7 +178,7 @@
                         
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <span class="input-group-text">Score on 1 Mark Questions</span>
+                                <span class="input-group-text">How many 1 Mark Questions correct</span>
                             </div>
                             <input type="number" class="form-control" placeholder="Score out of 23" id="oneMarkScore" min="0" max="23">
                             <div class="input-group-append">
@@ -188,12 +188,16 @@
                         
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <span class="input-group-text">Score on 2 Mark Questions</span>
+                                <span class="input-group-text">Fully Correct Two Mark</span>
                             </div>
-                            <input type="number" class="form-control" placeholder="Score out of 24" id="twoMarkScore" min="0" max="24">
-                            <div class="input-group-append">
-                                <span class="input-group-text">/24</span>
+                            <input type="number" class="form-control" placeholder="Number of fully correct 2 mark questions" id="correctTwoMarkFull" min="0" max="12">
+                        </div>
+                        
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Partially Correct Two Mark</span>
                             </div>
+                            <input type="number" class="form-control" placeholder="Number of partially correct 2 mark questions" id="correctTwoMarkPartial" min="0" max="12">
                         </div>
                     </div>
                 </div>
@@ -249,7 +253,7 @@ $(function() {
     $("#detailedScoring").hide();
 
     // Add input handlers for all DM inputs
-    $("#simpleDM, #oneMarkScore, #twoMarkScore").on('input', recalc);
+    $("#simpleDM, #oneMarkScore, #correctTwoMarkFull, #correctTwoMarkPartial").on('input', recalc);
 
     function recalc() {
         var total = 0,
@@ -311,14 +315,19 @@ $(function() {
         } else {
             // Detailed scoring mode
             let oneMarkScore = parseInt($("#oneMarkScore").val().trim()) || 0;
-            let twoMarkScore = parseInt($("#twoMarkScore").val().trim()) || 0;
+            let correctTwoMarkFull = parseInt($("#correctTwoMarkFull").val().trim()) || 0;
+            let correctTwoMarkPartial = parseInt($("#correctTwoMarkPartial").val().trim()) || 0;
             
             // Validate inputs
-            if (oneMarkScore > 23 || twoMarkScore > 24 || oneMarkScore < 0 || twoMarkScore < 0) {
+            if (oneMarkScore > 23 || 
+                correctTwoMarkFull > 12 || 
+                correctTwoMarkPartial > 12 ||
+                (correctTwoMarkFull + correctTwoMarkPartial) > 12) {
                 $("#dm_t").text("?");
             } else {
-                let totalActualScore = oneMarkScore + twoMarkScore;
-                let totalMaxScore = 23 + 24; // 47 total marks possible
+                // Calculate total score based on the new breakdown
+                let totalActualScore = oneMarkScore + (correctTwoMarkFull * 2) + (correctTwoMarkPartial * 1);
+                let totalMaxScore = 23 + 24; // 23 single marks + 24 possible marks from 12 two-mark questions
 
                 // Scale to 300-900 range
                 if (totalActualScore === 0) {
