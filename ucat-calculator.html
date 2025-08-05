@@ -567,7 +567,7 @@ $(function() {
     }
 
     function harshDM(x) {
-        if (x < 0 || x > 35) return "?";
+        if (x < 0 || x > 47) return "?";
         const result = 112.1515 + 41.3835 * x - 1.2621 * x * x + 0.0164 * x * x * x;
         const constrained = Math.max(300, Math.min(900, result));
         return roundTo10(constrained);
@@ -753,8 +753,9 @@ function getPercentileFromScore(score2024) {
                 $("#dm_t").text("?");
             } else {
                 if ($("#harshMode").is(":checked")) {
-                    // Use harsh mode polynomial
-                    dm = harshDM(v);
+                    // Convert score from /35 to /47 and use harsh mode polynomial
+                    const convertedScore = (v / 35) * 47;
+                    dm = harshDM(convertedScore);
                 } else {
                     // Use standard linear scaling
                     if (v === 0) {
@@ -786,7 +787,7 @@ function getPercentileFromScore(score2024) {
                 let totalActualScore = oneMarkScore + (correctTwoMarkFull * 2) + (correctTwoMarkPartial * 1);
                 
                 if ($("#harshMode").is(":checked")) {
-                    // Use harsh mode polynomial for detailed scoring
+                    // Use harsh mode polynomial with score out of 47 directly
                     dm = harshDM(totalActualScore);
                 } else {
                     // Use standard linear scaling
