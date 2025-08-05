@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="noindex, nofollow">
+        <meta name="robots" content="noindex, nofollow">
     <meta name="description" content="Enter your raw UCAT scores to work out a predicted scaled score out of 2700 in UCAT 2025. Updated for 2025 and uses partial DM marks (unlike others on Google!)">
 
     <meta property="og:site_name" content="My UCAT">
@@ -581,28 +581,27 @@ $(function() {
         {percentile: 94, score: 3020}, {percentile: 95, score: 3040}, {percentile: 96, score: 3080},
         {percentile: 97, score: 3120}, {percentile: 98, score: 3170}, {percentile: 99, score: 3260}
     ];
-
+    
 function getPercentileFromScore(score2024) {
-    // Handle the 1st percentile special case (range-based)
-    const firstPercentile = percentileTable[0];
-    if (score2024 >= firstPercentile.min && score2024 <= firstPercentile.max) {
-        return firstPercentile.percentile;
+    // Handle 1st percentile special case (min-max range)
+    const first = percentileTable[0];
+    if (score2024 >= first.min && score2024 <= first.max) {
+        return first.percentile;
     }
 
-    // Loop through the rest of the percentile table
+    // Loop through the table and assign the correct percentile
     for (let i = 1; i < percentileTable.length; i++) {
-        if (score2024 <= percentileTable[i].score) {
+        if (score2024 < percentileTable[i].score) {
+            return percentileTable[i - 1].percentile;
+        }
+        if (score2024 === percentileTable[i].score) {
             return percentileTable[i].percentile;
         }
     }
 
-    // If score is higher than the last defined score (3260), return 99th percentile
+    // Score is higher than the last known score threshold
     return 99;
 }
-
-
-        return null;
-    }
 
     function getDecileFromPercentile(percentile) {
         if (percentile >= 90) return "9th";
