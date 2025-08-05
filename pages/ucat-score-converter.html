@@ -87,6 +87,62 @@
             font-size: 0.9em;
         }
 
+        /* Harsh Mode Toggle Styling */
+        .harsh-mode-container {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border: 2px solid #dee2e6;
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .harsh-mode-container:hover {
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .harsh-mode-label {
+            font-weight: 600;
+            color: #495057;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .harsh-mode-text {
+            color: #6c757d;
+            transition: color 0.3s ease;
+        }
+
+        .harsh-mode-icon {
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        #harshMode:checked + .harsh-mode-label .harsh-mode-text {
+            color: #dc3545;
+            font-weight: 700;
+        }
+
+        #harshMode:checked + .harsh-mode-label .harsh-mode-icon {
+            transform: scale(1.2);
+            filter: drop-shadow(0 0 4px rgba(220, 53, 69, 0.6));
+        }
+
+        .harsh-mode-note {
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px solid #dee2e6;
+        }
+
+        .harsh-mode-note .fas {
+            margin-right: 4px;
+            color: #6c757d;
+        }
+
         /* Popup Styles */
         .popup-overlay {
             position: fixed;
@@ -453,6 +509,25 @@
                     SJT Band: <b id="sjt_band">-</b>
                 </li>
             </ul>
+            
+            <!-- Stylish Harsh Mode Toggle -->
+            <div class="text-center mt-3 mb-3">
+                <div class="harsh-mode-container">
+                    <div class="custom-control custom-switch d-inline-block mb-2">
+                        <input type="checkbox" class="custom-control-input" id="harshMode">
+                        <label class="custom-control-label harsh-mode-label" for="harshMode">
+                            <span class="harsh-mode-text">Harsh Mode</span>
+                            <span class="harsh-mode-icon">⚡</span>
+                        </label>
+                    </div>
+                    <div class="harsh-mode-note">
+                        <small class="text-muted">
+                            <i class="fas fa-info-circle"></i>
+                            Only valid for scores over half marks, based on actual UCAT 2025 scaling
+                        </small>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -474,6 +549,34 @@
                         <a href="https://medsoc.myucat.co.uk/applications" class="btn btn-primary mx-2" style="border-radius: 50px; min-width: 180px;">Strategic Applications</a>
                         <a href="https://learn.myucat.co.uk/strategic-applications/ucat-score-comparison" class="btn btn-outline-primary mx-2" style="border-radius: 50px; min-width: 200px;">Convert Scores /2700 ↔ /3600</a>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reassurance Section -->
+    <div class="row mt-4">
+        <div class="col">
+            <div class="card border-success" style="background: linear-gradient(135deg, #d4edda, #f8f9fa);">
+                <div class="card-body text-center py-4">
+                    <div class="mb-3">
+                        <i class="fas fa-check-circle text-success" style="font-size: 2.5rem;"></i>
+                    </div>
+                    <h6 class="text-success mb-3" style="font-weight: 600;">
+                        <i class="fas fa-shield-alt me-2"></i>
+                        Trusted by thousands of UCAT candidates
+                    </h6>
+                    <p class="text-muted mb-3">
+                        Our calculator is used by over 20,000 students each year and based on extensive analysis of UCAT 2025 scaling patterns. 
+                        We continuously refine our algorithms to provide the most accurate predictions possible.
+                    </p>
+                    <a href="https://docs.google.com/document/d/1-747wnqlcq6Plo5FE2M9bq7HgeorfAGv7FPMlap-y-s/edit?usp=sharing" 
+                       target="_blank" 
+                       class="btn btn-success btn-sm"
+                       style="border-radius: 25px; box-shadow: 0 2px 8px rgba(40, 167, 69, 0.3);">
+                        <i class="fas fa-info-circle me-2"></i>
+                        Find out more
+                    </a>
                 </div>
             </div>
         </div>
@@ -529,6 +632,11 @@ $(function() {
         recalc(); // Recalculate when switching modes
     });
 
+    // Toggle harsh mode
+    $("#harshMode").change(function() {
+        recalc(); // Recalculate when switching modes
+    });
+
     // Initialize with simple mode
     $("#simpleScoring").show();
     $("#detailedScoring").hide();
@@ -542,6 +650,28 @@ $(function() {
 
     function convert2025to2024(score2025) {
         return roundTo10(-0.000056 * score2025 ** 2 + 1.53698 * score2025 - 148.88);
+    }
+
+    // Harsh mode polynomial functions
+    function harshVR(x) {
+        if (x < 0 || x > 44) return "?";
+        const result = -164.6106 + 68.1323 * x - 2.1817 * x * x + 0.0274 * x * x * x;
+        const constrained = Math.max(300, Math.min(900, result));
+        return roundTo10(constrained);
+    }
+
+    function harshDM(x) {
+        if (x < 0 || x > 47) return "?";
+        const result = 112.1515 + 41.3835 * x - 1.2621 * x * x + 0.0164 * x * x * x;
+        const constrained = Math.max(300, Math.min(900, result));
+        return roundTo10(constrained);
+    }
+
+    function harshQR(x) {
+        if (x < 0 || x > 36) return "?";
+        const result = 823.9780 - 10.4521 * x - 0.2476 * x * x + 0.0169 * x * x * x;
+        const constrained = Math.max(300, Math.min(900, result));
+        return roundTo10(constrained);
     }
 
     // Percentile lookup table based on 2024 scores
@@ -670,36 +800,44 @@ function getPercentileFromScore(score2024) {
             cnt = 0;
 
         // VR calculation
-        var v = parseInt($("#vr").val().trim())
-        if (v <= 5) vr = 300;
-        else if (v <= 7) vr = 330;
-        else if (v <= 8) vr = 350;
-        else if (v <= 10) vr = 370;
-        else if (v <= 11) vr = 400;
-        else if (v <= 12) vr = 430;
-        else if (v <= 14) vr = 450;
-        else if (v <= 15) vr = 470;
-        else if (v <= 17) vr = 500;
-        else if (v <= 18) vr = 530;
-        else if (v <= 20) vr = 550;
-        else if (v <= 22) vr = 570;
-        else if (v <= 23) vr = 600;
-        else if (v <= 25) vr = 630;
-        else if (v <= 27) vr = 650;
-        else if (v <= 29) vr = 670;
-        else if (v <= 31) vr = 700;
-        else if (v <= 32) vr = 730;
-        else if (v <= 33) vr = 750;
-        else if (v <= 34) vr = 770;
-        else if (v <= 36) vr = 800;
-        else if (v <= 38) vr = 830;
-        else if (v <= 39) vr = 850;
-        else if (v <= 41) vr = 870;
-        else if (v <= 44) vr = 900;
-
-        if (!v || v < 0 || v > 44) vr = "?";
-        else cnt += 1
-        $("#vr_t").text(vr)
+        var v = parseInt($("#vr").val().trim());
+        
+        if ($("#harshMode").is(":checked")) {
+            // Use harsh mode polynomial
+            vr = harshVR(v);
+        } else {
+            // Use standard lookup table
+            if (v <= 5) vr = 300;
+            else if (v <= 7) vr = 330;
+            else if (v <= 8) vr = 350;
+            else if (v <= 10) vr = 370;
+            else if (v <= 11) vr = 400;
+            else if (v <= 12) vr = 430;
+            else if (v <= 14) vr = 450;
+            else if (v <= 15) vr = 470;
+            else if (v <= 17) vr = 500;
+            else if (v <= 18) vr = 530;
+            else if (v <= 20) vr = 550;
+            else if (v <= 22) vr = 570;
+            else if (v <= 23) vr = 600;
+            else if (v <= 25) vr = 630;
+            else if (v <= 27) vr = 650;
+            else if (v <= 29) vr = 670;
+            else if (v <= 31) vr = 700;
+            else if (v <= 32) vr = 730;
+            else if (v <= 33) vr = 750;
+            else if (v <= 34) vr = 770;
+            else if (v <= 36) vr = 800;
+            else if (v <= 38) vr = 830;
+            else if (v <= 39) vr = 850;
+            else if (v <= 41) vr = 870;
+            else if (v <= 44) vr = 900;
+            
+            if (!v || v < 0 || v > 44) vr = "?";
+        }
+        
+        if (vr !== "?") cnt += 1;
+        $("#vr_t").text(vr);
 
         // DM calculation
         if (!$("#scoringMode").is(":checked")) {
@@ -708,13 +846,20 @@ function getPercentileFromScore(score2024) {
             if (!v || v < 0 || v > 35) {
                 $("#dm_t").text("?");
             } else {
-                if (v === 0) {
-                    dm = 300;
-                } else if (v === 35) {
-                    dm = 900;
+                if ($("#harshMode").is(":checked")) {
+                    // Convert score from /35 to /47 and use harsh mode polynomial
+                    const convertedScore = (v / 35) * 47;
+                    dm = harshDM(convertedScore);
                 } else {
-                    dm = 300 + (v / 35) * (900 - 300);
-                    dm = Math.round(dm / 10) * 10;
+                    // Use standard linear scaling
+                    if (v === 0) {
+                        dm = 300;
+                    } else if (v === 35) {
+                        dm = 900;
+                    } else {
+                        dm = 300 + (v / 35) * (900 - 300);
+                        dm = Math.round(dm / 10) * 10;
+                    }
                 }
                 $("#dm_t").text(dm);
                 cnt += 1;
@@ -734,55 +879,70 @@ function getPercentileFromScore(score2024) {
             } else {
                 // Calculate total score based on the new breakdown
                 let totalActualScore = oneMarkScore + (correctTwoMarkFull * 2) + (correctTwoMarkPartial * 1);
-                let totalMaxScore = 23 + 24; // 23 single marks + 24 possible marks from 12 two-mark questions
-
-                // Scale to 300-900 range
-                if (totalActualScore === 0) {
-                    dm = 300;
-                } else if (totalActualScore === totalMaxScore) {
-                    dm = 900;
+                
+                if ($("#harshMode").is(":checked")) {
+                    // Use harsh mode polynomial with score out of 47 directly
+                    dm = harshDM(totalActualScore);
                 } else {
-                    let scaleFactor = (900 - 300) / totalMaxScore;
-                    dm = 300 + totalActualScore * scaleFactor;
-                }
+                    // Use standard linear scaling
+                    let totalMaxScore = 23 + 24; // 23 single marks + 24 possible marks from 12 two-mark questions
 
-                dm = Math.round(dm / 10) * 10;
+                    // Scale to 300-900 range
+                    if (totalActualScore === 0) {
+                        dm = 300;
+                    } else if (totalActualScore === totalMaxScore) {
+                        dm = 900;
+                    } else {
+                        let scaleFactor = (900 - 300) / totalMaxScore;
+                        dm = 300 + totalActualScore * scaleFactor;
+                    }
+
+                    dm = Math.round(dm / 10) * 10;
+                }
                 $("#dm_t").text(dm);
                 cnt += 1;
             }
         }
 
         // QR calculation
-        v = parseInt($("#qr").val().trim())
-        if (v <= 3) qr = 300;
-        else if (v <= 5) qr = 330;
-        else if (v <= 7) qr = 350;
-        else if (v <= 8) qr = 370;
-        else if (v <= 9) qr = 400;
-        else if (v <= 10) qr = 430;
-        else if (v <= 11) qr = 450;
-        else if (v <= 13) qr = 470;
-        else if (v <= 15) qr = 500;
-        else if (v <= 17) qr = 530;
-        else if (v <= 19) qr = 550;
-        else if (v <= 20) qr = 570;
-        else if (v <= 21) qr = 600;
-        else if (v <= 22) qr = 630;
-        else if (v <= 23) qr = 650;
-        else if (v <= 24) qr = 670;
-        else if (v <= 25) qr = 700;
-        else if (v <= 26) qr = 730;
-        else if (v <= 27) qr = 750;
-        else if (v <= 28) qr = 770;
-        else if (v <= 29) qr = 800;
-        else if (v <= 30) qr = 830;
-        else if (v <= 32) qr = 850;
-        else if (v <= 33) qr = 870;
-        else if (v <= 36) qr = 900;
-
-        if (!v || v < 0 || v > 36) qr = "?";
-        else cnt += 1
-        $("#qr_t").text(qr)
+        v = parseInt($("#qr").val().trim());
+        
+        if ($("#harshMode").is(":checked")) {
+            // Use harsh mode polynomial
+            qr = harshQR(v);
+        } else {
+            // Use standard lookup table
+            if (v <= 3) qr = 300;
+            else if (v <= 5) qr = 330;
+            else if (v <= 7) qr = 350;
+            else if (v <= 8) qr = 370;
+            else if (v <= 9) qr = 400;
+            else if (v <= 10) qr = 430;
+            else if (v <= 11) qr = 450;
+            else if (v <= 13) qr = 470;
+            else if (v <= 15) qr = 500;
+            else if (v <= 17) qr = 530;
+            else if (v <= 19) qr = 550;
+            else if (v <= 20) qr = 570;
+            else if (v <= 21) qr = 600;
+            else if (v <= 22) qr = 630;
+            else if (v <= 23) qr = 650;
+            else if (v <= 24) qr = 670;
+            else if (v <= 25) qr = 700;
+            else if (v <= 26) qr = 730;
+            else if (v <= 27) qr = 750;
+            else if (v <= 28) qr = 770;
+            else if (v <= 29) qr = 800;
+            else if (v <= 30) qr = 830;
+            else if (v <= 32) qr = 850;
+            else if (v <= 33) qr = 870;
+            else if (v <= 36) qr = 900;
+            
+            if (!v || v < 0 || v > 36) qr = "?";
+        }
+        
+        if (qr !== "?") cnt += 1;
+        $("#qr_t").text(qr);
 
         // SJT Band calculation
         var sjtScore = parseInt($("#sjt").val().trim());
