@@ -582,24 +582,24 @@ $(function() {
     ];
     
 function getPercentileFromScore(score2024) {
-  // Handle 1st percentile special case (min-max range)
-  const first = percentileTable[0];
-  if (score2024 >= first.min && score2024 <= first.max) {
-    return first.percentile;
-  }
-
-  // Loop through the table and assign the correct percentile
-  for (let i = 1; i < percentileTable.length; i++) {
-    if (score2024 < percentileTable[i].score) {
-      return percentileTable[i - 1].percentile;
+    // Handle 1st percentile special case (min-max range)
+    const first = percentileTable[0];
+    if (score2024 >= first.min && score2024 <= first.max) {
+        return first.percentile;
     }
-    if (score2024 === percentileTable[i].score) {
-      return percentileTable[i].percentile;
-    }
-  }
 
-  // Score is higher than the last known score threshold
-  return 99;
+    // Loop through the table and assign the correct percentile
+    for (let i = 1; i < percentileTable.length; i++) {
+        if (score2024 < percentileTable[i].score) {
+            return percentileTable[i - 1].percentile;
+        }
+        if (score2024 === percentileTable[i].score) {
+            return percentileTable[i].percentile;
+        }
+    }
+
+    // Score is higher than the last known score threshold
+    return 99;
 }
 
     function getDecileFromPercentile(percentile) {
