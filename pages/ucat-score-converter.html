@@ -580,24 +580,25 @@ $(function() {
         {percentile: 94, score: 3020}, {percentile: 95, score: 3040}, {percentile: 96, score: 3080},
         {percentile: 97, score: 3120}, {percentile: 98, score: 3170}, {percentile: 99, score: 3260}
     ];
+    
+function getPercentileFromScore(score2024) {
+    // Handle the 1st percentile special case (range-based)
+    const firstPercentile = percentileTable[0];
+    if (score2024 >= firstPercentile.min && score2024 <= firstPercentile.max) {
+        return firstPercentile.percentile;
+    }
 
-    function getPercentileFromScore(score2024) {
-        // Handle the 1st percentile range
-        if (score2024 >= 1200 && score2024 <= 1910) {
-            return 1;
+    // Loop through the rest of the percentile table
+    for (let i = 1; i < percentileTable.length; i++) {
+        if (score2024 <= percentileTable[i].score) {
+            return percentileTable[i].percentile;
         }
+    }
 
-        // Find the closest percentile
-        for (let i = 1; i < percentileTable.length; i++) {
-            if (score2024 <= percentileTable[i].score) {
-                return percentileTable[i].percentile;
-            }
-        }
+    // If score is higher than the last defined score (3260), return 99th percentile
+    return 99;
+}
 
-        // If score is higher than 99th percentile
-        if (score2024 > 3260) {
-            return 99;
-        }
 
         return null;
     }
