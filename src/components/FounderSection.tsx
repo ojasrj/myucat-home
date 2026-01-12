@@ -122,7 +122,7 @@ const FounderSection = () => {
               <CheckCircle className="w-12 h-12 mx-auto mb-4 opacity-90" />
               <div className="text-5xl font-bold mb-2">99%+</div>
               <p className="text-lg opacity-90">Interview to Offer Conversion Rate</p>
-              <p className="text-sm opacity-75 mt-1">(2025 Interview Programme)</p>
+              <p className="text-sm opacity-75 mt-1">2025 Medical Interview Programme</p>
             </CardContent>
           </Card>
         </div>
