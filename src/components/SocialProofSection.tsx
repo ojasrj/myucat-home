@@ -6,6 +6,7 @@ import review4 from "@/assets/review-4.png";
 import review5 from "@/assets/review-5.png";
 import review6 from "@/assets/review-6.png";
 import review7 from "@/assets/review-7.png";
+import reviewWide from "@/assets/review-wide.png";
 import { ImageIcon } from "lucide-react";
 
 const destinations = [
@@ -93,6 +94,15 @@ const SocialProofSection = () => {
                 <p className="text-xs text-muted-foreground">Screenshot {screenshots.length + index + 1}</p>
               </div>
             ))}
+          </div>
+
+          {/* Wide review - full width row */}
+          <div className="mt-4 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 bg-white">
+            <img 
+              src={reviewWide} 
+              alt="Student success messages collage"
+              className="w-full h-auto"
+            />
           </div>
         </div>
       </div>
