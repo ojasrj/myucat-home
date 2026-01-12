@@ -81,13 +81,14 @@ const Hero = () => {
             <p className="text-sm text-gray-500 mb-4">Our most popular free advice group</p>
           </div>
 
-          <div className="pt-2">
+          <div className="pt-4 border-t border-gray-200 mt-6">
+            <p className="text-sm text-gray-500 mb-3">Already applied? Prepare for interviews:</p>
             <Button
-              variant="ghost"
-              className="text-primary hover:bg-primary/10"
+              variant="outline"
+              className="border-primary text-primary hover:bg-primary hover:text-white"
               onClick={() => window.open('https://www.guessandflag.co.uk/interviews', '_blank')}
             >
-              Or book 1-1 mock interviews →
+              Book 1-1 Mock Interviews
             </Button>
           </div>
         </div>
