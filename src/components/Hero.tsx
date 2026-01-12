@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Award, Star, Users, CheckCircle, MessageCircle, Stethoscope } from "lucide-react";
+import ToothIcon from "@/components/icons/ToothIcon";
 
 const Hero = () => {
   return (
@@ -64,14 +65,19 @@ const Hero = () => {
             </p>
             
             {/* Featured Group - UCAT 2026 Summer */}
-            <Button 
-              size="lg"
-              className="bg-green-600 hover:bg-green-700 text-white px-12 py-8 text-xl transition-all transform hover:scale-105 shadow-xl hover:shadow-2xl rounded-full mb-4"
-              onClick={() => window.open('https://chat.whatsapp.com/EOsY2wTUnFZ4g4iKmh1mcB', '_blank')}
+            <a 
+              href="https://chat.whatsapp.com/EOsY2wTUnFZ4g4iKmh1mcB"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              <MessageCircle className="mr-3 h-6 w-6" />
-              Join UCAT Group (2026 Summer)
-            </Button>
+              <Button 
+                size="lg"
+                className="bg-green-600 hover:bg-green-700 text-white px-12 py-8 text-xl transition-all transform hover:scale-105 shadow-xl hover:shadow-2xl rounded-full mb-4"
+              >
+                <MessageCircle className="mr-3 h-6 w-6" />
+                Join UCAT Group (2026 Summer)
+              </Button>
+            </a>
             
             <p className="text-sm text-gray-500 mb-4">Our most popular free advice group</p>
           </div>
@@ -79,20 +85,30 @@ const Hero = () => {
           {/* Y13 Interview Groups */}
           <div className="flex flex-wrap items-center justify-center gap-4">
             <p className="w-full text-sm text-gray-500 mb-2">Already applied? Join our Y13 interview prep groups:</p>
-            <Button 
-              className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-6 text-base shadow-lg hover:shadow-xl transition-all transform hover:scale-105 rounded-xl"
-              onClick={() => window.open('https://chat.whatsapp.com/JQs5u2s3V41KkogZZJfTOp', '_blank')}
+            <a 
+              href="https://chat.whatsapp.com/JQs5u2s3V41KkogZZJfTOp"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              <Stethoscope className="mr-2 h-5 w-5" />
-              Y13 Medicine Interviews
-            </Button>
-            <Button 
-              className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white px-8 py-6 text-base shadow-lg hover:shadow-xl transition-all transform hover:scale-105 rounded-xl"
-              onClick={() => window.open('https://chat.whatsapp.com/Gme9STBqQ8qL5acO9LACkV', '_blank')}
+              <Button 
+                className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-6 text-base shadow-lg hover:shadow-xl transition-all transform hover:scale-105 rounded-xl"
+              >
+                <Stethoscope className="mr-2 h-5 w-5" />
+                Y13 Medicine Interviews
+              </Button>
+            </a>
+            <a 
+              href="https://chat.whatsapp.com/Gme9STBqQ8qL5acO9LACkV"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              <MessageCircle className="mr-2 h-5 w-5" />
-              Y13 Dentistry Interviews
-            </Button>
+              <Button 
+                className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white px-8 py-6 text-base shadow-lg hover:shadow-xl transition-all transform hover:scale-105 rounded-xl"
+              >
+                <ToothIcon className="mr-2 h-5 w-5" />
+                Y13 Dentistry Interviews
+              </Button>
+            </a>
           </div>
 
           <div className="pt-2">
