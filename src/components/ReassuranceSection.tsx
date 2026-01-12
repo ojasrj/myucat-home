@@ -4,7 +4,7 @@ const reassurances = [
   {
     icon: GraduationCap,
     title: "Expert-led",
-    description: "The best tutors are selected for each element of the application process including current university students, former interview panellists, and PGCE-qualified teachers from across the UK"
+    description: "Every stage of the application is taught by carefully selected experts, including top university students, former interview panellists, and PGCE-qualified teachers nationwide."
   },
   {
     icon: Lightbulb,
