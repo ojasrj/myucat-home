@@ -10,11 +10,23 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
+interface NavLink {
+  href: string;
+  label: string;
+  external: boolean;
+}
+
+interface NavCategory {
+  label: string;
+  links?: NavLink[];
+  href?: string;
+  isDropdown: boolean;
+}
+
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openMobileDropdown, setOpenMobileDropdown] = useState<string | null>(null);
-  const isMobile = useIsMobile();
   const location = useLocation();
 
   useEffect(() => {
@@ -26,7 +38,7 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const ucatLinks = [
+  const ucatLinks: NavLink[] = [
     { href: "https://learn.myucat.co.uk/summer-programme", label: "UCAT Summer Programme", external: true },
     { href: "https://learn.myucat.co.uk/ucat-1-1", label: "UCAT 1-1", external: true },
     { href: "https://learn.myucat.co.uk/ucat-resources", label: "UCAT Guides", external: true },
@@ -36,20 +48,20 @@ const Navbar = () => {
     { href: "https://learn.myucat.co.uk/strategic-applications/ucat-score-comparison", label: "UCAT Score Comparison", external: true },
   ];
 
-  const interviewLinks = [
+  const interviewLinks: NavLink[] = [
     { href: "https://learn.myucat.co.uk/medical-interview-programme", label: "Medical Interview Programme", external: true },
     { href: "https://learn.myucat.co.uk/dental-interview-programme", label: "Dental Interview Programme", external: true },
     { href: "https://learn.myucat.co.uk/dental-interview-programme/dental-school-interview-questions", label: "Dental Interview Guide", external: true },
     { href: "https://learn.myucat.co.uk/interviews", label: "Mock Interviews & 1-1 Lessons", external: true },
   ];
 
-  const personalStatementLinks = [
+  const personalStatementLinks: NavLink[] = [
     { href: "https://learn.myucat.co.uk/summer-programme", label: "Personal Statement Editing", external: true },
     { href: "https://drive.google.com/file/u/0/d/1Rqsxn1pxXbFPD3GjjTRD1JG6w_Ut6ywx/view", label: "Personal Statement Guide", external: true },
     { href: "https://www.youtube.com/watch?v=_joYTWNIwUk", label: "Personal Statement Video", external: true },
   ];
 
-  const freeResourcesLinks = [
+  const freeResourcesLinks: NavLink[] = [
     { href: "https://questions.ucat.com/courses", label: "Course Portal", external: true },
     { href: "https://myucat.co.uk/pages/ucat-score-converter", label: "UCAT Score Calculator", external: true },
     { href: "https://questions.ucat.com/", label: "UCAT Question Bank (In Progress)", external: true },
@@ -58,18 +70,19 @@ const Navbar = () => {
     { href: "https://learn.myucat.co.uk/strategic-applications", label: "Strategic Application Guide", external: true },
   ];
 
-  const nmdsLinks = [
+  const nmdsLinks: NavLink[] = [
     { href: "https://medsoc.myucat.co.uk/", label: "About", external: true },
     { href: "https://medsoc.myucat.co.uk/events", label: "Event Calendar", external: true },
     { href: "https://medsoc.myucat.co.uk/competitions", label: "Competitions", external: true },
   ];
 
-  const navCategories = [
-    { label: "UCAT", links: ucatLinks },
-    { label: "Interview", links: interviewLinks },
-    { label: "Personal Statement", links: personalStatementLinks },
-    { label: "Free Resources", links: freeResourcesLinks },
-    { label: "NMDS", links: nmdsLinks },
+  const navCategories: NavCategory[] = [
+    { label: "UCAT", links: ucatLinks, isDropdown: true },
+    { label: "Interview", links: interviewLinks, isDropdown: true },
+    { label: "Strategic Application Guide", href: "https://learn.myucat.co.uk/strategic-applications", isDropdown: false },
+    { label: "Personal Statement", links: personalStatementLinks, isDropdown: true },
+    { label: "Free Resources", links: freeResourcesLinks, isDropdown: true },
+    { label: "NMDS", links: nmdsLinks, isDropdown: true },
   ];
 
   const handleNavClick = (href: string, external: boolean) => {
@@ -94,6 +107,43 @@ const Navbar = () => {
     setOpenMobileDropdown(openMobileDropdown === label ? null : label);
   };
 
+  const renderNavItem = (category: NavCategory, size: 'desktop' | 'tablet') => {
+    const textSize = size === 'desktop' ? 'text-sm' : 'text-xs';
+    const gap = size === 'desktop' ? 'gap-1' : 'gap-0.5';
+    const chevronSize = size === 'desktop' ? 'w-4 h-4' : 'w-3 h-3';
+
+    if (category.isDropdown && category.links) {
+      return (
+        <DropdownMenu key={category.label}>
+          <DropdownMenuTrigger className={`flex items-center ${gap} text-gray-700 hover:text-primary transition-colors duration-200 font-medium ${textSize} whitespace-nowrap`}>
+            {category.label} <ChevronDown className={chevronSize} />
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="bg-white border border-gray-200 shadow-lg z-50 min-w-[220px]">
+            {category.links.map((link) => (
+              <DropdownMenuItem
+                key={link.href + link.label}
+                className="cursor-pointer hover:bg-gray-100"
+                onClick={() => handleNavClick(link.href, link.external)}
+              >
+                {link.label}
+              </DropdownMenuItem>
+            ))}
+          </DropdownMenuContent>
+        </DropdownMenu>
+      );
+    } else {
+      return (
+        <button
+          key={category.label}
+          onClick={() => category.href && window.open(category.href, '_blank')}
+          className={`text-gray-700 hover:text-primary transition-colors duration-200 font-medium ${textSize} whitespace-nowrap`}
+        >
+          {category.label}
+        </button>
+      );
+    }
+  };
+
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled 
@@ -110,86 +160,20 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-4">
-            {navCategories.map((category) => (
-              <DropdownMenu key={category.label}>
-                <DropdownMenuTrigger className="flex items-center gap-1 text-gray-700 hover:text-primary transition-colors duration-200 font-medium text-sm whitespace-nowrap">
-                  {category.label} <ChevronDown className="w-4 h-4" />
-                </DropdownMenuTrigger>
-                <DropdownMenuContent className="bg-white border border-gray-200 shadow-lg z-50 min-w-[220px]">
-                  {category.links.map((link) => (
-                    <DropdownMenuItem
-                      key={link.href + link.label}
-                      className="cursor-pointer hover:bg-gray-100"
-                      onClick={() => handleNavClick(link.href, link.external)}
-                    >
-                      {link.label}
-                    </DropdownMenuItem>
-                  ))}
-                </DropdownMenuContent>
-              </DropdownMenu>
-            ))}
+          <div className="hidden xl:flex items-center gap-3">
+            {navCategories.map((category) => renderNavItem(category, 'desktop'))}
           </div>
 
-          {/* Tablet Navigation */}
-          <div className="hidden md:flex lg:hidden items-center gap-3">
-            {navCategories.slice(0, 3).map((category) => (
-              <DropdownMenu key={category.label}>
-                <DropdownMenuTrigger className="flex items-center gap-1 text-gray-700 hover:text-primary transition-colors duration-200 font-medium text-sm whitespace-nowrap">
-                  {category.label} <ChevronDown className="w-3 h-3" />
-                </DropdownMenuTrigger>
-                <DropdownMenuContent className="bg-white border border-gray-200 shadow-lg z-50 min-w-[200px]">
-                  {category.links.map((link) => (
-                    <DropdownMenuItem
-                      key={link.href + link.label}
-                      className="cursor-pointer hover:bg-gray-100 text-sm"
-                      onClick={() => handleNavClick(link.href, link.external)}
-                    >
-                      {link.label}
-                    </DropdownMenuItem>
-                  ))}
-                </DropdownMenuContent>
-              </DropdownMenu>
-            ))}
-            
-            <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center gap-1 text-gray-700 hover:text-primary transition-colors duration-200 font-medium text-sm">
-                More <ChevronDown className="w-3 h-3" />
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="bg-white border border-gray-200 shadow-lg z-50 min-w-[200px]">
-                <DropdownMenuItem className="font-semibold text-primary cursor-default" disabled>
-                  Free Resources
-                </DropdownMenuItem>
-                {freeResourcesLinks.map((link) => (
-                  <DropdownMenuItem
-                    key={link.href + link.label}
-                    className="cursor-pointer hover:bg-gray-100 text-sm pl-4"
-                    onClick={() => handleNavClick(link.href, link.external)}
-                  >
-                    {link.label}
-                  </DropdownMenuItem>
-                ))}
-                <DropdownMenuItem className="font-semibold text-primary cursor-default mt-2" disabled>
-                  NMDS
-                </DropdownMenuItem>
-                {nmdsLinks.map((link) => (
-                  <DropdownMenuItem
-                    key={link.href + link.label}
-                    className="cursor-pointer hover:bg-gray-100 text-sm pl-4"
-                    onClick={() => handleNavClick(link.href, link.external)}
-                  >
-                    {link.label}
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuContent>
-            </DropdownMenu>
+          {/* Tablet Navigation - All tabs visible with smaller text */}
+          <div className="hidden md:flex xl:hidden items-center gap-1.5">
+            {navCategories.map((category) => renderNavItem(category, 'tablet'))}
           </div>
 
           {/* Contact Button - Desktop & Tablet */}
           <div className="hidden md:block">
             <Button
               onClick={() => window.open('https://wa.me/447763980592', '_blank')}
-              className="bg-primary hover:bg-primary-dark text-white px-4 lg:px-6 py-2 rounded-full transition-all duration-200 transform hover:scale-105 text-sm"
+              className="bg-primary hover:bg-primary-dark text-white px-3 lg:px-6 py-2 rounded-full transition-all duration-200 transform hover:scale-105 text-xs lg:text-sm"
             >
               Contact Us
             </Button>
@@ -210,29 +194,40 @@ const Navbar = () => {
             <div className="flex flex-col space-y-1">
               {navCategories.map((category) => (
                 <div key={category.label}>
-                  <button
-                    onClick={() => toggleMobileDropdown(category.label)}
-                    className="flex items-center justify-between w-full text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors duration-200 font-medium text-left px-4 py-3"
-                  >
-                    {category.label}
-                    <ChevronDown 
-                      className={`w-4 h-4 transition-transform duration-200 ${
-                        openMobileDropdown === category.label ? 'rotate-180' : ''
-                      }`} 
-                    />
-                  </button>
-                  {openMobileDropdown === category.label && (
-                    <div className="bg-gray-50 py-2">
-                      {category.links.map((link) => (
-                        <button
-                          key={link.href + link.label}
-                          onClick={() => handleNavClick(link.href, link.external)}
-                          className="w-full text-gray-600 hover:text-primary hover:bg-gray-100 transition-colors duration-200 text-sm text-left px-6 py-2"
-                        >
-                          {link.label}
-                        </button>
-                      ))}
-                    </div>
+                  {category.isDropdown && category.links ? (
+                    <>
+                      <button
+                        onClick={() => toggleMobileDropdown(category.label)}
+                        className="flex items-center justify-between w-full text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors duration-200 font-medium text-left px-4 py-3"
+                      >
+                        {category.label}
+                        <ChevronDown 
+                          className={`w-4 h-4 transition-transform duration-200 ${
+                            openMobileDropdown === category.label ? 'rotate-180' : ''
+                          }`} 
+                        />
+                      </button>
+                      {openMobileDropdown === category.label && (
+                        <div className="bg-gray-50 py-2">
+                          {category.links.map((link) => (
+                            <button
+                              key={link.href + link.label}
+                              onClick={() => handleNavClick(link.href, link.external)}
+                              className="w-full text-gray-600 hover:text-primary hover:bg-gray-100 transition-colors duration-200 text-sm text-left px-6 py-2"
+                            >
+                              {link.label}
+                            </button>
+                          ))}
+                        </div>
+                      )}
+                    </>
+                  ) : (
+                    <button
+                      onClick={() => category.href && handleNavClick(category.href, true)}
+                      className="flex items-center w-full text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors duration-200 font-medium text-left px-4 py-3"
+                    >
+                      {category.label}
+                    </button>
                   )}
                 </div>
               ))}
