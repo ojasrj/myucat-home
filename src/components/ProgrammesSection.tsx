@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
-import { ExternalLink, ArrowRight, Sparkles, MessageCircle, Stethoscope } from "lucide-react";
+import { ExternalLink, ArrowRight, Sparkles, MessageCircle, Stethoscope, Users } from "lucide-react";
 import ToothIcon from "@/components/icons/ToothIcon";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const programmes = [{
   icon: "☀️",
@@ -34,22 +35,25 @@ const whatsappGroups = [{
   title: "UCAT Group (2026)",
   description: "Free UCAT tips & peer support",
   link: "https://chat.whatsapp.com/EOsY2wTUnFZ4g4iKmh1mcB",
-  color: "from-green-500 to-green-600",
-  badge: "Most Popular"
+  color: "bg-green-500",
+  badge: "Most Popular",
+  members: "2000+"
 }, {
   icon: Stethoscope,
   title: "Medicine Interviews",
   description: "Interview prep for medical applicants",
   link: "https://chat.whatsapp.com/JQs5u2s3V41KkogZZJfTOp",
-  color: "from-blue-500 to-blue-600",
-  badge: null
+  color: "bg-blue-500",
+  badge: null,
+  members: "500+"
 }, {
   icon: ToothIcon,
   title: "Dentistry Interviews",
   description: "Interview prep for dental applicants",
   link: "https://chat.whatsapp.com/Gme9STBqQ8qL5acO9LACkV",
-  color: "from-purple-500 to-purple-600",
-  badge: null
+  color: "bg-purple-500",
+  badge: null,
+  members: "300+"
 }];
 
 const bespokeServices = [{
@@ -70,6 +74,8 @@ const bespokeServices = [{
 }];
 
 const ProgrammesSection = () => {
+  const isMobile = useIsMobile();
+
   return (
     <section className="bg-gradient-to-b from-white via-secondary/30 to-white py-12 md:py-20 overflow-hidden">
       <div className="container mx-auto px-4 md:px-6">
@@ -87,34 +93,102 @@ const ProgrammesSection = () => {
           </p>
         </div>
 
-        {/* Free Community Groups - Horizontal scroll on mobile */}
+        {/* Free Community Groups */}
         <div className="mb-10 md:mb-16">
-          <h3 className="text-xl md:text-2xl font-bold text-primary text-center mb-2 md:mb-3">Join Our Free Groups</h3>
-          <p className="text-gray-600 text-center text-sm mb-6 md:mb-8">Get free expert advice and connect with fellow applicants</p>
-          
-          {/* Mobile: horizontal scroll, Desktop: grid */}
-          <div className="flex md:grid md:grid-cols-3 gap-4 overflow-x-auto pb-2 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0 max-w-4xl md:mx-auto snap-x snap-mandatory">
-            {whatsappGroups.map((group, index) => (
-              <a 
-                key={index} 
-                href={group.link} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="group relative bg-white rounded-xl md:rounded-2xl p-4 md:p-6 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 min-w-[200px] md:min-w-0 snap-center flex-shrink-0"
-              >
-                {group.badge && (
-                  <span className="absolute -top-2 left-1/2 -translate-x-1/2 bg-green-500 text-white text-[10px] md:text-xs font-semibold px-2 py-0.5 rounded-full whitespace-nowrap">
-                    {group.badge}
-                  </span>
-                )}
-                <div className={`w-10 h-10 md:w-14 md:h-14 rounded-lg md:rounded-xl bg-gradient-to-br ${group.color} flex items-center justify-center mb-3 md:mb-4 mx-auto`}>
-                  <group.icon className="w-5 h-5 md:w-7 md:h-7 text-white" />
+          {/* Mobile Version - Compact stacked cards */}
+          {isMobile ? (
+            <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-4 border border-green-100">
+              <div className="flex items-center gap-2 mb-4">
+                <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                  <MessageCircle className="w-4 h-4 text-white" />
                 </div>
-                <h4 className="font-bold text-gray-900 text-center text-sm md:text-base mb-1 md:mb-2">{group.title}</h4>
-                <p className="text-xs md:text-sm text-gray-600 text-center">{group.description}</p>
-              </a>
-            ))}
-          </div>
+                <div>
+                  <h3 className="font-bold text-gray-900 text-base">Free WhatsApp Groups</h3>
+                  <p className="text-xs text-gray-600">Expert advice & peer support</p>
+                </div>
+              </div>
+              
+              <div className="space-y-2">
+                {whatsappGroups.map((group, index) => (
+                  <a 
+                    key={index} 
+                    href={group.link} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="flex items-center gap-3 bg-white rounded-xl p-3 shadow-sm border border-gray-100 active:scale-[0.98] transition-transform"
+                  >
+                    <div className={`w-10 h-10 rounded-lg ${group.color} flex items-center justify-center flex-shrink-0`}>
+                      <group.icon className="w-5 h-5 text-white" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2">
+                        <h4 className="font-semibold text-gray-900 text-sm truncate">{group.title}</h4>
+                        {group.badge && (
+                          <span className="bg-green-100 text-green-700 text-[10px] font-medium px-1.5 py-0.5 rounded-full flex-shrink-0">
+                            {group.badge}
+                          </span>
+                        )}
+                      </div>
+                      <div className="flex items-center gap-1 text-xs text-gray-500">
+                        <Users className="w-3 h-3" />
+                        <span>{group.members} members</span>
+                      </div>
+                    </div>
+                    <ArrowRight className="w-4 h-4 text-gray-400 flex-shrink-0" />
+                  </a>
+                ))}
+              </div>
+            </div>
+          ) : (
+            /* Desktop Version - Elegant cards with more detail */
+            <>
+              <div className="text-center mb-8">
+                <h3 className="text-2xl font-bold text-primary mb-2">Join Our Free Community</h3>
+                <p className="text-gray-600">Connect with thousands of applicants and get free expert advice</p>
+              </div>
+              
+              <div className="grid grid-cols-3 gap-6 max-w-5xl mx-auto">
+                {whatsappGroups.map((group, index) => (
+                  <a 
+                    key={index} 
+                    href={group.link} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="group relative bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-green-200 overflow-hidden"
+                  >
+                    {/* Background decoration */}
+                    <div className={`absolute -right-6 -top-6 w-24 h-24 ${group.color} opacity-10 rounded-full blur-xl group-hover:opacity-20 transition-opacity`} />
+                    
+                    {group.badge && (
+                      <div className="absolute top-4 right-4">
+                        <span className="bg-green-500 text-white text-xs font-semibold px-2.5 py-1 rounded-full shadow-sm">
+                          {group.badge}
+                        </span>
+                      </div>
+                    )}
+                    
+                    <div className={`w-14 h-14 rounded-xl ${group.color} flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform`}>
+                      <group.icon className="w-7 h-7 text-white" />
+                    </div>
+                    
+                    <h4 className="font-bold text-gray-900 text-lg mb-2">{group.title}</h4>
+                    <p className="text-sm text-gray-600 mb-4">{group.description}</p>
+                    
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-1.5 text-sm text-gray-500">
+                        <Users className="w-4 h-4" />
+                        <span>{group.members} members</span>
+                      </div>
+                      <div className="flex items-center gap-1 text-green-600 font-medium text-sm group-hover:gap-2 transition-all">
+                        Join
+                        <ArrowRight className="w-4 h-4" />
+                      </div>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </>
+          )}
         </div>
 
         {/* Featured Programmes */}
