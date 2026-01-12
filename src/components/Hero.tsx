@@ -18,7 +18,7 @@ const Hero = () => {
             </div>
             <div className="flex items-center gap-2 bg-white/80 backdrop-blur px-4 py-2 rounded-full shadow-sm border border-primary/10">
               <Star className="w-5 h-5 text-yellow-500 fill-yellow-500" />
-              <span className="text-sm font-medium text-primary-dark">300+ 5-Star Reviews</span>
+              <span className="text-sm font-medium text-primary-dark">500+ 5-Star Reviews</span>
             </div>
             <div className="flex items-center gap-2 bg-white/80 backdrop-blur px-4 py-2 rounded-full shadow-sm border border-primary/10">
               <Users className="w-5 h-5 text-primary" />

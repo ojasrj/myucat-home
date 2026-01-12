@@ -38,7 +38,7 @@ const teamMembers = [
 const stats = [
   { icon: Users, value: "150+", label: "Expert Tutors" },
   { icon: Award, value: "35+", label: "Oxbridge Offers in 2025" },
-  { icon: BookOpen, value: "300+", label: "5-Star Reviews" },
+  { icon: BookOpen, value: "500+", label: "5-Star Reviews" },
 ];
 
 const TeamSection = () => {
