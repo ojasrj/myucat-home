@@ -9,6 +9,7 @@ const destinations = [
   "Medicine @ Cambridge",
   "Dentistry @ King's College London",
   "Dentistry @ Manchester",
+  "Medicine @ Manchester",
   "Medicine @ Bristol",
   "Medicine @ Barts and the London",
   "Medicine @ Edinburgh",
