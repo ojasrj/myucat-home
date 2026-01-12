@@ -1,3 +1,4 @@
+import { ImageIcon } from "lucide-react";
 import trustpilotProof from "@/assets/trustpilot-proof.png";
 import studentSuccessCollage from "@/assets/student-success-collage.png";
 import successScreenshot1 from "@/assets/success-screenshot-1.png";
@@ -10,6 +11,7 @@ import successScreenshot7 from "@/assets/success-screenshot-7.png";
 
 const topRowScreenshots = [successScreenshot1, successScreenshot2, successScreenshot3, successScreenshot4];
 const bottomRowScreenshots = [successScreenshot5, successScreenshot6, successScreenshot7];
+const placeholderCount = { top: 0, bottom: 1 }; // Add placeholders to fill grid
 
 const destinations = [
   "Medicine @ Oxford",
@@ -92,7 +94,7 @@ const SocialProofSection = () => {
           </div>
 
           {/* Bottom Row - Screenshots */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {bottomRowScreenshots.map((screenshot, index) => (
               <div key={index} className="rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow bg-white">
                 <img 
@@ -100,6 +102,16 @@ const SocialProofSection = () => {
                   alt={`Student success story ${index + 5}`}
                   className="w-full h-auto object-cover"
                 />
+              </div>
+            ))}
+            {/* Placeholder boxes to fill the grid */}
+            {Array.from({ length: placeholderCount.bottom }).map((_, index) => (
+              <div 
+                key={`placeholder-${index}`} 
+                className="rounded-lg overflow-hidden shadow-md bg-secondary/50 border-dashed border-2 border-primary/20 hover:border-primary/40 transition-colors aspect-[4/3] flex flex-col items-center justify-center"
+              >
+                <ImageIcon className="w-8 h-8 text-primary/30 mb-2" />
+                <p className="text-xs text-muted-foreground text-center">Add screenshot</p>
               </div>
             ))}
           </div>
