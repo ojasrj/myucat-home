@@ -1,30 +1,5 @@
 import trustpilotProof from "@/assets/trustpilot-proof.png";
-import successScreenshot1 from "@/assets/success-screenshot-1.png";
-import successScreenshot2 from "@/assets/success-screenshot-2.png";
-import successScreenshot3 from "@/assets/success-screenshot-3.png";
-import successScreenshot4 from "@/assets/success-screenshot-4.png";
-import successScreenshot5 from "@/assets/success-screenshot-5.png";
-import successScreenshot6 from "@/assets/success-screenshot-6.png";
-import successScreenshot7 from "@/assets/success-screenshot-7.png";
-import successScreenshot8 from "@/assets/success-screenshot-8.png";
-import successScreenshot9 from "@/assets/success-screenshot-9.png";
-import successScreenshot10 from "@/assets/success-screenshot-10.png";
-import successScreenshot11 from "@/assets/success-screenshot-11.png";
-
-// Bento grid items with size configurations
-const bentoItems = [
-  { src: successScreenshot1, alt: "Student success story 1", size: "normal" },
-  { src: successScreenshot2, alt: "Student success story 2", size: "tall" },
-  { src: successScreenshot3, alt: "Student success story 3", size: "normal" },
-  { src: successScreenshot4, alt: "Student success story 4", size: "normal" },
-  { src: successScreenshot5, alt: "Student success story 5", size: "wide" },
-  { src: successScreenshot6, alt: "Student success story 6", size: "normal" },
-  { src: successScreenshot7, alt: "Student success story 7", size: "tall" },
-  { src: successScreenshot8, alt: "Student success story 8", size: "normal" },
-  { src: successScreenshot9, alt: "Student success story 9", size: "normal" },
-  { src: successScreenshot10, alt: "Student success story 10", size: "wide" },
-  { src: successScreenshot11, alt: "Student success story 11", size: "normal" },
-];
+import { ImageIcon } from "lucide-react";
 
 const destinations = [
   "Medicine @ Oxford",
@@ -40,18 +15,8 @@ const destinations = [
   "Medicine @ Birmingham"
 ];
 
-const getSizeClasses = (size: string) => {
-  switch (size) {
-    case "tall":
-      return "md:row-span-2";
-    case "wide":
-      return "md:col-span-2";
-    case "large":
-      return "md:col-span-2 md:row-span-2";
-    default:
-      return "";
-  }
-};
+// Placeholder items for grid - will be replaced with actual screenshots
+const placeholderCount = 8; // 2 rows of 4
 
 const SocialProofSection = () => {
   return (
@@ -91,38 +56,19 @@ const SocialProofSection = () => {
           </div>
         </div>
 
-        {/* Student Success Stories - Bento Grid */}
+        {/* Student Success Stories Grid */}
         <div className="mb-12">
           <h3 className="text-center text-lg font-semibold text-primary mb-6">Student Success Stories</h3>
           
-          {/* Bento Grid Layout */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 auto-rows-[140px] md:auto-rows-[180px]">
-            {bentoItems.slice(0, 5).map((item, index) => (
+          {/* Grid - aspect ratio ~3:2 to match Trustpilot review cards */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {Array.from({ length: placeholderCount }).map((_, index) => (
               <div 
                 key={index} 
-                className={`rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:scale-[1.02] bg-white ${getSizeClasses(item.size)}`}
+                className="aspect-[3/2] rounded-xl overflow-hidden shadow-md bg-secondary/50 border-2 border-dashed border-primary/20 flex flex-col items-center justify-center hover:border-primary/40 transition-colors"
               >
-                <img 
-                  src={item.src} 
-                  alt={item.alt}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            ))}
-          </div>
-
-          {/* Second Bento Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 auto-rows-[140px] md:auto-rows-[180px] mt-4">
-            {bentoItems.slice(5).map((item, index) => (
-              <div 
-                key={index} 
-                className={`rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:scale-[1.02] bg-white ${getSizeClasses(item.size)}`}
-              >
-                <img 
-                  src={item.src} 
-                  alt={item.alt}
-                  className="w-full h-full object-cover"
-                />
+                <ImageIcon className="w-8 h-8 text-primary/30 mb-2" />
+                <p className="text-xs text-muted-foreground">Screenshot {index + 1}</p>
               </div>
             ))}
           </div>
