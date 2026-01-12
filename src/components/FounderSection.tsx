@@ -115,6 +115,23 @@ const FounderSection = () => {
           </div>
         </div>
 
+        {/* Founder Action Photos */}
+        <div className="grid md:grid-cols-2 gap-6 mt-12 max-w-4xl mx-auto">
+          <div className="overflow-hidden rounded-2xl shadow-lg">
+            <img
+              src="/lovable-uploads/ojas-speaking.png"
+              alt="Ojas speaking at a MyUCAT event"
+              className="w-full h-64 md:h-80 object-cover object-top"
+            />
+          </div>
+          <div className="overflow-hidden rounded-2xl shadow-lg">
+            <img
+              src="/lovable-uploads/ojas-presentation.png"
+              alt="Ojas presenting student success stories and reviews"
+              className="w-full h-64 md:h-80 object-cover object-center"
+            />
+          </div>
+        </div>
         {/* Results Stats Boxes */}
         <div className="grid md:grid-cols-2 gap-6 mt-12 max-w-3xl mx-auto">
           <Card className="bg-gradient-to-br from-primary to-primary-dark text-white border-0 shadow-xl">
