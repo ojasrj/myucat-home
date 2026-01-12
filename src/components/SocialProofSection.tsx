@@ -2,8 +2,17 @@ import { Play, ImageIcon } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import trustpilotProof from "@/assets/trustpilot-proof.png";
 
-const outcomes = [
-  "Oxford", "Cambridge", "Imperial", "UCL", "KCL", "Edinburgh", "Bristol", "Manchester"
+const destinations = [
+  "Medicine @ Oxford",
+  "Medicine @ Imperial",
+  "Medicine @ University College London",
+  "Medicine @ Cambridge",
+  "Dentistry @ King's College London",
+  "Dentistry @ Manchester",
+  "Medicine @ Bristol",
+  "Medicine @ Barts and the London",
+  "Medicine @ Edinburgh",
+  "Medicine @ Birmingham"
 ];
 
 const SocialProofSection = () => {
@@ -27,17 +36,21 @@ const SocialProofSection = () => {
           <p className="text-gray-600 mt-4">Based on <span className="font-semibold">500+ reviews</span> on Trustpilot</p>
         </div>
 
-        {/* Outcome Universities */}
-        <div className="flex flex-wrap items-center justify-center gap-3 mb-12">
-          <span className="text-gray-600 font-medium">Our students study at:</span>
-          {outcomes.map((uni, index) => (
-            <span 
-              key={index}
-              className="bg-primary/10 text-primary px-4 py-1.5 rounded-full text-sm font-medium"
-            >
-              {uni}
-            </span>
-          ))}
+        {/* Outcome Destinations */}
+        <div className="mb-12">
+          <h3 className="text-center text-lg font-semibold text-primary mb-6">
+            Our Students Routinely Obtain 4/4 Offers – Most Common Destinations Include:
+          </h3>
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            {destinations.map((destination, index) => (
+              <span 
+                key={index}
+                className="bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium hover:bg-primary/20 transition-colors"
+              >
+                {destination}
+              </span>
+            ))}
+          </div>
         </div>
 
         {/* Student Success Screenshots - Placeholder Grid */}
