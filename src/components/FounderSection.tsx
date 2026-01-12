@@ -1,4 +1,4 @@
-import { CheckCircle, Star, Trophy } from "lucide-react";
+import { CheckCircle, GraduationCap, Star, Trophy } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -13,39 +13,46 @@ const FounderSection = () => {
     <section className="py-20 bg-gradient-to-br from-secondary/30 via-white to-primary/5">
       <div className="container mx-auto px-6">
         {/* Section Title */}
-        <h2 className="text-3xl md:text-4xl font-bold text-primary text-center mb-12">
+        <h2 className="text-3xl md:text-4xl font-bold text-primary text-center mb-8">
           Meet the Founder: Ojas – Oxford Medic & the UK's Leading Admissions Expert
         </h2>
 
-        <div className="grid lg:grid-cols-5 gap-10 items-start">
-          {/* Left Side - Photo & Credentials */}
-          <div className="lg:col-span-2 flex flex-col items-center">
-            <div className="relative mb-6">
-              <img
-                src="/lovable-uploads/19f2184e-3934-4879-bc0d-f1a2da819177.png"
-                alt="Ojas - Founder of MyUCAT, Oxford Medical Student"
-                className="w-64 h-64 md:w-80 md:h-80 object-cover rounded-2xl shadow-xl"
-              />
-              <div className="absolute -bottom-3 -right-3 bg-primary text-white px-4 py-2 rounded-lg shadow-lg">
-                <span className="font-bold">Oxford Medic</span>
-              </div>
-            </div>
+        {/* Credential Badges - Centered under title */}
+        <div className="flex flex-wrap justify-center gap-2 mb-8">
+          <Badge className="bg-primary/10 text-primary hover:bg-primary/20 px-3 py-1.5 text-sm">
+            <GraduationCap className="w-4 h-4 mr-1" />
+            Oxford Medic
+          </Badge>
+          <Badge className="bg-primary/10 text-primary hover:bg-primary/20 px-3 py-1.5 text-sm">
+            <Trophy className="w-4 h-4 mr-1" />
+            2640/2700 UCAT
+          </Badge>
+          <Badge className="bg-primary/10 text-primary hover:bg-primary/20 px-3 py-1.5 text-sm">
+            <Star className="w-4 h-4 mr-1" />
+            500+ 5-star reviews
+          </Badge>
+        </div>
 
-            {/* Credential Badges */}
-            <div className="flex flex-wrap justify-center gap-2 mt-4">
-              <Badge className="bg-primary/10 text-primary hover:bg-primary/20 px-3 py-1.5 text-sm">
-                <Trophy className="w-4 h-4 mr-1" />
-                2640/2700 UCAT
-              </Badge>
-              <Badge className="bg-primary/10 text-primary hover:bg-primary/20 px-3 py-1.5 text-sm">
-                <Star className="w-4 h-4 mr-1" />
-                500+ 5-star reviews
-              </Badge>
-            </div>
+        {/* Founder Photos - Under title */}
+        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-12">
+          <div className="overflow-hidden rounded-2xl shadow-lg">
+            <img
+              src="/lovable-uploads/ojas-speaking.png"
+              alt="Ojas speaking at a MyUCAT event"
+              className="w-full h-64 md:h-80 object-cover object-top"
+            />
           </div>
+          <div className="overflow-hidden rounded-2xl shadow-lg">
+            <img
+              src="/lovable-uploads/ojas-presentation.png"
+              alt="Ojas presenting student success stories and reviews"
+              className="w-full h-64 md:h-80 object-cover object-center"
+            />
+          </div>
+        </div>
 
-          {/* Right Side - Story Accordion */}
-          <div className="lg:col-span-3">
+        {/* Story Accordion - Full width */}
+        <div className="max-w-4xl mx-auto">
             <Accordion type="single" collapsible defaultValue="beginning" className="space-y-4">
               <AccordionItem value="beginning" className="border rounded-xl px-6 bg-white shadow-sm">
                 <AccordionTrigger className="text-lg font-semibold text-primary hover:no-underline">
@@ -113,25 +120,6 @@ const FounderSection = () => {
               </AccordionItem>
             </Accordion>
           </div>
-        </div>
-
-        {/* Founder Action Photos */}
-        <div className="grid md:grid-cols-2 gap-6 mt-12 max-w-4xl mx-auto">
-          <div className="overflow-hidden rounded-2xl shadow-lg">
-            <img
-              src="/lovable-uploads/ojas-speaking.png"
-              alt="Ojas speaking at a MyUCAT event"
-              className="w-full h-64 md:h-80 object-cover object-top"
-            />
-          </div>
-          <div className="overflow-hidden rounded-2xl shadow-lg">
-            <img
-              src="/lovable-uploads/ojas-presentation.png"
-              alt="Ojas presenting student success stories and reviews"
-              className="w-full h-64 md:h-80 object-cover object-center"
-            />
-          </div>
-        </div>
         {/* Results Stats Boxes */}
         <div className="grid md:grid-cols-2 gap-6 mt-12 max-w-3xl mx-auto">
           <Card className="bg-gradient-to-br from-primary to-primary-dark text-white border-0 shadow-xl">
