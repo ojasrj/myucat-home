@@ -7,8 +7,6 @@ import review5 from "@/assets/review-5.png";
 import review6 from "@/assets/review-6.png";
 import review7 from "@/assets/review-7.png";
 import review8 from "@/assets/review-8.png";
-import reviewWide from "@/assets/review-wide.png";
-import reviewCollageTop from "@/assets/review-collage-top.png";
 
 const destinations = [
   "Medicine @ Oxford",
@@ -68,15 +66,6 @@ const SocialProofSection = () => {
         {/* Student Success Stories Grid */}
         <div className="mb-12">
           <h3 className="text-center text-lg font-semibold text-primary mb-6">Student Success Stories</h3>
-          
-          {/* Top collage - full width */}
-          <div className="mb-4 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 bg-white">
-            <img 
-              src={reviewCollageTop} 
-              alt="Student success messages collage"
-              className="w-full h-auto"
-            />
-          </div>
 
           {/* Grid - matches screenshot aspect ratio */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -93,15 +82,6 @@ const SocialProofSection = () => {
                 />
               </div>
             ))}
-          </div>
-
-          {/* Wide review - full width row */}
-          <div className="mt-4 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 bg-white">
-            <img 
-              src={reviewWide} 
-              alt="Student success messages collage"
-              className="w-full h-auto"
-            />
           </div>
         </div>
       </div>

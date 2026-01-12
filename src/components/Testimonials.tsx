@@ -1,6 +1,8 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Star, ExternalLink } from "lucide-react";
+import { Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import reviewCollageTop from "@/assets/review-collage-top.png";
+import reviewWide from "@/assets/review-wide.png";
 
 const testimonials = [
   {
@@ -42,7 +44,16 @@ const Testimonials = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        {/* Top collage - above testimonial cards */}
+        <div className="mb-6 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 bg-white">
+          <img 
+            src={reviewCollageTop} 
+            alt="Student success messages collage"
+            className="w-full h-auto"
+          />
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
           {testimonials.map((testimonial, index) => (
             <Card 
               key={index} 
@@ -73,6 +84,15 @@ const Testimonials = () => {
               </CardContent>
             </Card>
           ))}
+        </div>
+
+        {/* Bottom collage - below testimonial cards */}
+        <div className="mb-12 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 bg-white">
+          <img 
+            src={reviewWide} 
+            alt="Student success messages collage"
+            className="w-full h-auto"
+          />
         </div>
 
         <div className="text-center">
