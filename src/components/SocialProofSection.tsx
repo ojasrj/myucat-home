@@ -76,22 +76,34 @@ const SocialProofSection = () => {
             ))}
           </div>
 
-          {/* Main Collage - Center */}
-          <div className="flex flex-col lg:flex-row gap-6 items-stretch mb-6">
-            {/* Left Placeholders */}
-            <div className="flex flex-row lg:flex-col gap-4 lg:w-1/5">
-              {[1, 2].map((_, index) => (
-                <Card key={index} className="flex-1 min-h-[150px] bg-secondary/50 border-dashed border-2 border-primary/20 hover:border-primary/40 transition-colors">
-                  <CardContent className="h-full flex flex-col items-center justify-center p-4">
-                    <ImageIcon className="w-10 h-10 text-primary/30 mb-2" />
-                    <p className="text-xs text-gray-500 text-center">Add screenshot</p>
-                  </CardContent>
-                </Card>
-              ))}
+          {/* Main Collage with Testimonial Columns */}
+          <div className="flex flex-col lg:flex-row gap-4 items-stretch mb-6">
+            {/* Left Two Columns */}
+            <div className="flex flex-row gap-4 lg:w-1/4">
+              <div className="flex flex-col gap-4 flex-1">
+                {[1, 2, 3].map((_, index) => (
+                  <Card key={index} className="flex-1 min-h-[120px] bg-secondary/50 border-dashed border-2 border-primary/20 hover:border-primary/40 transition-colors">
+                    <CardContent className="h-full flex flex-col items-center justify-center p-3">
+                      <ImageIcon className="w-8 h-8 text-primary/30 mb-1" />
+                      <p className="text-xs text-gray-500 text-center">Add screenshot</p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+              <div className="flex flex-col gap-4 flex-1">
+                {[1, 2, 3].map((_, index) => (
+                  <Card key={index} className="flex-1 min-h-[120px] bg-secondary/50 border-dashed border-2 border-primary/20 hover:border-primary/40 transition-colors">
+                    <CardContent className="h-full flex flex-col items-center justify-center p-3">
+                      <ImageIcon className="w-8 h-8 text-primary/30 mb-1" />
+                      <p className="text-xs text-gray-500 text-center">Add screenshot</p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
             </div>
 
-            {/* Center - Success Collage */}
-            <div className="lg:w-3/5">
+            {/* Center - Success Collage (smaller) */}
+            <div className="lg:w-2/4">
               <img 
                 src={studentSuccessCollage} 
                 alt="Student success messages and offer notifications" 
@@ -99,16 +111,28 @@ const SocialProofSection = () => {
               />
             </div>
 
-            {/* Right Placeholders */}
-            <div className="flex flex-row lg:flex-col gap-4 lg:w-1/5">
-              {[1, 2].map((_, index) => (
-                <Card key={index} className="flex-1 min-h-[150px] bg-secondary/50 border-dashed border-2 border-primary/20 hover:border-primary/40 transition-colors">
-                  <CardContent className="h-full flex flex-col items-center justify-center p-4">
-                    <ImageIcon className="w-10 h-10 text-primary/30 mb-2" />
-                    <p className="text-xs text-gray-500 text-center">Add screenshot</p>
-                  </CardContent>
-                </Card>
-              ))}
+            {/* Right Two Columns */}
+            <div className="flex flex-row gap-4 lg:w-1/4">
+              <div className="flex flex-col gap-4 flex-1">
+                {[1, 2, 3].map((_, index) => (
+                  <Card key={index} className="flex-1 min-h-[120px] bg-secondary/50 border-dashed border-2 border-primary/20 hover:border-primary/40 transition-colors">
+                    <CardContent className="h-full flex flex-col items-center justify-center p-3">
+                      <ImageIcon className="w-8 h-8 text-primary/30 mb-1" />
+                      <p className="text-xs text-gray-500 text-center">Add screenshot</p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+              <div className="flex flex-col gap-4 flex-1">
+                {[1, 2, 3].map((_, index) => (
+                  <Card key={index} className="flex-1 min-h-[120px] bg-secondary/50 border-dashed border-2 border-primary/20 hover:border-primary/40 transition-colors">
+                    <CardContent className="h-full flex flex-col items-center justify-center p-3">
+                      <ImageIcon className="w-8 h-8 text-primary/30 mb-1" />
+                      <p className="text-xs text-gray-500 text-center">Add screenshot</p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
             </div>
           </div>
 
