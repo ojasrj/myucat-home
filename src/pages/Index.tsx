@@ -21,15 +21,13 @@ const Index = () => {
       <Navbar />
       <Hero />
       <SocialProofSection />
-      <UpcomingEvents />
       <ReassuranceSection />
-      
       <ProgrammesSection />
-      <BuddySystemSection />
+      <UpcomingEvents />
       <FounderSection />
-      
       <Timeline />
       <NMDSSection />
+      <BuddySystemSection />
       <PhotoGallery />
       <Testimonials />
 
