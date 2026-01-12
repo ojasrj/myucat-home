@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ExternalLink, ArrowRight, Sparkles, MessageCircle, Stethoscope, Users } from "lucide-react";
+import { ExternalLink, ArrowRight, Sparkles, MessageCircle, Stethoscope } from "lucide-react";
 import ToothIcon from "@/components/icons/ToothIcon";
 import { useIsMobile } from "@/hooks/use-mobile";
 
@@ -34,26 +34,26 @@ const whatsappGroups = [{
   icon: MessageCircle,
   title: "UCAT Group (2026)",
   description: "Free UCAT tips & peer support",
+  desktopDescription: "Free UCAT tips & peer support",
   link: "https://chat.whatsapp.com/EOsY2wTUnFZ4g4iKmh1mcB",
   color: "bg-green-500",
-  badge: "Most Popular",
-  members: "2000+"
+  badge: "Most Popular"
 }, {
   icon: Stethoscope,
   title: "Medicine Interviews",
   description: "Interview prep for medical applicants",
+  desktopDescription: "Interview prep for Y13 medical applicants",
   link: "https://chat.whatsapp.com/JQs5u2s3V41KkogZZJfTOp",
   color: "bg-blue-500",
-  badge: null,
-  members: "500+"
+  badge: null
 }, {
   icon: ToothIcon,
   title: "Dentistry Interviews",
   description: "Interview prep for dental applicants",
+  desktopDescription: "Interview prep for Y13 dental applicants",
   link: "https://chat.whatsapp.com/Gme9STBqQ8qL5acO9LACkV",
   color: "bg-purple-500",
-  badge: null,
-  members: "300+"
+  badge: null
 }];
 
 const bespokeServices = [{
@@ -129,10 +129,7 @@ const ProgrammesSection = () => {
                           </span>
                         )}
                       </div>
-                      <div className="flex items-center gap-1 text-xs text-gray-500">
-                        <Users className="w-3 h-3" />
-                        <span>{group.members} members</span>
-                      </div>
+                      <p className="text-xs text-gray-500">{group.description}</p>
                     </div>
                     <ArrowRight className="w-4 h-4 text-gray-400 flex-shrink-0" />
                   </a>
@@ -172,13 +169,9 @@ const ProgrammesSection = () => {
                     </div>
                     
                     <h4 className="font-bold text-gray-900 text-lg mb-2">{group.title}</h4>
-                    <p className="text-sm text-gray-600 mb-4">{group.description}</p>
+                    <p className="text-sm text-gray-600 mb-4">{group.desktopDescription}</p>
                     
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-1.5 text-sm text-gray-500">
-                        <Users className="w-4 h-4" />
-                        <span>{group.members} members</span>
-                      </div>
+                    <div className="flex items-center justify-end">
                       <div className="flex items-center gap-1 text-green-600 font-medium text-sm group-hover:gap-2 transition-all">
                         Join
                         <ArrowRight className="w-4 h-4" />
