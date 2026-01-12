@@ -1,0 +1,75 @@
+import { Star, Play, ImageIcon } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+
+const outcomes = [
+  "Oxford", "Cambridge", "Imperial", "UCL", "KCL", "Edinburgh", "Bristol", "Manchester"
+];
+
+const SocialProofSection = () => {
+  return (
+    <section className="bg-gradient-to-b from-secondary to-white py-16">
+      <div className="container mx-auto px-6">
+        {/* Trustpilot Badge */}
+        <div className="flex flex-col items-center justify-center mb-12">
+          <div className="flex items-center gap-2 mb-2">
+            {[...Array(5)].map((_, i) => (
+              <Star key={i} className="w-8 h-8 fill-green-500 text-green-500" />
+            ))}
+          </div>
+          <p className="text-2xl font-bold text-primary">Excellent</p>
+          <p className="text-gray-600">Based on <span className="font-semibold">300+ reviews</span> on Trustpilot</p>
+        </div>
+
+        {/* Outcome Universities */}
+        <div className="flex flex-wrap items-center justify-center gap-3 mb-12">
+          <span className="text-gray-600 font-medium">Our students study at:</span>
+          {outcomes.map((uni, index) => (
+            <span 
+              key={index}
+              className="bg-primary/10 text-primary px-4 py-1.5 rounded-full text-sm font-medium"
+            >
+              {uni}
+            </span>
+          ))}
+        </div>
+
+        {/* Student Success Screenshots - Placeholder Grid */}
+        <div className="mb-12">
+          <h3 className="text-center text-lg font-semibold text-primary mb-6">Student Success Stories</h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[1, 2, 3, 4].map((_, index) => (
+              <Card key={index} className="aspect-square bg-secondary/50 border-dashed border-2 border-primary/20 hover:border-primary/40 transition-colors">
+                <CardContent className="h-full flex flex-col items-center justify-center p-4">
+                  <ImageIcon className="w-12 h-12 text-primary/30 mb-2" />
+                  <p className="text-xs text-gray-500 text-center">Add student success screenshot</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+
+        {/* Video Testimonials - Horizontal Scroll */}
+        <div>
+          <h3 className="text-center text-lg font-semibold text-primary mb-6">Video Testimonials</h3>
+          <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide">
+            {[1, 2, 3, 4, 5].map((_, index) => (
+              <Card 
+                key={index} 
+                className="min-w-[280px] md:min-w-[320px] aspect-video bg-gradient-to-br from-primary/5 to-primary/10 border-dashed border-2 border-primary/20 hover:border-primary/40 transition-colors snap-center flex-shrink-0"
+              >
+                <CardContent className="h-full flex flex-col items-center justify-center p-4">
+                  <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mb-3">
+                    <Play className="w-8 h-8 text-primary" />
+                  </div>
+                  <p className="text-xs text-gray-500 text-center">Add video testimonial</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default SocialProofSection;
