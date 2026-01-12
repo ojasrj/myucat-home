@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Award, Star, Users, CheckCircle, MessageCircle } from "lucide-react";
+import { Award, Star, Users, CheckCircle, MessageCircle, Stethoscope } from "lucide-react";
 
 const Hero = () => {
   return (
@@ -76,31 +76,22 @@ const Hero = () => {
             <p className="text-sm text-gray-500 mb-4">Our most popular free advice group</p>
           </div>
 
-          {/* Secondary Groups */}
-          <div className="flex flex-wrap items-center justify-center gap-3">
+          {/* Y13 Interview Groups */}
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            <p className="w-full text-sm text-gray-500 mb-2">Already applied? Join our Y13 interview prep groups:</p>
             <Button 
-              variant="outline"
-              className="border-2 border-primary text-primary hover:bg-primary hover:text-white px-6 py-5 text-base shadow-sm transition-all"
+              className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-6 text-base shadow-lg hover:shadow-xl transition-all transform hover:scale-105 rounded-xl"
               onClick={() => window.open('https://chat.whatsapp.com/JQs5u2s3V41KkogZZJfTOp', '_blank')}
             >
-              <MessageCircle className="mr-2 h-4 w-4" />
+              <Stethoscope className="mr-2 h-5 w-5" />
               Y13 Medicine Interviews
             </Button>
             <Button 
-              variant="outline"
-              className="border-2 border-primary text-primary hover:bg-primary hover:text-white px-6 py-5 text-base shadow-sm transition-all"
+              className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white px-8 py-6 text-base shadow-lg hover:shadow-xl transition-all transform hover:scale-105 rounded-xl"
               onClick={() => window.open('https://chat.whatsapp.com/Gme9STBqQ8qL5acO9LACkV', '_blank')}
             >
-              <MessageCircle className="mr-2 h-4 w-4" />
+              <MessageCircle className="mr-2 h-5 w-5" />
               Y13 Dentistry Interviews
-            </Button>
-            <Button 
-              variant="outline"
-              className="border-2 border-primary text-primary hover:bg-primary hover:text-white px-6 py-5 text-base shadow-sm transition-all"
-              onClick={() => window.open('https://chat.whatsapp.com/KFDV6tP2Fpo6ksGjTmNx5V', '_blank')}
-            >
-              <MessageCircle className="mr-2 h-4 w-4" />
-              Y12 UCAT Group
             </Button>
           </div>
 
