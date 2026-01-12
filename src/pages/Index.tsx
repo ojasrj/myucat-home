@@ -4,7 +4,6 @@ import AboutSection from "@/components/AboutSection";
 import FounderSection from "@/components/FounderSection";
 import Timeline from "@/components/Timeline";
 import TeamSection from "@/components/TeamSection";
-import Programmes from "@/components/Programmes";
 import PhotoGallery from "@/components/PhotoGallery";
 import Testimonials from "@/components/Testimonials";
 import NMDSSection from "@/components/NMDSSection";
@@ -21,7 +20,6 @@ const Index = () => {
       <FounderSection />
       <Timeline />
       <TeamSection />
-      <Programmes />
       <NMDSSection />
       <PhotoGallery />
       <Testimonials />
