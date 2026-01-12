@@ -10,19 +10,32 @@ const Hero = () => {
       
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="text-center max-w-4xl mx-auto space-y-5 md:space-y-8 animate-fade-in">
-          {/* Trust Badges - Compact on mobile */}
-          <div className="flex flex-wrap items-center justify-center gap-2 md:gap-4 mb-4 md:mb-6">
-            <div className="flex items-center gap-1.5 md:gap-2 bg-white/80 backdrop-blur px-2.5 md:px-4 py-1.5 md:py-2 rounded-full shadow-sm border border-primary/10">
-              <Award className="w-4 h-4 md:w-5 md:h-5 text-primary" />
-              <span className="text-xs md:text-sm font-medium text-primary-dark">35+ Oxbridge 2025</span>
+          {/* Trust Badges - Different content on mobile vs desktop */}
+          {/* Mobile badges */}
+          <div className="flex md:hidden flex-wrap items-center justify-center gap-2 mb-4">
+            <div className="flex items-center gap-1.5 bg-white/80 backdrop-blur px-2.5 py-1.5 rounded-full shadow-sm border border-primary/10">
+              <Award className="w-4 h-4 text-primary" />
+              <span className="text-xs font-medium text-primary-dark">35+ Oxbridge Med in '25</span>
             </div>
-            <div className="flex items-center gap-1.5 md:gap-2 bg-white/80 backdrop-blur px-2.5 md:px-4 py-1.5 md:py-2 rounded-full shadow-sm border border-primary/10">
-              <Star className="w-4 h-4 md:w-5 md:h-5 text-yellow-500 fill-yellow-500" />
-              <span className="text-xs md:text-sm font-medium text-primary-dark">500+ Reviews</span>
+            <div className="flex items-center gap-1.5 bg-white/80 backdrop-blur px-2.5 py-1.5 rounded-full shadow-sm border border-primary/10">
+              <Users className="w-4 h-4 text-primary" />
+              <span className="text-xs font-medium text-primary-dark">1000s+ Med/Dent Entries</span>
             </div>
-            <div className="hidden sm:flex items-center gap-1.5 md:gap-2 bg-white/80 backdrop-blur px-2.5 md:px-4 py-1.5 md:py-2 rounded-full shadow-sm border border-primary/10">
-              <Users className="w-4 h-4 md:w-5 md:h-5 text-primary" />
-              <span className="text-xs md:text-sm font-medium text-primary-dark">1000s+ Med/Dent Entries</span>
+          </div>
+          
+          {/* Desktop badges */}
+          <div className="hidden md:flex flex-wrap items-center justify-center gap-4 mb-6">
+            <div className="flex items-center gap-2 bg-white/80 backdrop-blur px-4 py-2 rounded-full shadow-sm border border-primary/10">
+              <Award className="w-5 h-5 text-primary" />
+              <span className="text-sm font-medium text-primary-dark">35+ Oxbridge Offers 2025</span>
+            </div>
+            <div className="flex items-center gap-2 bg-white/80 backdrop-blur px-4 py-2 rounded-full shadow-sm border border-primary/10">
+              <Star className="w-5 h-5 text-yellow-500 fill-yellow-500" />
+              <span className="text-sm font-medium text-primary-dark">500+ 5-Star Reviews</span>
+            </div>
+            <div className="flex items-center gap-2 bg-white/80 backdrop-blur px-4 py-2 rounded-full shadow-sm border border-primary/10">
+              <Users className="w-5 h-5 text-primary" />
+              <span className="text-sm font-medium text-primary-dark">Helped 1000s+ Enter Med/Dent</span>
             </div>
           </div>
 
