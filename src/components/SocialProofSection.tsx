@@ -8,18 +8,13 @@ import review6 from "@/assets/review-6.png";
 import review7 from "@/assets/review-7.png";
 import review8 from "@/assets/review-8.png";
 
-const destinations = [
+const topDestinations = [
   "Medicine @ Oxford",
   "Medicine @ Imperial",
   "Medicine @ University College London",
   "Medicine @ Cambridge",
   "Dentistry @ King's College London",
   "Dentistry @ Manchester",
-  "Medicine @ Manchester",
-  "Medicine @ Bristol",
-  "Medicine @ Barts and the London",
-  "Medicine @ Edinburgh",
-  "Medicine @ Birmingham"
 ];
 
 // Screenshots array
@@ -47,12 +42,15 @@ const SocialProofSection = () => {
         </div>
 
         {/* Outcome Destinations */}
-        <div className="mb-12">
-          <h3 className="text-center text-lg font-semibold text-primary mb-6">
-            Our Students Routinely Obtain 4/4 Offers – Most Common Destinations Include:
+        <div className="mb-12 text-center">
+          <h3 className="text-lg font-semibold text-primary mb-4">
+            Our Students Routinely Obtain 4/4 Offers
           </h3>
+          <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+            We help students gain admission to every major UK medical and dental school — typically their first choice.
+          </p>
           <div className="flex flex-wrap items-center justify-center gap-3">
-            {destinations.map((destination, index) => (
+            {topDestinations.map((destination, index) => (
               <span 
                 key={index}
                 className="bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium hover:bg-primary/20 transition-colors"
