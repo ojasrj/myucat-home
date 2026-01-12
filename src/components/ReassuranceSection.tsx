@@ -1,25 +1,25 @@
-import { Shield, TrendingUp, Heart, Coins } from "lucide-react";
+import { GraduationCap, Lightbulb, Trophy, Heart } from "lucide-react";
 
 const reassurances = [
   {
-    icon: Shield,
-    title: "Evidence-Based",
-    description: "Proven strategies backed by research and real results"
+    icon: GraduationCap,
+    title: "Expert-led",
+    description: "The best tutors are selected for each element of the application process including current university students, former interview panellists, and PGCE-qualified teachers from across the UK"
   },
   {
-    icon: TrendingUp,
-    title: "Results-Oriented",
-    description: "35+ Oxbridge offers and 500+ 5-star reviews in 2025"
+    icon: Lightbulb,
+    title: "Evidence-informed",
+    description: "Strategies shaped by educational research and real admissions outcomes."
+  },
+  {
+    icon: Trophy,
+    title: "Proven at the highest level",
+    description: "Consistent success with 1000s of offers each year at leading medical schools."
   },
   {
     icon: Heart,
-    title: "Social Enterprise",
-    description: "Committed to widening access to medical education"
-  },
-  {
-    icon: Coins,
-    title: "Affordable Excellence",
-    description: "Unbeatable value without compromising quality"
+    title: "Access-focused",
+    description: "High-quality support alongside extensive free resources and events."
   }
 ];
 
@@ -31,10 +31,9 @@ const ReassuranceSection = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-primary mb-2">
             You're in Safe Hands
           </h2>
-          <p className="text-gray-600">Trusted by thousands of aspiring medics and dentists</p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {reassurances.map((item, index) => (
             <div 
               key={index}
