@@ -1,5 +1,11 @@
 import trustpilotProof from "@/assets/trustpilot-proof.png";
 import review1 from "@/assets/review-1.png";
+import review2 from "@/assets/review-2.png";
+import review3 from "@/assets/review-3.png";
+import review4 from "@/assets/review-4.png";
+import review5 from "@/assets/review-5.png";
+import review6 from "@/assets/review-6.png";
+import review7 from "@/assets/review-7.png";
 import { ImageIcon } from "lucide-react";
 
 const destinations = [
@@ -17,8 +23,8 @@ const destinations = [
 ];
 
 // Screenshots array - add more as they come in
-const screenshots = [review1];
-const placeholderCount = 7; // Remaining placeholders to fill 8 slots
+const screenshots = [review1, review2, review3, review4, review5, review6, review7];
+const placeholderCount = 1; // Remaining placeholders to fill 8 slots
 
 const SocialProofSection = () => {
   return (
