@@ -1,14 +1,19 @@
 import { Card } from "@/components/ui/card";
+import lifeClassroom1 from "@/assets/life-classroom-1.jpg";
+import lifeTutoring from "@/assets/life-tutoring.jpg";
+import lifeDentalEvent from "@/assets/life-dental-event.jpg";
+import lifeMmiPractice from "@/assets/life-mmi-practice.jpg";
+import lifeClassroom2 from "@/assets/life-classroom-2.jpg";
+import lifeLectureHall from "@/assets/life-lecture-hall.jpg";
 
 const PhotoGallery = () => {
-  // Placeholder images - these would be replaced with actual event photos
   const photos = [
-    { id: 1, alt: "In-person tutoring session" },
-    { id: 2, alt: "Group workshop event" },
-    { id: 3, alt: "Medical school preparation class" },
-    { id: 4, alt: "Interview practice session" },
-    { id: 5, alt: "Team meeting" },
-    { id: 6, alt: "Student success celebration" },
+    { id: 1, src: lifeClassroom1, alt: "Students learning in classroom session" },
+    { id: 2, src: lifeTutoring, alt: "One-on-one tutoring session" },
+    { id: 3, src: lifeDentalEvent, alt: "Dental interview preparation event" },
+    { id: 4, src: lifeMmiPractice, alt: "MMI rotation practice session" },
+    { id: 5, src: lifeClassroom2, alt: "Group workshop in progress" },
+    { id: 6, src: lifeLectureHall, alt: "Students in lecture hall" },
   ];
 
   return (
@@ -27,37 +32,16 @@ const PhotoGallery = () => {
           {photos.map((photo) => (
             <Card 
               key={photo.id} 
-              className="aspect-video bg-gradient-to-br from-primary/10 to-primary/5 border-primary/20 overflow-hidden group hover:shadow-lg transition-all duration-300 flex items-center justify-center"
+              className="aspect-video bg-gradient-to-br from-primary/10 to-primary/5 border-primary/20 overflow-hidden group hover:shadow-lg transition-all duration-300"
             >
-              <div className="text-center p-4">
-                <div className="w-16 h-16 bg-primary/10 rounded-full mx-auto mb-3 flex items-center justify-center">
-                  <svg 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    width="32" 
-                    height="32" 
-                    viewBox="0 0 24 24" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    strokeWidth="2" 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    className="text-primary/50"
-                  >
-                    <rect width="18" height="18" x="3" y="3" rx="2" ry="2"/>
-                    <circle cx="9" cy="9" r="2"/>
-                    <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/>
-                  </svg>
-                </div>
-                <p className="text-sm text-primary/70 font-medium">{photo.alt}</p>
-                <p className="text-xs text-gray-500 mt-1">Photo coming soon</p>
-              </div>
+              <img 
+                src={photo.src} 
+                alt={photo.alt}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              />
             </Card>
           ))}
         </div>
-
-        <p className="text-center text-gray-500 mt-8 text-sm">
-          📸 Photos from our events and sessions will be added here
-        </p>
       </div>
     </section>
   );
