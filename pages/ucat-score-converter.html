@@ -523,7 +523,7 @@
                     <div class="harsh-mode-note">
                         <small class="text-muted">
                             <i class="fas fa-info-circle"></i>
-                            Only valid for scores over half marks, based on actual UCAT 2025 scaling
+                            Only valid for scores over half marks, based on actual UCAT 2026 scaling
                         </small>
                     </div>
                 </div>
@@ -536,11 +536,11 @@
         <div class="col">
             <div class="card">
                 <div class="card-header bg-info text-white text-center">
-                    <h5 class="mb-0">2024 vs 2025 UCAT Score Comparison</h5>
+                    <h5 class="mb-0">2025 vs 2026 UCAT Score Comparison</h5>
                 </div>
                 <div class="card-body text-center">
                     <div id="comparison-result" class="alert alert-light">
-                        Calculate your 2025 UCAT score above to see the 2024 equivalent.
+                        Calculate your 2026 UCAT score above to see the 2025 equivalent.
                     </div>
                     <div id="percentile-analysis" class="mt-3 mb-3" style="display: none;">
                         <p class="text-muted"></p>
@@ -567,7 +567,7 @@
                         Trusted by thousands of UCAT candidates
                     </h6>
                     <p class="text-muted mb-3">
-                        Our calculator is used by over 20,000 students each year and based on extensive analysis of UCAT 2025 scaling patterns. 
+                        Our calculator is used by over 20,000 students each year and based on extensive analysis of UCAT 2026 scaling patterns. 
                         We continuously refine our algorithms to provide the most accurate predictions possible.
                     </p>
                     <a href="https://docs.google.com/document/d/1-747wnqlcq6Plo5FE2M9bq7HgeorfAGv7FPMlap-y-s/edit?usp=sharing" 
@@ -752,7 +752,7 @@ function getPercentileFromScore(score2024) {
         if (!isNaN(score2025) && score2025 >= 900 && score2025 <= 2700) {
             const converted = convert2025to2024(score2025);
             if (converted && converted >= 1200 && converted <= 3600) {
-                comparisonDiv.html(`If I scored <span class="badge badge-success">${roundTo10(score2025)}</span> on the 2025 UCAT, that would be about as strong as <span class="badge badge-success">${converted}</span> on the 2024 UCAT.`);
+                comparisonDiv.html(`If I scored <span class="badge badge-success">${roundTo10(score2025)}</span> on the 2026 UCAT, that would be about as strong as <span class="badge badge-success">${converted}</span> on the 2025 UCAT.`);
                 comparisonDiv.removeClass("alert-light").addClass("alert-success");
                 
                 // Calculate and display percentile information
@@ -760,7 +760,7 @@ function getPercentileFromScore(score2024) {
                 if (percentile) {
                     const topPercent = 100 - percentile;
                     const decile = getDecileFromPercentile(percentile);
-                    percentileDiv.html(`That would be approximately equal to the <strong>${percentile}${getOrdinalSuffix(percentile)} percentile</strong> in 2024, placing you in the <strong>top ${topPercent}%</strong> of applicants. This would be a score in the <strong>${decile} decile</strong>.`);
+                    percentileDiv.html(`That would be approximately equal to the <strong>${percentile}${getOrdinalSuffix(percentile)} percentile</strong> in 2025, placing you in the <strong>top ${topPercent}%</strong> of applicants. This would be a score in the <strong>${decile} decile</strong>.`);
                     percentileDiv.show();
                 } else {
                     percentileDiv.hide();
@@ -771,7 +771,7 @@ function getPercentileFromScore(score2024) {
                 percentileDiv.hide();
             }
         } else {
-            comparisonDiv.html("Calculate your 2025 UCAT score above to see the 2024 equivalent.");
+            comparisonDiv.html("Calculate your 2026 UCAT score above to see the 2025 equivalent.");
             comparisonDiv.removeClass("alert-success alert-warning").addClass("alert-light");
             percentileDiv.hide();
         }
