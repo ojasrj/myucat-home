@@ -1,4 +1,4 @@
-import { Play, ImageIcon } from "lucide-react";
+import { ImageIcon } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import trustpilotProof from "@/assets/trustpilot-proof.png";
 import studentSuccessCollage from "@/assets/student-success-collage.png";
@@ -59,71 +59,36 @@ const SocialProofSection = () => {
         <div className="mb-12">
           <h3 className="text-center text-lg font-semibold text-primary mb-6">Student Success Stories</h3>
           
-          {/* Video Testimonials Row - Top */}
-          <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide mb-6">
-            {[1, 2, 3].map((_, index) => (
-              <Card 
-                key={index} 
-                className="min-w-[260px] md:min-w-[300px] aspect-video bg-gradient-to-br from-primary/5 to-primary/10 border-dashed border-2 border-primary/20 hover:border-primary/40 transition-colors snap-center flex-shrink-0"
-              >
+          {/* Top Row - Screenshots */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+            {[1, 2, 3, 4].map((_, index) => (
+              <Card key={index} className="aspect-[4/3] bg-secondary/50 border-dashed border-2 border-primary/20 hover:border-primary/40 transition-colors">
                 <CardContent className="h-full flex flex-col items-center justify-center p-4">
-                  <div className="w-14 h-14 bg-primary/20 rounded-full flex items-center justify-center mb-2">
-                    <Play className="w-7 h-7 text-primary" />
-                  </div>
-                  <p className="text-xs text-gray-500 text-center">Add video testimonial</p>
+                  <ImageIcon className="w-8 h-8 text-primary/30 mb-2" />
+                  <p className="text-xs text-gray-500 text-center">Add screenshot</p>
                 </CardContent>
               </Card>
             ))}
           </div>
 
-          {/* Main Collage - Center */}
-          <div className="flex flex-col lg:flex-row gap-6 items-stretch mb-6">
-            {/* Left Placeholders */}
-            <div className="flex flex-row lg:flex-col gap-4 lg:w-1/5">
-              {[1, 2].map((_, index) => (
-                <Card key={index} className="flex-1 min-h-[150px] bg-secondary/50 border-dashed border-2 border-primary/20 hover:border-primary/40 transition-colors">
-                  <CardContent className="h-full flex flex-col items-center justify-center p-4">
-                    <ImageIcon className="w-10 h-10 text-primary/30 mb-2" />
-                    <p className="text-xs text-gray-500 text-center">Add screenshot</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-
-            {/* Center - Success Collage */}
-            <div className="lg:w-3/5">
+          {/* Center - Success Collage (smaller, cropped) */}
+          <div className="flex justify-center mb-6">
+            <div className="w-full max-w-2xl overflow-hidden rounded-2xl shadow-xl">
               <img 
                 src={studentSuccessCollage} 
                 alt="Student success messages and offer notifications" 
-                className="w-full h-full object-cover rounded-2xl shadow-xl"
+                className="w-full h-64 md:h-80 object-cover object-center"
               />
-            </div>
-
-            {/* Right Placeholders */}
-            <div className="flex flex-row lg:flex-col gap-4 lg:w-1/5">
-              {[1, 2].map((_, index) => (
-                <Card key={index} className="flex-1 min-h-[150px] bg-secondary/50 border-dashed border-2 border-primary/20 hover:border-primary/40 transition-colors">
-                  <CardContent className="h-full flex flex-col items-center justify-center p-4">
-                    <ImageIcon className="w-10 h-10 text-primary/30 mb-2" />
-                    <p className="text-xs text-gray-500 text-center">Add screenshot</p>
-                  </CardContent>
-                </Card>
-              ))}
             </div>
           </div>
 
-          {/* Video Testimonials Row - Bottom */}
-          <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide">
-            {[1, 2, 3].map((_, index) => (
-              <Card 
-                key={index} 
-                className="min-w-[260px] md:min-w-[300px] aspect-video bg-gradient-to-br from-primary/5 to-primary/10 border-dashed border-2 border-primary/20 hover:border-primary/40 transition-colors snap-center flex-shrink-0"
-              >
+          {/* Bottom Row - Screenshots */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[1, 2, 3, 4].map((_, index) => (
+              <Card key={index} className="aspect-[4/3] bg-secondary/50 border-dashed border-2 border-primary/20 hover:border-primary/40 transition-colors">
                 <CardContent className="h-full flex flex-col items-center justify-center p-4">
-                  <div className="w-14 h-14 bg-primary/20 rounded-full flex items-center justify-center mb-2">
-                    <Play className="w-7 h-7 text-primary" />
-                  </div>
-                  <p className="text-xs text-gray-500 text-center">Add video testimonial</p>
+                  <ImageIcon className="w-8 h-8 text-primary/30 mb-2" />
+                  <p className="text-xs text-gray-500 text-center">Add screenshot</p>
                 </CardContent>
               </Card>
             ))}
