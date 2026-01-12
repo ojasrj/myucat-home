@@ -6,7 +6,7 @@ import AboutSection from "@/components/AboutSection";
 import ProgrammesSection from "@/components/ProgrammesSection";
 import BuddySystemSection from "@/components/BuddySystemSection";
 import FounderSection from "@/components/FounderSection";
-
+import InstagramFeed from "@/components/InstagramFeed";
 import Timeline from "@/components/Timeline";
 import NMDSSection from "@/components/NMDSSection";
 import PhotoGallery from "@/components/PhotoGallery";
@@ -30,6 +30,7 @@ const Index = () => {
       <Timeline />
       <NMDSSection />
       <PhotoGallery />
+      <InstagramFeed />
       <Testimonials />
 
       {/* Final CTA - Decisive */}
