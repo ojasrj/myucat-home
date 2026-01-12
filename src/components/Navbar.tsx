@@ -1,14 +1,15 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, ChevronDown } from "lucide-react";
-import { useIsMobile } from "@/hooks/use-mobile";
 import { Link, useLocation } from "react-router-dom";
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu";
 
 interface NavLink {
   href: string;
@@ -107,43 +108,6 @@ const Navbar = () => {
     setOpenMobileDropdown(openMobileDropdown === label ? null : label);
   };
 
-  const renderNavItem = (category: NavCategory, size: 'desktop' | 'tablet') => {
-    const textSize = size === 'desktop' ? 'text-sm' : 'text-xs';
-    const gap = size === 'desktop' ? 'gap-1' : 'gap-0.5';
-    const chevronSize = size === 'desktop' ? 'w-4 h-4' : 'w-3 h-3';
-
-    if (category.isDropdown && category.links) {
-      return (
-        <DropdownMenu key={category.label}>
-          <DropdownMenuTrigger className={`flex items-center ${gap} text-gray-700 hover:text-primary transition-colors duration-200 font-medium ${textSize} whitespace-nowrap`}>
-            {category.label} <ChevronDown className={chevronSize} />
-          </DropdownMenuTrigger>
-          <DropdownMenuContent className="bg-white border border-gray-200 shadow-lg z-50 min-w-[220px]">
-            {category.links.map((link) => (
-              <DropdownMenuItem
-                key={link.href + link.label}
-                className="cursor-pointer hover:bg-gray-100"
-                onClick={() => handleNavClick(link.href, link.external)}
-              >
-                {link.label}
-              </DropdownMenuItem>
-            ))}
-          </DropdownMenuContent>
-        </DropdownMenu>
-      );
-    } else {
-      return (
-        <button
-          key={category.label}
-          onClick={() => category.href && window.open(category.href, '_blank')}
-          className={`text-gray-700 hover:text-primary transition-colors duration-200 font-medium ${textSize} whitespace-nowrap`}
-        >
-          {category.label}
-        </button>
-      );
-    }
-  };
-
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled 
@@ -160,14 +124,84 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden xl:flex items-center gap-3">
-            {navCategories.map((category) => renderNavItem(category, 'desktop'))}
-          </div>
+          <NavigationMenu className="hidden xl:flex">
+            <NavigationMenuList className="gap-1">
+              {navCategories.map((category) => (
+                <NavigationMenuItem key={category.label}>
+                  {category.isDropdown && category.links ? (
+                    <>
+                      <NavigationMenuTrigger className="bg-transparent text-gray-700 hover:text-primary hover:bg-gray-50 text-sm font-medium">
+                        {category.label}
+                      </NavigationMenuTrigger>
+                      <NavigationMenuContent className="bg-white border border-gray-200 shadow-lg z-50">
+                        <ul className="w-[280px] p-2">
+                          {category.links.map((link) => (
+                            <li key={link.href + link.label}>
+                              <NavigationMenuLink asChild>
+                                <button
+                                  onClick={() => handleNavClick(link.href, link.external)}
+                                  className="block w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-primary rounded-md transition-colors"
+                                >
+                                  {link.label}
+                                </button>
+                              </NavigationMenuLink>
+                            </li>
+                          ))}
+                        </ul>
+                      </NavigationMenuContent>
+                    </>
+                  ) : (
+                    <button
+                      onClick={() => category.href && window.open(category.href, '_blank')}
+                      className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-primary transition-colors"
+                    >
+                      {category.label}
+                    </button>
+                  )}
+                </NavigationMenuItem>
+              ))}
+            </NavigationMenuList>
+          </NavigationMenu>
 
-          {/* Tablet Navigation - All tabs visible with smaller text */}
-          <div className="hidden md:flex xl:hidden items-center gap-1.5">
-            {navCategories.map((category) => renderNavItem(category, 'tablet'))}
-          </div>
+          {/* Tablet Navigation */}
+          <NavigationMenu className="hidden md:flex xl:hidden">
+            <NavigationMenuList className="gap-0.5">
+              {navCategories.map((category) => (
+                <NavigationMenuItem key={category.label}>
+                  {category.isDropdown && category.links ? (
+                    <>
+                      <NavigationMenuTrigger className="bg-transparent text-gray-700 hover:text-primary hover:bg-gray-50 text-xs font-medium px-2">
+                        {category.label}
+                      </NavigationMenuTrigger>
+                      <NavigationMenuContent className="bg-white border border-gray-200 shadow-lg z-50">
+                        <ul className="w-[250px] p-2">
+                          {category.links.map((link) => (
+                            <li key={link.href + link.label}>
+                              <NavigationMenuLink asChild>
+                                <button
+                                  onClick={() => handleNavClick(link.href, link.external)}
+                                  className="block w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-primary rounded-md transition-colors"
+                                >
+                                  {link.label}
+                                </button>
+                              </NavigationMenuLink>
+                            </li>
+                          ))}
+                        </ul>
+                      </NavigationMenuContent>
+                    </>
+                  ) : (
+                    <button
+                      onClick={() => category.href && window.open(category.href, '_blank')}
+                      className="px-2 py-2 text-xs font-medium text-gray-700 hover:text-primary transition-colors whitespace-nowrap"
+                    >
+                      {category.label}
+                    </button>
+                  )}
+                </NavigationMenuItem>
+              ))}
+            </NavigationMenuList>
+          </NavigationMenu>
 
           {/* Contact Button - Desktop & Tablet */}
           <div className="hidden md:block">
