@@ -1,5 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Users, Award, BookOpen, CheckCircle } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Users, Award, BookOpen, CheckCircle, ArrowRight } from "lucide-react";
 
 const teamMembers = [
   {
@@ -31,12 +32,6 @@ const teamMembers = [
     role: "A Level Biology",
     detail: "Retired Teacher with 20+ Years Experience",
     image: "/lovable-uploads/f03a3ac2-947c-417f-9de8-d93bab18693b.png"
-  },
-  {
-    name: "Greg",
-    role: "UCAT Expert",
-    detail: "Cambridge, UCL Graduate, Warwick Graduate Medicine, 3490 UCAT",
-    image: "/lovable-uploads/a86cbe12-1aa6-4a39-9fa7-bb746e5b356b.png"
   }
 ];
 
@@ -73,8 +68,8 @@ const TeamSection = () => {
           ))}
         </div>
 
-        {/* Team Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+        {/* Team Grid - Reduced to 5 members */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-8">
           {teamMembers.map((member, index) => (
             <Card 
               key={index} 
@@ -97,6 +92,18 @@ const TeamSection = () => {
               </CardContent>
             </Card>
           ))}
+        </div>
+
+        {/* View Full Team Button */}
+        <div className="text-center">
+          <Button
+            variant="outline"
+            className="border-2 border-primary text-primary hover:bg-primary hover:text-white px-8 py-6 text-lg"
+            onClick={() => window.open('https://wa.me/447443341420?text=I%20would%20like%20to%20learn%20more%20about%20your%20tutors', '_blank')}
+          >
+            View Full Team
+            <ArrowRight className="ml-2 h-5 w-5" />
+          </Button>
         </div>
       </div>
     </section>

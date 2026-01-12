@@ -1,14 +1,18 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import SocialProofSection from "@/components/SocialProofSection";
+import ReassuranceSection from "@/components/ReassuranceSection";
 import AboutSection from "@/components/AboutSection";
+import ProgrammesSection from "@/components/ProgrammesSection";
+import BuddySystemSection from "@/components/BuddySystemSection";
 import FounderSection from "@/components/FounderSection";
-import Timeline from "@/components/Timeline";
 import TeamSection from "@/components/TeamSection";
+import Timeline from "@/components/Timeline";
+import NMDSSection from "@/components/NMDSSection";
 import PhotoGallery from "@/components/PhotoGallery";
 import Testimonials from "@/components/Testimonials";
-import NMDSSection from "@/components/NMDSSection";
 import { Button } from "@/components/ui/button";
-import { Instagram, Linkedin, MessageCircle, Phone } from "lucide-react";
+import { Instagram, Linkedin, MessageCircle, Phone, CheckCircle } from "lucide-react";
 import TikTokIcon from "@/components/icons/TikTokIcon";
 
 const Index = () => {
@@ -16,30 +20,50 @@ const Index = () => {
     <main className="min-h-screen bg-white">
       <Navbar />
       <Hero />
+      <SocialProofSection />
+      <ReassuranceSection />
       <AboutSection />
+      <ProgrammesSection />
+      <BuddySystemSection />
       <FounderSection />
-      <Timeline />
       <TeamSection />
+      <Timeline />
       <NMDSSection />
       <PhotoGallery />
       <Testimonials />
 
-      {/* Call to Action */}
+      {/* Final CTA - Decisive */}
       <section className="bg-gradient-to-br from-primary to-primary-dark py-20">
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Ready to Start Your Journey?
           </h2>
-          <p className="text-xl text-white/90 max-w-2xl mx-auto mb-8">
+          <p className="text-xl text-white/90 max-w-2xl mx-auto mb-4">
             Whether you're at the start of your journey or polishing your application, MyUCAT is here to help you every step of the way.
           </p>
+          
+          {/* Trust Line */}
+          <div className="flex flex-wrap items-center justify-center gap-4 mb-8 text-white/80">
+            <div className="flex items-center gap-2">
+              <CheckCircle className="w-5 h-5 text-green-300" />
+              <span>Trusted by 5,000+ students</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <CheckCircle className="w-5 h-5 text-green-300" />
+              <span>300+ 5-star reviews</span>
+            </div>
+          </div>
+
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            {/* Primary CTA */}
             <Button 
-              className="bg-white text-primary hover:bg-gray-100 px-10 py-6 text-lg transition-all transform hover:scale-105 shadow-lg"
-              onClick={() => window.open('https://learn.myucat.co.uk/summer-programme', '_blank')}
+              size="lg"
+              className="bg-white text-primary hover:bg-gray-100 px-12 py-8 text-xl transition-all transform hover:scale-105 shadow-xl rounded-full"
+              onClick={() => window.open('https://chat.whatsapp.com/EYQbvty2opY4YWXqq0hXhC', '_blank')}
             >
-              Book Our Summer Programme
+              Join a Free Advice Group
             </Button>
+            {/* Secondary CTA */}
             <Button 
               variant="outline"
               className="border-2 border-white text-white hover:bg-white/10 px-10 py-6 text-lg"

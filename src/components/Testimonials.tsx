@@ -16,18 +16,6 @@ const testimonials = [
     link: "https://uk.trustpilot.com/review/myucat.co.uk"
   },
   {
-    text: "I wholeheartedly recommend you to join the group chat and see what it is like, even for a week, and I'm 99% sure you will be able to appreciate the level of effort he puts in as I do.",
-    author: "Student I.M., UK",
-    source: "Trustpilot",
-    link: "https://uk.trustpilot.com/review/myucat.co.uk"
-  },
-  {
-    text: "In the very first session, Ojas had one of the MyUCAT tutors do a mock interview, and I messaged my friend, 'Wow, this is amazing'. Ojas assured us that we would be able to reach that level through his lessons, and he absolutely delivered on his promise and I went on to secure 4/4 offers.",
-    author: "Student A.M., UK",
-    source: "Google Reviews",
-    link: "https://www.google.com/maps/place/MyUCAT/@51.5014765,-0.3136451,17z"
-  },
-  {
     text: "MyUCAT is 100% the way to go if you want to invest in a comparably more affordable yet delivers A** quality in everything they do. Cannot thank them enough for helping me to secure an offer to read Medicine at Oxford!!",
     author: "Student A.A., UK",
     source: "Trustpilot",
@@ -54,7 +42,7 @@ const Testimonials = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           {testimonials.map((testimonial, index) => (
             <Card 
               key={index} 
@@ -66,7 +54,7 @@ const Testimonials = () => {
                     <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                   ))}
                 </div>
-                <p className="text-gray-700 mb-4 italic leading-relaxed">
+                <p className="text-gray-700 mb-4 italic leading-relaxed text-sm">
                   "{testimonial.text}"
                 </p>
                 <div className="flex items-center justify-between">
@@ -87,21 +75,13 @@ const Testimonials = () => {
           ))}
         </div>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <div className="text-center">
           <Button
-            className="bg-primary hover:bg-primary-dark text-white px-8 py-6 text-lg transition-all transform hover:scale-105"
+            className="bg-primary hover:bg-primary-dark text-white px-10 py-6 text-lg transition-all transform hover:scale-105"
             onClick={() => window.open('https://uk.trustpilot.com/review/myucat.co.uk', '_blank')}
           >
             <Star className="mr-2 h-5 w-5" />
-            Reviews on Trustpilot
-          </Button>
-          <Button
-            variant="outline"
-            className="border-primary text-primary hover:bg-primary-light px-8 py-6 text-lg"
-            onClick={() => window.open('https://www.google.com/maps/place/MyUCAT/@51.5014765,-0.3136451,17z', '_blank')}
-          >
-            <ExternalLink className="mr-2 h-5 w-5" />
-            Reviews on Google
+            View All 300+ Reviews
           </Button>
         </div>
       </div>

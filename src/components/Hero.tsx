@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Award, Star, Users, CheckCircle } from "lucide-react";
+import { Award, Star, Users, CheckCircle, MessageCircle } from "lucide-react";
 
 const Hero = () => {
   return (
@@ -57,33 +57,41 @@ const Hero = () => {
             </div>
           </div>
 
-          <p className="text-lg font-semibold text-primary-dark pt-4">
-            Start your journey by joining our FREE advice groups:
-          </p>
-          
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          {/* PRIMARY CTA - Dominant */}
+          <div className="pt-4">
+            <p className="text-lg font-semibold text-primary-dark mb-4">
+              Start your journey by joining our FREE advice groups:
+            </p>
+            
             <Button 
-              className="bg-primary hover:bg-primary-dark text-white px-8 py-6 text-lg transition-all transform hover:scale-105 shadow-lg"
+              size="lg"
+              className="bg-green-600 hover:bg-green-700 text-white px-12 py-8 text-xl transition-all transform hover:scale-105 shadow-xl hover:shadow-2xl rounded-full"
               onClick={() => window.open('https://chat.whatsapp.com/EYQbvty2opY4YWXqq0hXhC', '_blank')}
             >
-              Medical Interviews
+              <MessageCircle className="mr-3 h-6 w-6" />
+              Start with Free Expert Guidance
             </Button>
+          </div>
+
+          {/* Secondary CTAs */}
+          <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
             <Button 
-              variant="outline" 
-              className="border-2 border-primary text-primary hover:bg-primary-light px-8 py-6 text-lg shadow-sm"
+              variant="outline"
+              className="border-2 border-primary text-primary hover:bg-primary-light px-6 py-5 text-base shadow-sm"
               onClick={() => window.open('https://chat.whatsapp.com/KFDV6tP2Fpo6ksGjTmNx5V', '_blank')}
             >
               Y12 UCAT Group
             </Button>
             <Button 
-              className="bg-primary hover:bg-primary-dark text-white px-8 py-6 text-lg transition-all transform hover:scale-105 shadow-lg"
+              variant="outline"
+              className="border-2 border-primary text-primary hover:bg-primary-light px-6 py-5 text-base shadow-sm"
               onClick={() => window.open('https://chat.whatsapp.com/JYJO6RyCpKqCTuM1kaolcl', '_blank')}
             >
               Dental Interviews
             </Button>
           </div>
 
-          <div className="pt-6">
+          <div className="pt-2">
             <Button
               variant="ghost"
               className="text-primary hover:bg-primary/10"
