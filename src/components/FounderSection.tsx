@@ -1,4 +1,4 @@
-import { CheckCircle, GraduationCap, Star, Trophy } from "lucide-react";
+import { CheckCircle, GraduationCap, Star, Trophy, Users } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -121,12 +121,20 @@ const FounderSection = () => {
             </Accordion>
           </div>
         {/* Results Stats Boxes */}
-        <div className="grid md:grid-cols-2 gap-6 mt-12 max-w-3xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-6 mt-12 max-w-4xl mx-auto">
           <Card className="bg-gradient-to-br from-primary to-primary-dark text-white border-0 shadow-xl">
             <CardContent className="p-8 text-center">
               <Trophy className="w-12 h-12 mx-auto mb-4 opacity-90" />
               <div className="text-5xl font-bold mb-2">35+</div>
               <p className="text-lg opacity-90">Oxbridge Medicine Offers in 2025</p>
+            </CardContent>
+          </Card>
+
+          <Card className="bg-gradient-to-br from-primary to-primary-dark text-white border-0 shadow-xl">
+            <CardContent className="p-8 text-center">
+              <Users className="w-12 h-12 mx-auto mb-4 opacity-90" />
+              <div className="text-5xl font-bold mb-2">5000+</div>
+              <p className="text-lg opacity-90">Students Supported Annually</p>
             </CardContent>
           </Card>
 
