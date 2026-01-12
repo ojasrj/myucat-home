@@ -16,7 +16,7 @@ const NMDSSection = () => {
     {
       icon: Trophy,
       title: "Competitions & Essay Prizes",
-      description: "Win prizes worth £1300+ and boost your application",
+      description: "Showcase your skills and boost your application with prestigious awards",
     },
     {
       icon: Users,
@@ -51,13 +51,13 @@ const NMDSSection = () => {
           </div>
           <div className="text-center p-4 bg-white rounded-xl shadow-sm">
             <MessageCircle className="w-8 h-8 text-primary mx-auto mb-2" />
-            <p className="text-2xl md:text-3xl font-bold text-gray-900">1000+</p>
+            <p className="text-2xl md:text-3xl font-bold text-gray-900">5000+</p>
             <p className="text-sm text-gray-600">WhatsApp Members</p>
           </div>
           <div className="text-center p-4 bg-white rounded-xl shadow-sm">
-            <Trophy className="w-8 h-8 text-primary mx-auto mb-2" />
-            <p className="text-2xl md:text-3xl font-bold text-gray-900">£1300+</p>
-            <p className="text-sm text-gray-600">In Prizes</p>
+            <Calendar className="w-8 h-8 text-primary mx-auto mb-2" />
+            <p className="text-2xl md:text-3xl font-bold text-gray-900">Weekly</p>
+            <p className="text-sm text-gray-600">Free Events</p>
           </div>
         </div>
 
