@@ -9,7 +9,7 @@ const reassurances = [
   {
     icon: TrendingUp,
     title: "Results-Oriented",
-    description: "35+ Oxbridge offers and 300+ 5-star reviews in 2025"
+    description: "35+ Oxbridge offers and 500+ 5-star reviews in 2025"
   },
   {
     icon: Heart,

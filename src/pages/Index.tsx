@@ -6,7 +6,7 @@ import AboutSection from "@/components/AboutSection";
 import ProgrammesSection from "@/components/ProgrammesSection";
 import BuddySystemSection from "@/components/BuddySystemSection";
 import FounderSection from "@/components/FounderSection";
-import TeamSection from "@/components/TeamSection";
+
 import Timeline from "@/components/Timeline";
 import NMDSSection from "@/components/NMDSSection";
 import PhotoGallery from "@/components/PhotoGallery";
@@ -26,7 +26,7 @@ const Index = () => {
       <ProgrammesSection />
       <BuddySystemSection />
       <FounderSection />
-      <TeamSection />
+      
       <Timeline />
       <NMDSSection />
       <PhotoGallery />
@@ -50,7 +50,7 @@ const Index = () => {
             </div>
             <div className="flex items-center gap-2">
               <CheckCircle className="w-5 h-5 text-green-300" />
-              <span>300+ 5-star reviews</span>
+              <span>500+ 5-star reviews</span>
             </div>
           </div>
 

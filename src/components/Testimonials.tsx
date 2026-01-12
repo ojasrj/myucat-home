@@ -101,7 +101,7 @@ const Testimonials = () => {
             onClick={() => window.open('https://uk.trustpilot.com/review/myucat.co.uk', '_blank')}
           >
             <Star className="mr-2 h-5 w-5" />
-            View All 300+ Reviews
+            View All 500+ Reviews
           </Button>
         </div>
       </div>
