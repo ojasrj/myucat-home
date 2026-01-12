@@ -11,7 +11,7 @@ const Timeline = () => {
       number: 1,
       emoji: "1️⃣",
       title: "Insight into Medicine & UCAS",
-      subtitle: "Start here — completely free",
+      subtitle: "Start here - completely free",
       Icon: GraduationCap,
       description: "Before exams and applications, students need clarity, exposure, and confidence.",
       highlight: "Through our National Medical & Dental Society (NMDS), we provide:",
@@ -69,7 +69,7 @@ const Timeline = () => {
       number: 3,
       emoji: "3️⃣",
       title: "Personal Statement",
-      subtitle: "Tell your story — clearly and strategically",
+      subtitle: "Tell your story - clearly and strategically",
       Icon: FileText,
       sections: [
         {
@@ -105,7 +105,7 @@ const Timeline = () => {
       highlight: "Our Strategic Application Guide shows you:",
       features: [
         "Exactly how each medical and dental school scores your application",
-        "How universities use UCAT scores — thresholds, rankings, and weighting",
+        "How universities use UCAT scores - thresholds, rankings, and weighting",
         "Maximise interview chances",
         "Apply confidently with a clear strategy"
       ],
@@ -187,7 +187,7 @@ const Timeline = () => {
             Your Path to Medicine & Dentistry
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            A guided, evidence-based journey — with free support at every stage.
+            A guided, evidence-based journey - with free support at every stage.
           </p>
         </div>
         
@@ -250,7 +250,7 @@ const Timeline = () => {
                           <Button
                             key={i}
                             variant={link.primary ? "default" : "outline"}
-                            className={link.primary ? "bg-primary hover:bg-primary-dark" : ""}
+                            className={link.primary ? "bg-primary/80 hover:bg-primary text-white" : ""}
                             onClick={() => {
                               if (link.href.startsWith('#')) {
                                 document.querySelector(link.href)?.scrollIntoView({ behavior: 'smooth' });
