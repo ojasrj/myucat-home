@@ -22,7 +22,7 @@ const programmes = [
   {
     icon: "📚",
     title: "Year-Round A-Level Tutoring",
-    description: "Combines the strengths of A* medical students and PGCE-qualified subject specialists with up to 20+ years of classroom teaching experience.",
+    description: "2026 programme intake launching soon. Combines the strengths of A* medical students and PGCE-qualified subject specialists with up to 20+ years of classroom teaching experience.",
     outcome: "From struggling → A* grades",
     link: "https://learn.myucat.co.uk/a-level-tuition",
     featured: false
@@ -47,12 +47,6 @@ const bespokeServices = [
     title: "Personal Statement",
     description: "Expert guidance to refine your personal statement for your chosen universities.",
     link: "https://learn.myucat.co.uk/personal-statements"
-  },
-  {
-    icon: "📖",
-    title: "A Level Tuition",
-    description: "Expert one-on-one tutoring from A* medical student mentors or qualified teachers.",
-    link: "https://learn.myucat.co.uk/a-level-1-1"
   }
 ];
 
@@ -179,7 +173,7 @@ const ProgrammesSection = () => {
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {bespokeServices.map((service, index) => (
             <div 
               key={index}
