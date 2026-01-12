@@ -14,7 +14,7 @@ const reassurances = [
   {
     icon: Trophy,
     title: "Proven at the highest level",
-    description: "Consistent success with 1000s of offers each year at leading medical schools."
+    description: "Consistent success with 1000s of offers each year at leading medical & dental schools."
   },
   {
     icon: Heart,
