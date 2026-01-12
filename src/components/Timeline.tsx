@@ -126,39 +126,26 @@ const Timeline = () => {
       number: 4,
       emoji: "4️⃣",
       title: "Strategic Applications",
-      mobileTitle: "Strategic Apps",
       subtitle: "Apply smart, not blindly",
-      mobileSubtitle: "Apply smart",
       Icon: Target,
       description: "This is where strong candidates separate themselves.",
-      mobileDescription: "Separate yourself from the competition.",
       highlight: "Our Strategic Application Guide shows you:",
-      mobileHighlight: "The guide shows you:",
       features: [
         "Exactly how each medical and dental school scores your application",
         "How universities use UCAT scores - thresholds, rankings, and weighting",
         "Maximise interview chances",
         "Apply confidently with a clear strategy"
       ],
-      mobileFeatures: [
-        "How schools score applications",
-        "How UCAT scores are used",
-        "Maximise interview chances",
-        "Apply with clear strategy"
-      ],
       links: [
         { label: "Explore the Strategic Application Guide", mobileLabel: "Application Guide", href: "https://learn.myucat.co.uk/strategic-applications", primary: true }
       ],
-      footer: "Essential for applicants aiming for competitive medical and dental schools.",
-      mobileFooter: "Essential for competitive applicants."
+      footer: "Essential for applicants aiming for competitive medical and dental schools."
     },
     {
       number: 5,
       emoji: "5️⃣",
       title: "Medical & Dental Interviews",
-      mobileTitle: "Interviews",
       subtitle: "Prepare for the interviews you've earned",
-      mobileSubtitle: "Prepare for your interviews",
       Icon: Handshake,
       sections: [
         {
@@ -193,8 +180,7 @@ const Timeline = () => {
           ]
         }
       ],
-      footer: "Delivered by doctors, dentists, and experienced interview tutors.",
-      mobileFooter: "By doctors, dentists & tutors."
+      footer: "Experienced interview tutoring team including former panelists."
     },
     {
       number: 6,
