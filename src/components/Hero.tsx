@@ -3,7 +3,7 @@ import { Award, Star, Users, CheckCircle, MessageCircle } from "lucide-react";
 
 const Hero = () => {
   return (
-    <section className="min-h-[90vh] md:min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-light via-white to-secondary pt-16 md:pt-20 pb-16 md:pb-32 relative overflow-hidden">
+    <section className="min-h-fit md:min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-light via-white to-secondary pt-20 md:pt-20 pb-12 md:pb-32 relative overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute top-20 left-10 w-48 md:w-72 h-48 md:h-72 bg-primary/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-20 right-10 w-64 md:w-96 h-64 md:h-96 bg-secondary/50 rounded-full blur-3xl"></div>
