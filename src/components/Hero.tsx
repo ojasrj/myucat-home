@@ -60,34 +60,47 @@ const Hero = () => {
           {/* PRIMARY CTA - Dominant */}
           <div className="pt-4">
             <p className="text-lg font-semibold text-primary-dark mb-4">
-              Start your journey by joining our FREE advice groups:
+              Start with Free Expert Guidance
             </p>
             
+            {/* Featured Group - UCAT 2026 Summer */}
             <Button 
               size="lg"
-              className="bg-green-600 hover:bg-green-700 text-white px-12 py-8 text-xl transition-all transform hover:scale-105 shadow-xl hover:shadow-2xl rounded-full"
-              onClick={() => window.open('https://chat.whatsapp.com/EYQbvty2opY4YWXqq0hXhC', '_blank')}
+              className="bg-green-600 hover:bg-green-700 text-white px-12 py-8 text-xl transition-all transform hover:scale-105 shadow-xl hover:shadow-2xl rounded-full mb-4"
+              onClick={() => window.open('https://chat.whatsapp.com/EOsY2wTUnFZ4g4iKmh1mcB', '_blank')}
             >
               <MessageCircle className="mr-3 h-6 w-6" />
-              Start with Free Expert Guidance
+              Join UCAT Group (2026 Summer)
             </Button>
+            
+            <p className="text-sm text-gray-500 mb-4">Our most popular free advice group</p>
           </div>
 
-          {/* Secondary CTAs */}
-          <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
+          {/* Secondary Groups */}
+          <div className="flex flex-wrap items-center justify-center gap-3">
             <Button 
               variant="outline"
-              className="border-2 border-primary text-primary hover:bg-primary-light px-6 py-5 text-base shadow-sm"
-              onClick={() => window.open('https://chat.whatsapp.com/KFDV6tP2Fpo6ksGjTmNx5V', '_blank')}
+              className="border-2 border-primary text-primary hover:bg-primary hover:text-white px-6 py-5 text-base shadow-sm transition-all"
+              onClick={() => window.open('https://chat.whatsapp.com/JQs5u2s3V41KkogZZJfTOp', '_blank')}
             >
-              Y12 UCAT Group
+              <MessageCircle className="mr-2 h-4 w-4" />
+              Y13 Medicine Interviews
             </Button>
             <Button 
               variant="outline"
-              className="border-2 border-primary text-primary hover:bg-primary-light px-6 py-5 text-base shadow-sm"
-              onClick={() => window.open('https://chat.whatsapp.com/JYJO6RyCpKqCTuM1kaolcl', '_blank')}
+              className="border-2 border-primary text-primary hover:bg-primary hover:text-white px-6 py-5 text-base shadow-sm transition-all"
+              onClick={() => window.open('https://chat.whatsapp.com/Gme9STBqQ8qL5acO9LACkV', '_blank')}
             >
-              Dental Interviews
+              <MessageCircle className="mr-2 h-4 w-4" />
+              Y13 Dentistry Interviews
+            </Button>
+            <Button 
+              variant="outline"
+              className="border-2 border-primary text-primary hover:bg-primary hover:text-white px-6 py-5 text-base shadow-sm transition-all"
+              onClick={() => window.open('https://chat.whatsapp.com/KFDV6tP2Fpo6ksGjTmNx5V', '_blank')}
+            >
+              <MessageCircle className="mr-2 h-4 w-4" />
+              Y12 UCAT Group
             </Button>
           </div>
 
