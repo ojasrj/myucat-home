@@ -31,13 +31,19 @@ const Navbar = () => {
     { href: "https://www.guessandflag.co.uk/a-level-tuition", label: "A Levels", external: true },
   ];
 
+  const nmdsLinks = [
+    { href: "https://medsoc.myucat.co.uk", label: "About NMDS", external: true },
+    { href: "https://medsoc.myucat.co.uk/events", label: "Events", external: true },
+    { href: "/competitions", label: "Competitions", external: false },
+    { href: "https://medsoc.myucat.co.uk/free-courses", label: "Free Courses", external: true },
+  ];
+
   const moreLinks = [
     { href: "https://uk.trustpilot.com/review/myucat.co.uk", label: "Testimonials", external: true },
     { href: "https://www.guessandflag.co.uk/strategic-applications", label: "Strategic Guide", external: true },
-    { href: "/competitions", label: "Competitions", external: false },
   ];
 
-  const allLinks = [...primaryLinks, ...moreLinks];
+  const allLinks = [...primaryLinks, ...nmdsLinks, ...moreLinks];
 
   const handleNavClick = (href: string, external: boolean) => {
     setIsMobileMenuOpen(false);
@@ -109,6 +115,30 @@ const Navbar = () => {
           <div className="hidden lg:flex items-center gap-6">
             {primaryLinks.map(renderLink)}
             
+            {/* NMDS Dropdown */}
+            <DropdownMenu>
+              <DropdownMenuTrigger className="flex items-center gap-1 text-gray-700 hover:text-primary transition-colors duration-200 font-medium text-sm">
+                NMDS <ChevronDown className="w-4 h-4" />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="bg-white border border-gray-200 shadow-lg z-50">
+                {nmdsLinks.map((link) => (
+                  <DropdownMenuItem
+                    key={link.href}
+                    className="cursor-pointer hover:bg-gray-100"
+                    onClick={() => {
+                      if (link.external) {
+                        window.open(link.href, '_blank');
+                      } else {
+                        window.location.href = link.href;
+                      }
+                    }}
+                  >
+                    {link.label}
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
+
             {/* More Dropdown */}
             <DropdownMenu>
               <DropdownMenuTrigger className="flex items-center gap-1 text-gray-700 hover:text-primary transition-colors duration-200 font-medium text-sm">
@@ -143,7 +173,7 @@ const Navbar = () => {
                 More <ChevronDown className="w-4 h-4" />
               </DropdownMenuTrigger>
               <DropdownMenuContent className="bg-white border border-gray-200 shadow-lg z-50">
-                {[primaryLinks[2], ...moreLinks].map((link) => (
+                {[primaryLinks[2], ...nmdsLinks, ...moreLinks].map((link) => (
                   <DropdownMenuItem
                     key={link.href}
                     className="cursor-pointer hover:bg-gray-100"
