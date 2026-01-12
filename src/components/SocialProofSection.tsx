@@ -1,5 +1,6 @@
-import { Star, Play, ImageIcon } from "lucide-react";
+import { Play, ImageIcon } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import trustpilotProof from "@/assets/trustpilot-proof.png";
 
 const outcomes = [
   "Oxford", "Cambridge", "Imperial", "UCL", "KCL", "Edinburgh", "Bristol", "Manchester"
@@ -9,15 +10,21 @@ const SocialProofSection = () => {
   return (
     <section className="bg-gradient-to-b from-secondary to-white py-16">
       <div className="container mx-auto px-6">
-        {/* Trustpilot Badge */}
+        {/* Trustpilot Badge - Actual Proof */}
         <div className="flex flex-col items-center justify-center mb-12">
-          <div className="flex items-center gap-2 mb-2">
-            {[...Array(5)].map((_, i) => (
-              <Star key={i} className="w-8 h-8 fill-green-500 text-green-500" />
-            ))}
-          </div>
-          <p className="text-2xl font-bold text-primary">Excellent</p>
-          <p className="text-gray-600">Based on <span className="font-semibold">300+ reviews</span> on Trustpilot</p>
+          <a 
+            href="https://uk.trustpilot.com/review/myucat.co.uk" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="hover:opacity-90 transition-opacity"
+          >
+            <img 
+              src={trustpilotProof} 
+              alt="MyUCAT Trustpilot Rating - 5.0 stars with 555 reviews" 
+              className="max-w-md w-full h-auto rounded-lg shadow-lg"
+            />
+          </a>
+          <p className="text-gray-600 mt-4">Based on <span className="font-semibold">500+ reviews</span> on Trustpilot</p>
         </div>
 
         {/* Outcome Universities */}
