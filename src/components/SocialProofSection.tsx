@@ -1,7 +1,15 @@
-import { ImageIcon } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
 import trustpilotProof from "@/assets/trustpilot-proof.png";
 import studentSuccessCollage from "@/assets/student-success-collage.png";
+import successScreenshot1 from "@/assets/success-screenshot-1.png";
+import successScreenshot2 from "@/assets/success-screenshot-2.png";
+import successScreenshot3 from "@/assets/success-screenshot-3.png";
+import successScreenshot4 from "@/assets/success-screenshot-4.png";
+import successScreenshot5 from "@/assets/success-screenshot-5.png";
+import successScreenshot6 from "@/assets/success-screenshot-6.png";
+import successScreenshot7 from "@/assets/success-screenshot-7.png";
+
+const topRowScreenshots = [successScreenshot1, successScreenshot2, successScreenshot3, successScreenshot4];
+const bottomRowScreenshots = [successScreenshot5, successScreenshot6, successScreenshot7];
 
 const destinations = [
   "Medicine @ Oxford",
@@ -61,13 +69,14 @@ const SocialProofSection = () => {
           
           {/* Top Row - Screenshots */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-            {[1, 2, 3, 4].map((_, index) => (
-              <Card key={index} className="aspect-[4/3] bg-secondary/50 border-dashed border-2 border-primary/20 hover:border-primary/40 transition-colors">
-                <CardContent className="h-full flex flex-col items-center justify-center p-4">
-                  <ImageIcon className="w-8 h-8 text-primary/30 mb-2" />
-                  <p className="text-xs text-gray-500 text-center">Add screenshot</p>
-                </CardContent>
-              </Card>
+            {topRowScreenshots.map((screenshot, index) => (
+              <div key={index} className="rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow bg-white">
+                <img 
+                  src={screenshot} 
+                  alt={`Student success story ${index + 1}`}
+                  className="w-full h-auto object-cover"
+                />
+              </div>
             ))}
           </div>
 
@@ -83,14 +92,15 @@ const SocialProofSection = () => {
           </div>
 
           {/* Bottom Row - Screenshots */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[1, 2, 3, 4].map((_, index) => (
-              <Card key={index} className="aspect-[4/3] bg-secondary/50 border-dashed border-2 border-primary/20 hover:border-primary/40 transition-colors">
-                <CardContent className="h-full flex flex-col items-center justify-center p-4">
-                  <ImageIcon className="w-8 h-8 text-primary/30 mb-2" />
-                  <p className="text-xs text-gray-500 text-center">Add screenshot</p>
-                </CardContent>
-              </Card>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {bottomRowScreenshots.map((screenshot, index) => (
+              <div key={index} className="rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow bg-white">
+                <img 
+                  src={screenshot} 
+                  alt={`Student success story ${index + 5}`}
+                  className="w-full h-auto object-cover"
+                />
+              </div>
             ))}
           </div>
         </div>
