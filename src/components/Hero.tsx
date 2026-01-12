@@ -10,18 +10,7 @@ const Hero = () => {
       
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="text-center max-w-4xl mx-auto space-y-5 md:space-y-8 animate-fade-in">
-          {/* Trust Badges - Different content on mobile vs desktop */}
-          {/* Mobile badges */}
-          <div className="flex md:hidden flex-wrap items-center justify-center gap-2 mb-4">
-            <div className="flex items-center gap-1.5 bg-white/80 backdrop-blur px-2.5 py-1.5 rounded-full shadow-sm border border-primary/10">
-              <Award className="w-4 h-4 text-primary" />
-              <span className="text-xs font-medium text-primary-dark">35+ Oxbridge Med in '25</span>
-            </div>
-            <div className="flex items-center gap-1.5 bg-white/80 backdrop-blur px-2.5 py-1.5 rounded-full shadow-sm border border-primary/10">
-              <Users className="w-4 h-4 text-primary" />
-              <span className="text-xs font-medium text-primary-dark">1000s+ Med/Dent Entries</span>
-            </div>
-          </div>
+          {/* Trust Badges - Desktop only */}
           
           {/* Desktop badges */}
           <div className="hidden md:flex flex-wrap items-center justify-center gap-4 mb-6">
