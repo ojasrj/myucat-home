@@ -22,8 +22,8 @@ const Timeline = () => {
         "A supportive national peer community"
       ],
       links: [
-        { label: "Explore NMDS", href: "#nmds-section", primary: true },
-        { label: "View NMDS Events Calendar", href: "https://www.guessandflag.co.uk/nmds-events", icon: Calendar }
+        { label: "Explore NMDS", href: "https://medsoc.myucat.co.uk/", primary: true },
+        { label: "View NMDS Events Calendar", href: "https://medsoc.myucat.co.uk/events", icon: Calendar }
       ],
       footer: "Ideal for students in Years 9–12 who want to explore medicine or dentistry before committing."
     },
@@ -46,15 +46,20 @@ const Timeline = () => {
             },
             { label: "Free UCAT resources & guides", subtext: "(Question walkthroughs, strategy guides, calculators & more)" }
           ],
-          link: { label: "Explore Free UCAT Resources", href: "https://questions.ucat.com/courses" }
+          freeResourceLinks: [
+            { label: "UCAT Guides", href: "https://learn.myucat.co.uk/ucat-resources" },
+            { label: "UCAT Course", href: "https://questions.ucat.com/courses" },
+            { label: "Score Calculator", href: "https://myucat.co.uk/pages/ucat-score-converter" },
+            { label: "Qbank", href: "https://questions.ucat.com/" }
+          ]
         },
         {
           type: "paid",
           title: "Progress to expert support",
           subtitle: "Choose the pathway that fits you best:",
           links: [
-            { label: "UCAT Summer Programme", href: "https://www.guessandflag.co.uk/summer-programme" },
-            { label: "UCAT 1-1 Tuition with Top-Scoring Tutors", href: "https://www.guessandflag.co.uk/ucat-1-1" }
+            { label: "UCAT Summer Programme", href: "https://learn.myucat.co.uk/summer-programme" },
+            { label: "UCAT 1-1 Tuition with Top-Scoring Tutors", href: "https://learn.myucat.co.uk/ucat-1-1" }
           ],
           footer: "Both options run throughout the summer and are fully aligned with the updated UCAT format."
         }
@@ -74,17 +79,17 @@ const Timeline = () => {
             { 
               label: "Free Personal Statement Event", 
               badge: "September 2026 – coming soon",
-              videoLink: { label: "Watch last year's recording", href: "#" }
+              videoLink: { label: "Watch last year's recording", href: "https://www.youtube.com/watch?v=w_ILIsm0cqA" }
             },
             { label: "Free Personal Statement Guide" }
           ],
-          link: { label: "Access Free Personal Statement Resources", href: "#" }
+          link: { label: "Access Free Personal Statement Guide", href: "https://drive.google.com/file/d/1Rqsxn1pxXbFPD3GjjTRD1JG6w_Ut6ywx/view?usp=sharing" }
         },
         {
           type: "paid",
           title: "Personalised feedback",
           links: [
-            { label: "Book 1-1 Personal Statement Support", href: "https://www.guessandflag.co.uk/personal-statements" }
+            { label: "Book 1-1 Personal Statement Support", href: "https://learn.myucat.co.uk/personal-statements" }
           ],
           footer: "Focused on reflection, clarity, and aligning your experiences with admissions criteria."
         }
@@ -105,7 +110,7 @@ const Timeline = () => {
         "Apply confidently with a clear strategy"
       ],
       links: [
-        { label: "Explore the Strategic Application Guide", href: "https://www.guessandflag.co.uk/strategic-applications", primary: true }
+        { label: "Explore the Strategic Application Guide", href: "https://learn.myucat.co.uk/strategic-applications", primary: true }
       ],
       footer: "Essential for applicants aiming for competitive medical and dental schools."
     },
@@ -120,15 +125,15 @@ const Timeline = () => {
           type: "paid",
           title: "Structured programmes",
           links: [
-            { label: "Medical Interview Programme", href: "https://www.guessandflag.co.uk/medical-interview-programme" },
-            { label: "Dental Interview Programme", href: "https://www.guessandflag.co.uk/dental-interview-programme" }
+            { label: "Medical Interview Programme", href: "https://learn.myucat.co.uk/medical-interview-programme" },
+            { label: "Dental Interview Programme", href: "https://learn.myucat.co.uk/dental-interview-programme" }
           ]
         },
         {
           type: "mixed",
           title: "Additional options",
           links: [
-            { label: "1-1 Mock Interviews", href: "https://www.guessandflag.co.uk/interviews", subtext: "(Oxbridge, MMI & panel styles)" }
+            { label: "1-1 Mock Interviews", href: "https://learn.myucat.co.uk/interviews", subtext: "(Oxbridge, MMI & panel styles)" }
           ],
           freeItems: [
             "Free university-specific interview events",
@@ -136,8 +141,8 @@ const Timeline = () => {
             "Recorded walkthroughs"
           ],
           additionalLinks: [
-            { label: "View Interview Events Calendar", href: "#", icon: Calendar },
-            { label: "Watch Past Interview Event Recordings", href: "#", icon: Play }
+            { label: "View Interview Events Calendar", href: "https://medsoc.myucat.co.uk/events", icon: Calendar },
+            { label: "Watch Past Interview Event Recordings", href: "https://questions.ucat.com/courses", icon: Play }
           ]
         }
       ],
@@ -165,8 +170,8 @@ const Timeline = () => {
             { label: "Free A Level videos on YouTube" }
           ],
           additionalLinks: [
-            { label: "View events calendar", href: "#", icon: Calendar },
-            { label: "Visit our YouTube channel", href: "https://www.youtube.com/@MyUCAT", icon: Youtube }
+            { label: "View events calendar", href: "https://medsoc.myucat.co.uk/events", icon: Calendar },
+            { label: "Visit our YouTube channel", href: "https://www.youtube.com/@myucatadmissions", icon: Youtube }
           ]
         }
       ],
@@ -311,6 +316,23 @@ const Timeline = () => {
                                   </li>
                                 ))}
                               </ul>
+                            )}
+
+                            {section.freeResourceLinks && (
+                              <div className="flex flex-wrap gap-2 mb-3">
+                                {section.freeResourceLinks.map((link, linkIndex) => (
+                                  <Button
+                                    key={linkIndex}
+                                    variant="outline"
+                                    size="sm"
+                                    className="bg-white hover:bg-primary hover:text-white"
+                                    onClick={() => window.open(link.href, '_blank')}
+                                  >
+                                    {link.label}
+                                    <ExternalLink className="w-3 h-3 ml-1" />
+                                  </Button>
+                                ))}
+                              </div>
                             )}
                             
                             {section.freeItems && (
