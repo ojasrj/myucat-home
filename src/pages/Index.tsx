@@ -6,6 +6,7 @@ import TeamSection from "@/components/TeamSection";
 import Programmes from "@/components/Programmes";
 import PhotoGallery from "@/components/PhotoGallery";
 import Testimonials from "@/components/Testimonials";
+import NMDSSection from "@/components/NMDSSection";
 import { Button } from "@/components/ui/button";
 import { Instagram, Linkedin, MessageCircle, Phone } from "lucide-react";
 import TikTokIcon from "@/components/icons/TikTokIcon";
@@ -19,6 +20,7 @@ const Index = () => {
       <Timeline />
       <TeamSection />
       <Programmes />
+      <NMDSSection />
       <PhotoGallery />
       <Testimonials />
 
