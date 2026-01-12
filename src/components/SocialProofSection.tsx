@@ -1,4 +1,3 @@
-import { ImageIcon } from "lucide-react";
 import trustpilotProof from "@/assets/trustpilot-proof.png";
 import studentSuccessCollage from "@/assets/student-success-collage.png";
 import successScreenshot1 from "@/assets/success-screenshot-1.png";
@@ -8,10 +7,13 @@ import successScreenshot4 from "@/assets/success-screenshot-4.png";
 import successScreenshot5 from "@/assets/success-screenshot-5.png";
 import successScreenshot6 from "@/assets/success-screenshot-6.png";
 import successScreenshot7 from "@/assets/success-screenshot-7.png";
+import successScreenshot8 from "@/assets/success-screenshot-8.png";
+import successScreenshot9 from "@/assets/success-screenshot-9.png";
+import successScreenshot10 from "@/assets/success-screenshot-10.png";
+import successScreenshot11 from "@/assets/success-screenshot-11.png";
 
 const topRowScreenshots = [successScreenshot1, successScreenshot2, successScreenshot3, successScreenshot4];
-const bottomRowScreenshots = [successScreenshot5, successScreenshot6, successScreenshot7];
-const placeholderCount = { top: 0, bottom: 1 }; // Add placeholders to fill grid
+const bottomRowScreenshots = [successScreenshot5, successScreenshot6, successScreenshot7, successScreenshot8, successScreenshot9, successScreenshot10, successScreenshot11];
 
 const destinations = [
   "Medicine @ Oxford",
@@ -102,16 +104,6 @@ const SocialProofSection = () => {
                   alt={`Student success story ${index + 5}`}
                   className="w-full h-auto object-cover"
                 />
-              </div>
-            ))}
-            {/* Placeholder boxes to fill the grid */}
-            {Array.from({ length: placeholderCount.bottom }).map((_, index) => (
-              <div 
-                key={`placeholder-${index}`} 
-                className="rounded-lg overflow-hidden shadow-md bg-secondary/50 border-dashed border-2 border-primary/20 hover:border-primary/40 transition-colors aspect-[4/3] flex flex-col items-center justify-center"
-              >
-                <ImageIcon className="w-8 h-8 text-primary/30 mb-2" />
-                <p className="text-xs text-muted-foreground text-center">Add screenshot</p>
               </div>
             ))}
           </div>
