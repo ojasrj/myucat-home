@@ -62,26 +62,26 @@ const SocialProofSection = () => {
         <div className="mb-12">
           <h3 className="text-center text-lg font-semibold text-primary mb-6">Student Success Stories</h3>
           
-          {/* Grid - aspect ratio ~3:2 to match Trustpilot review cards */}
+          {/* Grid - matches screenshot aspect ratio */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {/* Actual screenshots */}
             {screenshots.map((src, index) => (
               <div 
                 key={`screenshot-${index}`} 
-                className="aspect-[3/2] rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:scale-[1.02] bg-white"
+                className="rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:scale-[1.02] bg-white"
               >
                 <img 
                   src={src} 
                   alt={`Student review ${index + 1}`}
-                  className="w-full h-full object-cover"
+                  className="w-full h-auto"
                 />
               </div>
             ))}
-            {/* Placeholder boxes */}
+            {/* Placeholder boxes - same aspect ratio as screenshots */}
             {Array.from({ length: placeholderCount }).map((_, index) => (
               <div 
                 key={`placeholder-${index}`} 
-                className="aspect-[3/2] rounded-xl overflow-hidden shadow-md bg-secondary/50 border-2 border-dashed border-primary/20 flex flex-col items-center justify-center hover:border-primary/40 transition-colors"
+                className="aspect-[540/270] rounded-xl overflow-hidden shadow-md bg-secondary/50 border-2 border-dashed border-primary/20 flex flex-col items-center justify-center hover:border-primary/40 transition-colors"
               >
                 <ImageIcon className="w-8 h-8 text-primary/30 mb-2" />
                 <p className="text-xs text-muted-foreground">Screenshot {screenshots.length + index + 1}</p>
