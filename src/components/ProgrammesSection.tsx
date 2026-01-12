@@ -8,7 +8,7 @@ const programmes = [{
   title: "Summer UCAT Programme",
   description: "A comprehensive, multi-month course to master the UCAT and personal statement, with a brief introduction in September to interview training.",
   shortDescription: "Master the UCAT with our comprehensive course.",
-  outcome: "From UCAT beginner → 3000+ scorer",
+  outcome: "From UCAT beginner → 2300+ scorer",
   link: "https://learn.myucat.co.uk/summer-programme",
   featured: true
 }, {
