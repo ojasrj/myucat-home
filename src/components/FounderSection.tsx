@@ -1,4 +1,4 @@
-import { CheckCircle, Star, Trophy, Users } from "lucide-react";
+import { CheckCircle, Star, Trophy } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -38,10 +38,6 @@ const FounderSection = () => {
                 2640/2700 UCAT
               </Badge>
               <Badge className="bg-primary/10 text-primary hover:bg-primary/20 px-3 py-1.5 text-sm">
-                <Users className="w-4 h-4 mr-1" />
-                Personally supported 1000s of students into medicine & dentistry
-              </Badge>
-              <Badge className="bg-primary/10 text-primary hover:bg-primary/20 px-3 py-1.5 text-sm">
                 <Star className="w-4 h-4 mr-1" />
                 500+ 5-star reviews
               </Badge>
@@ -53,7 +49,10 @@ const FounderSection = () => {
             <Accordion type="single" collapsible defaultValue="beginning" className="space-y-4">
               <AccordionItem value="beginning" className="border rounded-xl px-6 bg-white shadow-sm">
                 <AccordionTrigger className="text-lg font-semibold text-primary hover:no-underline">
-                  The Beginning
+                  <div className="text-left">
+                    <div>The Beginning</div>
+                    <p className="text-sm font-normal text-muted-foreground mt-1">How MyUCAT started when Ojas was just 17...</p>
+                  </div>
                 </AccordionTrigger>
                 <AccordionContent className="text-gray-700 leading-relaxed space-y-4">
                   <p>
@@ -67,7 +66,10 @@ const FounderSection = () => {
 
               <AccordionItem value="why" className="border rounded-xl px-6 bg-white shadow-sm">
                 <AccordionTrigger className="text-lg font-semibold text-primary hover:no-underline">
-                  Why I Started MyUCAT
+                  <div className="text-left">
+                    <div>Why I Started MyUCAT</div>
+                    <p className="text-sm font-normal text-muted-foreground mt-1">The gap in genuine, expert-led support...</p>
+                  </div>
                 </AccordionTrigger>
                 <AccordionContent className="text-gray-700 leading-relaxed space-y-4">
                   <p>
@@ -81,7 +83,10 @@ const FounderSection = () => {
 
               <AccordionItem value="philosophy" className="border rounded-xl px-6 bg-white shadow-sm">
                 <AccordionTrigger className="text-lg font-semibold text-primary hover:no-underline">
-                  Our Philosophy
+                  <div className="text-left">
+                    <div>Our Philosophy</div>
+                    <p className="text-sm font-normal text-muted-foreground mt-1">Evidence-based, genuinely useful guidance...</p>
+                  </div>
                 </AccordionTrigger>
                 <AccordionContent className="text-gray-700 leading-relaxed">
                   <p>
@@ -92,11 +97,14 @@ const FounderSection = () => {
 
               <AccordionItem value="today" className="border rounded-xl px-6 bg-white shadow-sm">
                 <AccordionTrigger className="text-lg font-semibold text-primary hover:no-underline">
-                  Where We Are Today
+                  <div className="text-left">
+                    <div>Where We Are Today</div>
+                    <p className="text-sm font-normal text-muted-foreground mt-1">5,000+ students, 150+ expert tutors...</p>
+                  </div>
                 </AccordionTrigger>
                 <AccordionContent className="text-gray-700 leading-relaxed space-y-4">
                   <p>
-                    A lot has changed since those early days. We now support over 5,000 students each year and operate as a social enterprise with a team of more than 150 tutors. Every tutor is a leading expert in their area of the application process — from relatable medical students and qualified doctors to interview panellists, teachers, and educators from some of the UK's top schools. We take only the very best, and almost all of the highest-scoring tutors at Oxford, Cambridge, Imperial, and King's College London tutor with us — many of whom are former MyUCAT students themselves.
+                    A lot has changed since those early days. We now support over 5,000 students each year and operate as a social enterprise with a team of more than 150 tutors. Every tutor is a leading expert in their area of the application process - from relatable medical students and qualified doctors to interview panellists, teachers, and educators from some of the UK's top schools. We take only the very best, and almost all of the highest-scoring tutors at Oxford, Cambridge, Imperial, and King's College London tutor with us - many of whom are former MyUCAT students themselves.
                   </p>
                   <p>
                     The results speak for themselves. Our students consistently outperform the competition by a wide margin, securing over 35 Oxbridge medicine offers in 2025 alone.
