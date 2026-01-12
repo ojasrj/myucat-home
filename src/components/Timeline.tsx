@@ -102,10 +102,10 @@ const Timeline = () => {
       subtitle: "Apply smart, not blindly",
       Icon: Target,
       description: "This is where strong candidates separate themselves.",
-      highlight: "Our Strategic Application Guide helps students:",
+      highlight: "Our Strategic Application Guide shows you:",
       features: [
-        "Choose universities based on data, scoring systems, and risk",
-        "Avoid common UCAS mistakes",
+        "Exactly how each medical and dental school scores your application",
+        "How universities use UCAT scores — thresholds, rankings, and weighting",
         "Maximise interview chances",
         "Apply confidently with a clear strategy"
       ],
@@ -118,7 +118,7 @@ const Timeline = () => {
       number: 5,
       emoji: "5️⃣",
       title: "Medical & Dental Interviews",
-      subtitle: "For the most committed candidates",
+      subtitle: "Prepare for the interviews you've earned",
       Icon: Handshake,
       sections: [
         {
@@ -146,7 +146,7 @@ const Timeline = () => {
           ]
         }
       ],
-      footer: "Delivered by doctors, dentists, and experienced interview panellists."
+      footer: "Delivered by doctors, dentists, and experienced interview tutors."
     },
     {
       number: 6,
@@ -237,7 +237,7 @@ const Timeline = () => {
                       <ul className="space-y-2">
                         {step.features.map((feature, i) => (
                           <li key={i} className="flex items-start gap-2">
-                            <span className="text-green-500 mt-0.5">✅</span>
+                            <span className="text-emerald-500 mt-0.5">✅</span>
                             <span className="text-gray-700">{feature}</span>
                           </li>
                         ))}
@@ -272,9 +272,9 @@ const Timeline = () => {
                       <div className="space-y-6">
                         {step.sections.map((section, sectionIndex) => (
                           <div key={sectionIndex} className={`rounded-xl p-5 ${
-                            section.type === 'free' ? 'bg-green-50 border border-green-200' :
-                            section.type === 'paid' ? 'bg-blue-50 border border-blue-200' :
-                            'bg-gray-50 border border-gray-200'
+                            section.type === 'free' ? 'bg-emerald-50 border border-emerald-200' :
+                            section.type === 'paid' ? 'bg-primary/5 border border-primary/20' :
+                            'bg-secondary/50 border border-primary/10'
                           }`}>
                             <div className="flex items-center gap-2 mb-3">
                               {section.type === 'free' && <span className="text-lg">🆓</span>}
@@ -337,7 +337,7 @@ const Timeline = () => {
                             
                             {section.freeItems && (
                               <div className="mb-3">
-                                <p className="text-sm font-medium text-green-700 mb-2">🆓 Free university-specific interview events:</p>
+                                <p className="text-sm font-medium text-emerald-700 mb-2">🆓 Free university-specific interview events:</p>
                                 <ul className="text-sm text-gray-600 space-y-1 ml-4">
                                   {section.freeItems.slice(1).map((item, i) => (
                                     <li key={i}>• {item}</li>
