@@ -13,6 +13,7 @@ import {
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [openMobileDropdown, setOpenMobileDropdown] = useState<string | null>(null);
   const isMobile = useIsMobile();
   const location = useLocation();
 
@@ -25,28 +26,55 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const primaryLinks = [
-    { href: "https://www.guessandflag.co.uk/summer-programme", label: "UCAT", external: true },
-    { href: "https://www.guessandflag.co.uk/interviews", label: "Interviews", external: true },
-    { href: "https://www.guessandflag.co.uk/a-level-tuition", label: "A Levels", external: true },
+  const ucatLinks = [
+    { href: "https://learn.myucat.co.uk/summer-programme", label: "UCAT Summer Programme", external: true },
+    { href: "https://learn.myucat.co.uk/ucat-1-1", label: "UCAT 1-1", external: true },
+    { href: "https://learn.myucat.co.uk/ucat-resources", label: "UCAT Guides", external: true },
+    { href: "https://questions.ucat.com/courses", label: "Free Courses", external: true },
+    { href: "https://myucat.co.uk/pages/ucat-score-converter", label: "UCAT Score Calculator", external: true },
+    { href: "https://questions.ucat.com/", label: "UCAT Question Bank (In Progress)", external: true },
+    { href: "https://learn.myucat.co.uk/strategic-applications/ucat-score-comparison", label: "UCAT Score Comparison", external: true },
+  ];
+
+  const interviewLinks = [
+    { href: "https://learn.myucat.co.uk/medical-interview-programme", label: "Medical Interview Programme", external: true },
+    { href: "https://learn.myucat.co.uk/dental-interview-programme", label: "Dental Interview Programme", external: true },
+    { href: "https://learn.myucat.co.uk/dental-interview-programme/dental-school-interview-questions", label: "Dental Interview Guide", external: true },
+    { href: "https://learn.myucat.co.uk/interviews", label: "Mock Interviews & 1-1 Lessons", external: true },
+  ];
+
+  const personalStatementLinks = [
+    { href: "https://learn.myucat.co.uk/summer-programme", label: "Personal Statement Editing", external: true },
+    { href: "https://drive.google.com/file/u/0/d/1Rqsxn1pxXbFPD3GjjTRD1JG6w_Ut6ywx/view", label: "Personal Statement Guide", external: true },
+    { href: "https://www.youtube.com/watch?v=_joYTWNIwUk", label: "Personal Statement Video", external: true },
+  ];
+
+  const freeResourcesLinks = [
+    { href: "https://questions.ucat.com/courses", label: "Course Portal", external: true },
+    { href: "https://myucat.co.uk/pages/ucat-score-converter", label: "UCAT Score Calculator", external: true },
+    { href: "https://questions.ucat.com/", label: "UCAT Question Bank (In Progress)", external: true },
+    { href: "https://learn.myucat.co.uk/dental-interview-programme/dental-school-interview-questions", label: "Dental Interview Guide", external: true },
+    { href: "https://drive.google.com/file/u/0/d/1Rqsxn1pxXbFPD3GjjTRD1JG6w_Ut6ywx/view", label: "Personal Statement Guide", external: true },
+    { href: "https://learn.myucat.co.uk/strategic-applications", label: "Strategic Application Guide", external: true },
   ];
 
   const nmdsLinks = [
-    { href: "https://medsoc.myucat.co.uk", label: "About NMDS", external: true },
-    { href: "https://medsoc.myucat.co.uk/events", label: "Events", external: true },
-    { href: "/competitions", label: "Competitions", external: false },
-    { href: "https://medsoc.myucat.co.uk/free-courses", label: "Free Courses", external: true },
+    { href: "https://medsoc.myucat.co.uk/", label: "About", external: true },
+    { href: "https://medsoc.myucat.co.uk/events", label: "Event Calendar", external: true },
+    { href: "https://medsoc.myucat.co.uk/competitions", label: "Competitions", external: true },
   ];
 
-  const moreLinks = [
-    { href: "https://uk.trustpilot.com/review/myucat.co.uk", label: "Testimonials", external: true },
-    { href: "https://www.guessandflag.co.uk/strategic-applications", label: "Strategic Guide", external: true },
+  const navCategories = [
+    { label: "UCAT", links: ucatLinks },
+    { label: "Interview", links: interviewLinks },
+    { label: "Personal Statement", links: personalStatementLinks },
+    { label: "Free Resources", links: freeResourcesLinks },
+    { label: "NMDS", links: nmdsLinks },
   ];
-
-  const allLinks = [...primaryLinks, ...nmdsLinks, ...moreLinks];
 
   const handleNavClick = (href: string, external: boolean) => {
     setIsMobileMenuOpen(false);
+    setOpenMobileDropdown(null);
     
     if (external) {
       window.open(href, '_blank');
@@ -62,38 +90,8 @@ const Navbar = () => {
     }
   };
 
-  const renderLink = (link: { href: string; label: string; external: boolean }) => {
-    if (link.external) {
-      return (
-        <button
-          key={link.href}
-          onClick={() => handleNavClick(link.href, link.external)}
-          className="text-gray-700 hover:text-primary transition-colors duration-200 font-medium text-sm whitespace-nowrap"
-        >
-          {link.label}
-        </button>
-      );
-    } else if (link.href.startsWith('#')) {
-      return (
-        <button
-          key={link.href}
-          onClick={() => handleNavClick(link.href, link.external)}
-          className="text-gray-700 hover:text-primary transition-colors duration-200 font-medium text-sm whitespace-nowrap"
-        >
-          {link.label}
-        </button>
-      );
-    } else {
-      return (
-        <Link
-          key={link.href}
-          to={link.href}
-          className="text-gray-700 hover:text-primary transition-colors duration-200 font-medium text-sm whitespace-nowrap"
-        >
-          {link.label}
-        </Link>
-      );
-    }
+  const toggleMobileDropdown = (label: string) => {
+    setOpenMobileDropdown(openMobileDropdown === label ? null : label);
   };
 
   return (
@@ -112,78 +110,73 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-6">
-            {primaryLinks.map(renderLink)}
-            
-            {/* NMDS Dropdown */}
-            <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center gap-1 text-gray-700 hover:text-primary transition-colors duration-200 font-medium text-sm">
-                NMDS <ChevronDown className="w-4 h-4" />
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="bg-white border border-gray-200 shadow-lg z-50">
-                {nmdsLinks.map((link) => (
-                  <DropdownMenuItem
-                    key={link.href}
-                    className="cursor-pointer hover:bg-gray-100"
-                    onClick={() => {
-                      if (link.external) {
-                        window.open(link.href, '_blank');
-                      } else {
-                        window.location.href = link.href;
-                      }
-                    }}
-                  >
-                    {link.label}
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuContent>
-            </DropdownMenu>
-
-            {/* More Dropdown */}
-            <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center gap-1 text-gray-700 hover:text-primary transition-colors duration-200 font-medium text-sm">
-                More <ChevronDown className="w-4 h-4" />
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="bg-white border border-gray-200 shadow-lg z-50">
-                {moreLinks.map((link) => (
-                  <DropdownMenuItem
-                    key={link.href}
-                    className="cursor-pointer hover:bg-gray-100"
-                    onClick={() => {
-                      if (link.external) {
-                        window.open(link.href, '_blank');
-                      } else {
-                        window.location.href = link.href;
-                      }
-                    }}
-                  >
-                    {link.label}
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuContent>
-            </DropdownMenu>
+          <div className="hidden lg:flex items-center gap-4">
+            {navCategories.map((category) => (
+              <DropdownMenu key={category.label}>
+                <DropdownMenuTrigger className="flex items-center gap-1 text-gray-700 hover:text-primary transition-colors duration-200 font-medium text-sm whitespace-nowrap">
+                  {category.label} <ChevronDown className="w-4 h-4" />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="bg-white border border-gray-200 shadow-lg z-50 min-w-[220px]">
+                  {category.links.map((link) => (
+                    <DropdownMenuItem
+                      key={link.href + link.label}
+                      className="cursor-pointer hover:bg-gray-100"
+                      onClick={() => handleNavClick(link.href, link.external)}
+                    >
+                      {link.label}
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ))}
           </div>
 
-          {/* Tablet Navigation - fewer items */}
-          <div className="hidden md:flex lg:hidden items-center gap-4">
-            {primaryLinks.slice(0, 2).map(renderLink)}
+          {/* Tablet Navigation */}
+          <div className="hidden md:flex lg:hidden items-center gap-3">
+            {navCategories.slice(0, 3).map((category) => (
+              <DropdownMenu key={category.label}>
+                <DropdownMenuTrigger className="flex items-center gap-1 text-gray-700 hover:text-primary transition-colors duration-200 font-medium text-sm whitespace-nowrap">
+                  {category.label} <ChevronDown className="w-3 h-3" />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="bg-white border border-gray-200 shadow-lg z-50 min-w-[200px]">
+                  {category.links.map((link) => (
+                    <DropdownMenuItem
+                      key={link.href + link.label}
+                      className="cursor-pointer hover:bg-gray-100 text-sm"
+                      onClick={() => handleNavClick(link.href, link.external)}
+                    >
+                      {link.label}
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ))}
             
             <DropdownMenu>
               <DropdownMenuTrigger className="flex items-center gap-1 text-gray-700 hover:text-primary transition-colors duration-200 font-medium text-sm">
-                More <ChevronDown className="w-4 h-4" />
+                More <ChevronDown className="w-3 h-3" />
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="bg-white border border-gray-200 shadow-lg z-50">
-                {[primaryLinks[2], ...nmdsLinks, ...moreLinks].map((link) => (
+              <DropdownMenuContent className="bg-white border border-gray-200 shadow-lg z-50 min-w-[200px]">
+                <DropdownMenuItem className="font-semibold text-primary cursor-default" disabled>
+                  Free Resources
+                </DropdownMenuItem>
+                {freeResourcesLinks.map((link) => (
                   <DropdownMenuItem
-                    key={link.href}
-                    className="cursor-pointer hover:bg-gray-100"
-                    onClick={() => {
-                      if (link.external) {
-                        window.open(link.href, '_blank');
-                      } else {
-                        window.location.href = link.href;
-                      }
-                    }}
+                    key={link.href + link.label}
+                    className="cursor-pointer hover:bg-gray-100 text-sm pl-4"
+                    onClick={() => handleNavClick(link.href, link.external)}
+                  >
+                    {link.label}
+                  </DropdownMenuItem>
+                ))}
+                <DropdownMenuItem className="font-semibold text-primary cursor-default mt-2" disabled>
+                  NMDS
+                </DropdownMenuItem>
+                {nmdsLinks.map((link) => (
+                  <DropdownMenuItem
+                    key={link.href + link.label}
+                    className="cursor-pointer hover:bg-gray-100 text-sm pl-4"
+                    onClick={() => handleNavClick(link.href, link.external)}
                   >
                     {link.label}
                   </DropdownMenuItem>
@@ -213,37 +206,37 @@ const Navbar = () => {
 
         {/* Mobile Navigation Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden bg-white border-t border-gray-200 py-4 shadow-lg">
-            <div className="flex flex-col space-y-2">
-              {allLinks.map((link) => (
-                link.external ? (
+          <div className="md:hidden bg-white border-t border-gray-200 py-4 shadow-lg max-h-[80vh] overflow-y-auto">
+            <div className="flex flex-col space-y-1">
+              {navCategories.map((category) => (
+                <div key={category.label}>
                   <button
-                    key={link.href}
-                    onClick={() => handleNavClick(link.href, link.external)}
-                    className="text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors duration-200 font-medium text-left px-4 py-3"
+                    onClick={() => toggleMobileDropdown(category.label)}
+                    className="flex items-center justify-between w-full text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors duration-200 font-medium text-left px-4 py-3"
                   >
-                    {link.label}
+                    {category.label}
+                    <ChevronDown 
+                      className={`w-4 h-4 transition-transform duration-200 ${
+                        openMobileDropdown === category.label ? 'rotate-180' : ''
+                      }`} 
+                    />
                   </button>
-                ) : link.href.startsWith('#') ? (
-                  <button
-                    key={link.href}
-                    onClick={() => handleNavClick(link.href, link.external)}
-                    className="text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors duration-200 font-medium text-left px-4 py-3"
-                  >
-                    {link.label}
-                  </button>
-                ) : (
-                  <Link
-                    key={link.href}
-                    to={link.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors duration-200 font-medium text-left px-4 py-3"
-                  >
-                    {link.label}
-                  </Link>
-                )
+                  {openMobileDropdown === category.label && (
+                    <div className="bg-gray-50 py-2">
+                      {category.links.map((link) => (
+                        <button
+                          key={link.href + link.label}
+                          onClick={() => handleNavClick(link.href, link.external)}
+                          className="w-full text-gray-600 hover:text-primary hover:bg-gray-100 transition-colors duration-200 text-sm text-left px-6 py-2"
+                        >
+                          {link.label}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
               ))}
-              <div className="px-4 pt-2">
+              <div className="px-4 pt-4">
                 <Button
                   onClick={() => {
                     setIsMobileMenuOpen(false);
