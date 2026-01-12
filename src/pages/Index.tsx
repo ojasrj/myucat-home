@@ -59,7 +59,7 @@ const Index = () => {
             <Button 
               size="lg"
               className="bg-white text-primary hover:bg-gray-100 px-12 py-8 text-xl transition-all transform hover:scale-105 shadow-xl rounded-full"
-              onClick={() => window.open('https://chat.whatsapp.com/EYQbvty2opY4YWXqq0hXhC', '_blank')}
+              onClick={() => window.open('https://chat.whatsapp.com/EOsY2wTUnFZ4g4iKmh1mcB', '_blank')}
             >
               Join a Free Advice Group
             </Button>
