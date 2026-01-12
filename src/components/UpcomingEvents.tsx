@@ -1,14 +1,15 @@
 import { useState, useEffect } from 'react';
 import { eventService, Event } from '@/services/eventService';
-import { Calendar, Clock, Stethoscope, Scale, GraduationCap, ChevronLeft, ChevronRight, Video, ExternalLink } from 'lucide-react';
+import { Calendar, Clock, ChevronLeft, ChevronRight, Video, ExternalLink } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import ToothIcon from '@/components/icons/ToothIcon';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const UpcomingEvents = () => {
   const [events, setEvents] = useState<Event[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const unsubscribe = eventService.subscribeToEvents((allEvents) => {
@@ -18,16 +19,6 @@ const UpcomingEvents = () => {
     });
     return () => unsubscribe();
   }, []);
-
-  const getCategoryIcon = (category: string) => {
-    switch (category) {
-      case 'Medical Supercurricular': return <Stethoscope className="w-4 h-4" />;
-      case 'Dental Supercurricular': return <ToothIcon size={16} />;
-      case 'Law Supercurricular': return <Scale className="w-4 h-4" />;
-      case 'A Levels': return <GraduationCap className="w-4 h-4" />;
-      default: return <Calendar className="w-4 h-4" />;
-    }
-  };
 
   const getCategoryColor = (category: string) => {
     switch (category) {
@@ -39,7 +30,13 @@ const UpcomingEvents = () => {
     }
   };
 
-  const formatDate = (dateString: string) => {
+  const formatDateShort = (dateString: string) => {
+    return new Date(dateString).toLocaleDateString('en-GB', {
+      day: 'numeric', month: 'short'
+    });
+  };
+
+  const formatDateFull = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('en-GB', {
       weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'
     });
@@ -55,16 +52,16 @@ const UpcomingEvents = () => {
 
   if (events.length === 0) {
     return (
-      <section className="py-16 bg-gray-50">
+      <section className="py-12 md:py-16 bg-gray-50">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Upcoming Free Events</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Upcoming Free Events</h2>
           <p className="text-gray-600 mb-6">No upcoming events scheduled at the moment.</p>
           <Button
             variant="outline"
             onClick={() => window.open('https://medsoc.myucat.co.uk/events', '_blank')}
           >
             <Calendar className="w-4 h-4 mr-2" />
-            View Full Event Calendar
+            View Full Calendar
           </Button>
         </div>
       </section>
@@ -73,6 +70,95 @@ const UpcomingEvents = () => {
 
   const currentEvent = events[currentIndex];
 
+  // Mobile compact view
+  if (isMobile) {
+    return (
+      <section className="py-12 bg-gradient-to-b from-gray-50 to-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-6">
+            <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-3 py-1.5 rounded-full text-xs font-medium mb-3">
+              <Calendar className="w-3 h-3" />
+              Free Events
+            </div>
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">
+              Upcoming Events
+            </h2>
+          </div>
+
+          {/* Compact Event Card */}
+          <Card className="overflow-hidden shadow-md border border-primary/10 mb-4">
+            <CardContent className="p-4">
+              <div className="flex items-start gap-3">
+                {/* Date Badge */}
+                <div className="bg-primary text-white rounded-lg p-2 text-center min-w-[50px]">
+                  <div className="text-lg font-bold leading-none">
+                    {new Date(currentEvent.date).getDate()}
+                  </div>
+                  <div className="text-xs opacity-80">
+                    {new Date(currentEvent.date).toLocaleDateString('en-GB', { month: 'short' })}
+                  </div>
+                </div>
+                
+                {/* Event Info */}
+                <div className="flex-1 min-w-0">
+                  <Badge className={`${getCategoryColor(currentEvent.category)} text-xs mb-1`}>
+                    {currentEvent.category}
+                  </Badge>
+                  <h3 className="font-bold text-gray-900 text-sm leading-tight mb-1 line-clamp-2">
+                    {currentEvent.title}
+                  </h3>
+                  <div className="flex items-center gap-2 text-xs text-gray-500">
+                    <Clock className="w-3 h-3" />
+                    {currentEvent.time}
+                  </div>
+                </div>
+              </div>
+              
+              {/* Join Button */}
+              <Button
+                size="sm"
+                className="w-full mt-3 bg-blue-600 hover:bg-blue-700 text-white"
+                onClick={() => window.open('https://zoom.us/s/93575381575?pwd=qlt0b29YPMqmKIbb1hhbNwwkInNp3C.1', '_blank')}
+              >
+                <Video className="w-3 h-3 mr-1" />
+                Join on Zoom
+              </Button>
+            </CardContent>
+          </Card>
+
+          {/* Navigation */}
+          {events.length > 1 && (
+            <div className="flex items-center justify-between mb-4">
+              <Button variant="ghost" size="sm" onClick={goToPrevious}>
+                <ChevronLeft className="w-4 h-4 mr-1" />
+                Prev
+              </Button>
+              <span className="text-xs text-gray-500">
+                {currentIndex + 1} / {events.length}
+              </span>
+              <Button variant="ghost" size="sm" onClick={goToNext}>
+                Next
+                <ChevronRight className="w-4 h-4 ml-1" />
+              </Button>
+            </div>
+          )}
+
+          {/* View All */}
+          <Button
+            variant="outline"
+            size="sm"
+            className="w-full border-primary text-primary"
+            onClick={() => window.open('https://medsoc.myucat.co.uk/events', '_blank')}
+          >
+            <ExternalLink className="w-3 h-3 mr-2" />
+            View All Events
+          </Button>
+        </div>
+      </section>
+    );
+  }
+
+  // Desktop view (original)
   return (
     <section className="py-16 md:py-24 bg-gradient-to-b from-gray-50 to-white">
       <div className="container mx-auto px-4">
@@ -109,7 +195,6 @@ const UpcomingEvents = () => {
               <CardContent className="p-8">
                 <div className="text-center">
                   <Badge className={`${getCategoryColor(currentEvent.category)} gap-1 mb-4`}>
-                    {getCategoryIcon(currentEvent.category)}
                     {currentEvent.category}
                   </Badge>
 
@@ -124,7 +209,7 @@ const UpcomingEvents = () => {
                   <div className="flex items-center justify-center gap-6 text-sm text-gray-500 mb-6">
                     <span className="flex items-center gap-2">
                       <Calendar className="w-5 h-5 text-primary" />
-                      {formatDate(currentEvent.date)}
+                      {formatDateFull(currentEvent.date)}
                     </span>
                     <span className="flex items-center gap-2">
                       <Clock className="w-5 h-5 text-primary" />
