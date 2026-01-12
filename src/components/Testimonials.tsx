@@ -90,18 +90,38 @@ const Testimonials = () => {
         <div className="mb-8">
           <h3 className="text-2xl font-bold text-primary mb-6 text-center">Video Testimonials</h3>
           <div className="grid md:grid-cols-3 gap-6">
-            {[1, 2, 3].map((index) => (
-              <div 
-                key={index}
-                className="aspect-video bg-gradient-to-br from-secondary to-primary/10 rounded-xl border-2 border-dashed border-primary/30 flex flex-col items-center justify-center hover:border-primary/50 transition-colors"
-              >
-                <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mb-3">
-                  <Play className="w-8 h-8 text-primary" />
-                </div>
-                <p className="text-primary/60 font-medium">Video {index}</p>
-                <p className="text-sm text-gray-500">Coming soon</p>
-              </div>
-            ))}
+            {/* YouTube Short 1 */}
+            <div className="aspect-[9/16] md:aspect-video rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
+              <iframe
+                src="https://www.youtube.com/embed/EifICTPOTaY"
+                title="Student Testimonial 1"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="w-full h-full"
+              />
+            </div>
+            
+            {/* YouTube Short 2 */}
+            <div className="aspect-[9/16] md:aspect-video rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
+              <iframe
+                src="https://www.youtube.com/embed/EifICTPOTaY"
+                title="Student Testimonial 2"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="w-full h-full"
+              />
+            </div>
+            
+            {/* Google Drive Video */}
+            <div className="aspect-[9/16] md:aspect-video rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
+              <iframe
+                src="https://drive.google.com/file/d/1O8I9xV-cIqVgyhkn1whAq-IOHVIytTIT/preview"
+                title="Student Testimonial 3"
+                allow="autoplay"
+                allowFullScreen
+                className="w-full h-full"
+              />
+            </div>
           </div>
         </div>
 
