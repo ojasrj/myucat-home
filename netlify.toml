@@ -1,0 +1,25 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# Redirects for static HTML pages (these need to be copied to dist)
+[[redirects]]
+  from = "/pages/ucat-score-converter"
+  to = "/pages/ucat-score-converter.html"
+  status = 200
+
+[[redirects]]
+  from = "/blog/why-study-medicine"
+  to = "/blog/why-study-medicine.html"
+  status = 200
+
+[[redirects]]
+  from = "/ucat-calculator"
+  to = "/ucat-calculator.html"
+  status = 200
+
+# SPA fallback for React routes
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
