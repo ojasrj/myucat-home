@@ -1,4 +1,5 @@
 import trustpilotProof from "@/assets/trustpilot-proof.png";
+import review1 from "@/assets/review-1.png";
 import { ImageIcon } from "lucide-react";
 
 const destinations = [
@@ -15,8 +16,9 @@ const destinations = [
   "Medicine @ Birmingham"
 ];
 
-// Placeholder items for grid - will be replaced with actual screenshots
-const placeholderCount = 8; // 2 rows of 4
+// Screenshots array - add more as they come in
+const screenshots = [review1];
+const placeholderCount = 7; // Remaining placeholders to fill 8 slots
 
 const SocialProofSection = () => {
   return (
@@ -62,13 +64,27 @@ const SocialProofSection = () => {
           
           {/* Grid - aspect ratio ~3:2 to match Trustpilot review cards */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {/* Actual screenshots */}
+            {screenshots.map((src, index) => (
+              <div 
+                key={`screenshot-${index}`} 
+                className="aspect-[3/2] rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:scale-[1.02] bg-white"
+              >
+                <img 
+                  src={src} 
+                  alt={`Student review ${index + 1}`}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            ))}
+            {/* Placeholder boxes */}
             {Array.from({ length: placeholderCount }).map((_, index) => (
               <div 
-                key={index} 
+                key={`placeholder-${index}`} 
                 className="aspect-[3/2] rounded-xl overflow-hidden shadow-md bg-secondary/50 border-2 border-dashed border-primary/20 flex flex-col items-center justify-center hover:border-primary/40 transition-colors"
               >
                 <ImageIcon className="w-8 h-8 text-primary/30 mb-2" />
-                <p className="text-xs text-muted-foreground">Screenshot {index + 1}</p>
+                <p className="text-xs text-muted-foreground">Screenshot {screenshots.length + index + 1}</p>
               </div>
             ))}
           </div>
