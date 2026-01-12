@@ -146,19 +146,15 @@ const ProgrammesSection = () => {
               <span className="text-6xl">{programme.icon}</span>
               <div className="flex-1 text-center md:text-left">
                 <h3 className="text-2xl md:text-3xl font-bold mb-2">{programme.title}</h3>
-                <p className="text-white/80 mb-4 max-w-2xl">{programme.description}</p>
+                <p className="text-white/80 mb-4 max-w-2xl">Combines the strengths of A* medical students and PGCE-qualified subject specialists with up to 20+ years of classroom teaching experience.</p>
                 <div className="inline-flex items-center gap-2 bg-white/20 px-4 py-2 rounded-full mb-4">
                   <ArrowRight className="w-4 h-4" />
                   <span className="text-sm font-semibold">{programme.outcome}</span>
                 </div>
               </div>
-              <Button
-                className="bg-white text-primary hover:bg-gray-100 shadow-lg"
-                onClick={() => window.open(programme.link, '_blank')}
-              >
-                Learn More
-                <ExternalLink className="ml-2 h-4 w-4" />
-              </Button>
+              <div className="bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full">
+                <span className="font-semibold text-white">2026 intake launching soon</span>
+              </div>
             </div>
           </div>
         ))}
