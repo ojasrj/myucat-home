@@ -1,4 +1,4 @@
-import { Award, CheckCircle, GraduationCap, Trophy } from "lucide-react";
+import { CheckCircle, Star, Trophy, Users } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -38,12 +38,12 @@ const FounderSection = () => {
                 2640/2700 UCAT
               </Badge>
               <Badge className="bg-primary/10 text-primary hover:bg-primary/20 px-3 py-1.5 text-sm">
-                <GraduationCap className="w-4 h-4 mr-1" />
-                4/4 Medical Offers
+                <Users className="w-4 h-4 mr-1" />
+                Personally supported 1000s of students into medicine & dentistry
               </Badge>
               <Badge className="bg-primary/10 text-primary hover:bg-primary/20 px-3 py-1.5 text-sm">
-                <Award className="w-4 h-4 mr-1" />
-                SJT Band 1
+                <Star className="w-4 h-4 mr-1" />
+                500+ 5-star reviews
               </Badge>
             </div>
           </div>
