@@ -12,8 +12,20 @@ import successScreenshot9 from "@/assets/success-screenshot-9.png";
 import successScreenshot10 from "@/assets/success-screenshot-10.png";
 import successScreenshot11 from "@/assets/success-screenshot-11.png";
 
-const topRowScreenshots = [successScreenshot1, successScreenshot2, successScreenshot3, successScreenshot4];
-const bottomRowScreenshots = [successScreenshot5, successScreenshot6, successScreenshot7, successScreenshot8, successScreenshot9, successScreenshot10, successScreenshot11];
+// Bento grid items with size configurations
+const bentoItems = [
+  { src: successScreenshot1, alt: "Student success story 1", size: "normal" },
+  { src: successScreenshot2, alt: "Student success story 2", size: "tall" },
+  { src: successScreenshot3, alt: "Student success story 3", size: "normal" },
+  { src: successScreenshot4, alt: "Student success story 4", size: "normal" },
+  { src: successScreenshot5, alt: "Student success story 5", size: "wide" },
+  { src: successScreenshot6, alt: "Student success story 6", size: "normal" },
+  { src: successScreenshot7, alt: "Student success story 7", size: "tall" },
+  { src: successScreenshot8, alt: "Student success story 8", size: "normal" },
+  { src: successScreenshot9, alt: "Student success story 9", size: "normal" },
+  { src: successScreenshot10, alt: "Student success story 10", size: "wide" },
+  { src: successScreenshot11, alt: "Student success story 11", size: "normal" },
+];
 
 const destinations = [
   "Medicine @ Oxford",
@@ -29,11 +41,24 @@ const destinations = [
   "Medicine @ Birmingham"
 ];
 
+const getSizeClasses = (size: string) => {
+  switch (size) {
+    case "tall":
+      return "md:row-span-2";
+    case "wide":
+      return "md:col-span-2";
+    case "large":
+      return "md:col-span-2 md:row-span-2";
+    default:
+      return "";
+  }
+};
+
 const SocialProofSection = () => {
   return (
     <section className="bg-gradient-to-b from-secondary to-white py-16">
       <div className="container mx-auto px-6">
-        {/* Trustpilot Badge - Actual Proof */}
+        {/* Trustpilot Badge */}
         <div className="flex flex-col items-center justify-center mb-12">
           <a 
             href="https://uk.trustpilot.com/review/myucat.co.uk" 
@@ -67,42 +92,48 @@ const SocialProofSection = () => {
           </div>
         </div>
 
-        {/* Student Success Stories Section */}
+        {/* Student Success Stories - Bento Grid */}
         <div className="mb-12">
           <h3 className="text-center text-lg font-semibold text-primary mb-6">Student Success Stories</h3>
           
-          {/* Top Row - Screenshots */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-            {topRowScreenshots.map((screenshot, index) => (
-              <div key={index} className="rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow bg-white">
+          {/* Bento Grid Layout */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 auto-rows-[140px] md:auto-rows-[180px]">
+            {bentoItems.slice(0, 5).map((item, index) => (
+              <div 
+                key={index} 
+                className={`rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:scale-[1.02] bg-white ${getSizeClasses(item.size)}`}
+              >
                 <img 
-                  src={screenshot} 
-                  alt={`Student success story ${index + 1}`}
-                  className="w-full h-auto object-cover"
+                  src={item.src} 
+                  alt={item.alt}
+                  className="w-full h-full object-cover"
                 />
               </div>
             ))}
           </div>
 
-          {/* Center - Success Collage (smaller, cropped) */}
-          <div className="flex justify-center mb-6">
-            <div className="w-full max-w-2xl overflow-hidden rounded-2xl shadow-xl">
+          {/* Center Collage - Featured */}
+          <div className="flex justify-center my-6">
+            <div className="w-full max-w-3xl overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-shadow">
               <img 
                 src={studentSuccessCollage} 
                 alt="Student success messages and offer notifications" 
-                className="w-full h-64 md:h-80 object-cover object-center"
+                className="w-full h-auto object-cover"
               />
             </div>
           </div>
 
-          {/* Bottom Row - Screenshots */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {bottomRowScreenshots.map((screenshot, index) => (
-              <div key={index} className="rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow bg-white">
+          {/* Second Bento Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 auto-rows-[140px] md:auto-rows-[180px]">
+            {bentoItems.slice(5).map((item, index) => (
+              <div 
+                key={index} 
+                className={`rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:scale-[1.02] bg-white ${getSizeClasses(item.size)}`}
+              >
                 <img 
-                  src={screenshot} 
-                  alt={`Student success story ${index + 5}`}
-                  className="w-full h-auto object-cover"
+                  src={item.src} 
+                  alt={item.alt}
+                  className="w-full h-full object-cover"
                 />
               </div>
             ))}
