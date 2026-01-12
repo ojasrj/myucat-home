@@ -3,11 +3,11 @@ import { Instagram } from "lucide-react";
 
 const InstagramFeed = () => {
   useEffect(() => {
-    // Load Elfsight script if embed code is added
-    const existingScript = document.querySelector('script[src="https://static.elfsight.com/platform/platform.js"]');
+    // Load Elfsight script
+    const existingScript = document.querySelector('script[src="https://elfsightcdn.com/platform.js"]');
     if (!existingScript) {
       const script = document.createElement('script');
-      script.src = 'https://static.elfsight.com/platform/platform.js';
+      script.src = 'https://elfsightcdn.com/platform.js';
       script.async = true;
       document.body.appendChild(script);
     }
@@ -31,46 +31,19 @@ const InstagramFeed = () => {
 
         {/* Instagram Widget Container */}
         <div className="max-w-6xl mx-auto">
-          {/* 
-            INSTRUCTIONS TO ADD YOUR INSTAGRAM FEED:
-            1. Go to https://elfsight.com/instagram-feed-widget/ and create a free account
-            2. Connect your Instagram account and customize your widget
-            3. Copy the widget code (looks like: <div class="elfsight-app-xxxxx" data-elfsight-app-lazy></div>)
-            4. Replace the placeholder div below with your widget code
-          */}
-          
-          {/* Placeholder - Replace this with your Elfsight embed code */}
-          <div className="bg-gray-100 rounded-2xl p-12 text-center">
-            <Instagram className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-            <h3 className="text-xl font-semibold text-gray-700 mb-2">Instagram Feed Coming Soon</h3>
-            <p className="text-gray-500 mb-4">
-              Add your Elfsight embed code to display your latest Instagram posts here.
-            </p>
-            <a
-              href="https://elfsight.com/instagram-feed-widget/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-primary hover:text-primary-dark font-medium transition-colors"
-            >
-              Get your embed code →
-            </a>
-          </div>
-
-          {/* Example: Uncomment and replace with your actual Elfsight widget code
-          <div className="elfsight-app-YOUR-APP-ID" data-elfsight-app-lazy></div>
-          */}
+          <div className="elfsight-app-c740ac95-ed52-4a09-ac86-98bbfdcaee76" data-elfsight-app-lazy></div>
         </div>
 
         {/* Follow Button */}
         <div className="text-center mt-10">
           <a
-            href="https://www.instagram.com/myucat_"
+            href="https://www.instagram.com/myucat.co.uk/"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 text-white px-6 py-3 rounded-full font-semibold hover:opacity-90 transition-opacity"
           >
             <Instagram className="w-5 h-5" />
-            Follow @myucat_
+            Follow @myucat.co.uk
           </a>
         </div>
       </div>
