@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Star, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -112,15 +113,18 @@ const Testimonials = () => {
               />
             </div>
             
-            {/* Google Drive Video */}
-            <div className="aspect-[9/16] md:aspect-video rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
-              <iframe
-                src="https://drive.google.com/file/d/1O8I9xV-cIqVgyhkn1whAq-IOHVIytTIT/preview"
-                title="Student Testimonial 3"
-                allow="autoplay"
-                allowFullScreen
-                className="w-full h-full"
-              />
+            {/* Google Drive Video with custom thumbnail */}
+            <div 
+              className="aspect-[9/16] md:aspect-video rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 relative cursor-pointer group bg-gradient-to-br from-primary to-primary-dark"
+              onClick={() => window.open('https://drive.google.com/file/d/1O8I9xV-cIqVgyhkn1whAq-IOHVIytTIT/view', '_blank')}
+            >
+              <div className="absolute inset-0 flex flex-col items-center justify-center text-white p-4">
+                <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white/20 backdrop-blur flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <Play className="w-8 h-8 md:w-10 md:h-10 text-white fill-white ml-1" />
+                </div>
+                <h4 className="text-lg md:text-xl font-bold text-center mb-1">Amira</h4>
+                <p className="text-sm md:text-base opacity-90">4/4 Dent Offers</p>
+              </div>
             </div>
           </div>
         </div>
