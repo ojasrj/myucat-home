@@ -23,7 +23,7 @@ const Hero = () => {
             </div>
             <div className="flex items-center gap-2 bg-white/80 backdrop-blur px-4 py-2 rounded-full shadow-sm border border-primary/10">
               <Users className="w-5 h-5 text-primary" />
-              <span className="text-sm font-medium text-primary-dark">150+ Expert Tutors</span>
+              <span className="text-sm font-medium text-primary-dark">Helped 1000s+ Enter Med/Dent</span>
             </div>
           </div>
 
