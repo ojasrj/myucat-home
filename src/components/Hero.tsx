@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Award, Star, Users, CheckCircle, MessageCircle, Stethoscope } from "lucide-react";
-import ToothIcon from "@/components/icons/ToothIcon";
+import { Award, Star, Users, CheckCircle, MessageCircle } from "lucide-react";
 
 const Hero = () => {
   return (
@@ -80,35 +79,6 @@ const Hero = () => {
             </a>
             
             <p className="text-sm text-gray-500 mb-4">Our most popular free advice group</p>
-          </div>
-
-          {/* Y13 Interview Groups */}
-          <div className="flex flex-wrap items-center justify-center gap-4">
-            <p className="w-full text-sm text-gray-500 mb-2">Already applied? Join our Y13 interview prep groups:</p>
-            <a 
-              href="https://chat.whatsapp.com/JQs5u2s3V41KkogZZJfTOp"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button 
-                className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-6 text-base shadow-lg hover:shadow-xl transition-all transform hover:scale-105 rounded-xl"
-              >
-                <Stethoscope className="mr-2 h-5 w-5" />
-                Y13 Medicine Interviews
-              </Button>
-            </a>
-            <a 
-              href="https://chat.whatsapp.com/Gme9STBqQ8qL5acO9LACkV"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button 
-                className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white px-8 py-6 text-base shadow-lg hover:shadow-xl transition-all transform hover:scale-105 rounded-xl"
-              >
-                <ToothIcon className="mr-2 h-5 w-5" />
-                Y13 Dentistry Interviews
-              </Button>
-            </a>
           </div>
 
           <div className="pt-2">

@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { ExternalLink, ArrowRight, Sparkles } from "lucide-react";
+import { ExternalLink, ArrowRight, Sparkles, MessageCircle, Stethoscope } from "lucide-react";
+import ToothIcon from "@/components/icons/ToothIcon";
 
 const programmes = [
   {
@@ -26,6 +27,33 @@ const programmes = [
     outcome: "From struggling → A* grades",
     link: "https://learn.myucat.co.uk/a-level-tuition",
     featured: false
+  }
+];
+
+const whatsappGroups = [
+  {
+    icon: MessageCircle,
+    title: "UCAT Group (2026 Summer)",
+    description: "Free UCAT tips, strategies & peer support",
+    link: "https://chat.whatsapp.com/EOsY2wTUnFZ4g4iKmh1mcB",
+    color: "from-green-500 to-green-600",
+    badge: "Most Popular"
+  },
+  {
+    icon: Stethoscope,
+    title: "Y13 Medicine Interviews",
+    description: "Interview prep for medical applicants",
+    link: "https://chat.whatsapp.com/JQs5u2s3V41KkogZZJfTOp",
+    color: "from-blue-500 to-blue-600",
+    badge: null
+  },
+  {
+    icon: ToothIcon,
+    title: "Y13 Dentistry Interviews",
+    description: "Interview prep for dental applicants",
+    link: "https://chat.whatsapp.com/Gme9STBqQ8qL5acO9LACkV",
+    color: "from-purple-500 to-purple-600",
+    badge: null
   }
 ];
 
@@ -66,6 +94,34 @@ const ProgrammesSection = () => {
           <p className="text-gray-600 text-lg max-w-2xl mx-auto">
             Comprehensive courses designed to guide you through every stage of your application
           </p>
+        </div>
+
+        {/* Free Community Groups */}
+        <div className="mb-16">
+          <h3 className="text-2xl font-bold text-primary text-center mb-3">Join Our Free Community Groups</h3>
+          <p className="text-gray-600 text-center mb-8">Get free expert advice and connect with fellow applicants</p>
+          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            {whatsappGroups.map((group, index) => (
+              <a
+                key={index}
+                href={group.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100"
+              >
+                {group.badge && (
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-green-500 text-white text-xs font-semibold px-3 py-1 rounded-full">
+                    {group.badge}
+                  </span>
+                )}
+                <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${group.color} flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform`}>
+                  <group.icon className="w-7 h-7 text-white" />
+                </div>
+                <h4 className="font-bold text-gray-900 text-center mb-2">{group.title}</h4>
+                <p className="text-sm text-gray-600 text-center">{group.description}</p>
+              </a>
+            ))}
+          </div>
         </div>
 
         {/* Featured Programmes - Innovative Card Design */}
