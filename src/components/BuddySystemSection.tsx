@@ -1,5 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Users, CheckCircle, BookOpen, Award, Zap } from "lucide-react";
+import { Users, CheckCircle } from "lucide-react";
 
 const features = [
   "Large expert-led group sessions covering the full syllabus in-depth",
@@ -50,37 +50,6 @@ const BuddySystemSection = () => {
               </div>
             </CardContent>
           </Card>
-
-          {/* Research Backed Cards */}
-          <div className="grid grid-cols-3 gap-4 mt-8">
-            <Card className="bg-white border-primary/10 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-              <CardContent className="p-6 text-center">
-                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <BookOpen className="w-6 h-6 text-primary" />
-                </div>
-                <h4 className="font-bold text-primary">Evidence-Based</h4>
-                <p className="text-sm text-gray-600 mt-1">Proven methods</p>
-              </CardContent>
-            </Card>
-            <Card className="bg-white border-primary/10 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-              <CardContent className="p-6 text-center">
-                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <Award className="w-6 h-6 text-primary" />
-                </div>
-                <h4 className="font-bold text-primary">Proven Results</h4>
-                <p className="text-sm text-gray-600 mt-1">35+ Oxbridge offers</p>
-              </CardContent>
-            </Card>
-            <Card className="bg-white border-primary/10 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-              <CardContent className="p-6 text-center">
-                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <Zap className="w-6 h-6 text-primary" />
-                </div>
-                <h4 className="font-bold text-primary">Expert Guidance</h4>
-                <p className="text-sm text-gray-600 mt-1">150+ tutors</p>
-              </CardContent>
-            </Card>
-          </div>
         </div>
       </div>
     </section>
