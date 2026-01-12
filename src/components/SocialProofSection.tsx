@@ -1,5 +1,4 @@
 import trustpilotProof from "@/assets/trustpilot-proof.png";
-import studentSuccessCollage from "@/assets/student-success-collage.png";
 import successScreenshot1 from "@/assets/success-screenshot-1.png";
 import successScreenshot2 from "@/assets/success-screenshot-2.png";
 import successScreenshot3 from "@/assets/success-screenshot-3.png";
@@ -112,19 +111,8 @@ const SocialProofSection = () => {
             ))}
           </div>
 
-          {/* Center Collage - Featured */}
-          <div className="flex justify-center my-6">
-            <div className="w-full max-w-3xl overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-shadow">
-              <img 
-                src={studentSuccessCollage} 
-                alt="Student success messages and offer notifications" 
-                className="w-full h-auto object-cover"
-              />
-            </div>
-          </div>
-
           {/* Second Bento Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 auto-rows-[140px] md:auto-rows-[180px]">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 auto-rows-[140px] md:auto-rows-[180px] mt-4">
             {bentoItems.slice(5).map((item, index) => (
               <div 
                 key={index} 
