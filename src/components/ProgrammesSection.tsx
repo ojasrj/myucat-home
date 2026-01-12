@@ -184,8 +184,8 @@ const ProgrammesSection = () => {
           )}
         </div>
 
-        {/* Featured Programmes */}
-        <div className="grid md:grid-cols-2 gap-4 md:gap-8 mb-8 md:mb-12">
+        {/* Featured Programmes - Stacked on desktop, same on mobile */}
+        <div className="flex flex-col gap-4 md:gap-6 mb-8 md:mb-12 max-w-3xl mx-auto">
           {programmes.filter(p => p.featured).map((programme, index) => (
             <div 
               key={index} 
