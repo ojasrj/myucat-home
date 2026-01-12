@@ -6,9 +6,9 @@ import review4 from "@/assets/review-4.png";
 import review5 from "@/assets/review-5.png";
 import review6 from "@/assets/review-6.png";
 import review7 from "@/assets/review-7.png";
+import review8 from "@/assets/review-8.png";
 import reviewWide from "@/assets/review-wide.png";
 import reviewCollageTop from "@/assets/review-collage-top.png";
-import { ImageIcon } from "lucide-react";
 
 const destinations = [
   "Medicine @ Oxford",
@@ -24,9 +24,8 @@ const destinations = [
   "Medicine @ Birmingham"
 ];
 
-// Screenshots array - add more as they come in
-const screenshots = [review1, review2, review3, review4, review5, review6, review7];
-const placeholderCount = 1; // Remaining placeholders to fill 8 slots
+// Screenshots array
+const screenshots = [review1, review2, review3, review4, review5, review6, review7, review8];
 
 const SocialProofSection = () => {
   return (
@@ -92,16 +91,6 @@ const SocialProofSection = () => {
                   alt={`Student review ${index + 1}`}
                   className="w-full h-auto"
                 />
-              </div>
-            ))}
-            {/* Placeholder boxes - same aspect ratio as screenshots */}
-            {Array.from({ length: placeholderCount }).map((_, index) => (
-              <div 
-                key={`placeholder-${index}`} 
-                className="aspect-[540/270] rounded-xl overflow-hidden shadow-md bg-secondary/50 border-2 border-dashed border-primary/20 flex flex-col items-center justify-center hover:border-primary/40 transition-colors"
-              >
-                <ImageIcon className="w-8 h-8 text-primary/30 mb-2" />
-                <p className="text-xs text-muted-foreground">Screenshot {screenshots.length + index + 1}</p>
               </div>
             ))}
           </div>
