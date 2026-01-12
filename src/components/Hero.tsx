@@ -3,67 +3,67 @@ import { Award, Star, Users, CheckCircle, MessageCircle } from "lucide-react";
 
 const Hero = () => {
   return (
-    <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-light via-white to-secondary pt-20 pb-32 relative overflow-hidden">
+    <section className="min-h-[90vh] md:min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-light via-white to-secondary pt-16 md:pt-20 pb-16 md:pb-32 relative overflow-hidden">
       {/* Background decorative elements */}
-      <div className="absolute top-20 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/50 rounded-full blur-3xl"></div>
+      <div className="absolute top-20 left-10 w-48 md:w-72 h-48 md:h-72 bg-primary/5 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-20 right-10 w-64 md:w-96 h-64 md:h-96 bg-secondary/50 rounded-full blur-3xl"></div>
       
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center max-w-4xl mx-auto space-y-8 animate-fade-in">
-          {/* Trust Badges */}
-          <div className="flex flex-wrap items-center justify-center gap-4 mb-6">
-            <div className="flex items-center gap-2 bg-white/80 backdrop-blur px-4 py-2 rounded-full shadow-sm border border-primary/10">
-              <Award className="w-5 h-5 text-primary" />
-              <span className="text-sm font-medium text-primary-dark">35+ Oxbridge Offers 2025</span>
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
+        <div className="text-center max-w-4xl mx-auto space-y-5 md:space-y-8 animate-fade-in">
+          {/* Trust Badges - Compact on mobile */}
+          <div className="flex flex-wrap items-center justify-center gap-2 md:gap-4 mb-4 md:mb-6">
+            <div className="flex items-center gap-1.5 md:gap-2 bg-white/80 backdrop-blur px-2.5 md:px-4 py-1.5 md:py-2 rounded-full shadow-sm border border-primary/10">
+              <Award className="w-4 h-4 md:w-5 md:h-5 text-primary" />
+              <span className="text-xs md:text-sm font-medium text-primary-dark">35+ Oxbridge 2025</span>
             </div>
-            <div className="flex items-center gap-2 bg-white/80 backdrop-blur px-4 py-2 rounded-full shadow-sm border border-primary/10">
-              <Star className="w-5 h-5 text-yellow-500 fill-yellow-500" />
-              <span className="text-sm font-medium text-primary-dark">500+ 5-Star Reviews</span>
+            <div className="flex items-center gap-1.5 md:gap-2 bg-white/80 backdrop-blur px-2.5 md:px-4 py-1.5 md:py-2 rounded-full shadow-sm border border-primary/10">
+              <Star className="w-4 h-4 md:w-5 md:h-5 text-yellow-500 fill-yellow-500" />
+              <span className="text-xs md:text-sm font-medium text-primary-dark">500+ Reviews</span>
             </div>
-            <div className="flex items-center gap-2 bg-white/80 backdrop-blur px-4 py-2 rounded-full shadow-sm border border-primary/10">
-              <Users className="w-5 h-5 text-primary" />
-              <span className="text-sm font-medium text-primary-dark">Helped 1000s+ Enter Med/Dent</span>
+            <div className="hidden sm:flex items-center gap-1.5 md:gap-2 bg-white/80 backdrop-blur px-2.5 md:px-4 py-1.5 md:py-2 rounded-full shadow-sm border border-primary/10">
+              <Users className="w-4 h-4 md:w-5 md:h-5 text-primary" />
+              <span className="text-xs md:text-sm font-medium text-primary-dark">1000s+ Med/Dent Entries</span>
             </div>
           </div>
 
-          <h1 className="text-5xl md:text-7xl font-bold text-primary leading-tight">
+          <h1 className="text-4xl md:text-7xl font-bold text-primary leading-tight">
             MyUCAT
           </h1>
           
-          <p className="text-xl md:text-2xl text-gray-600 max-w-2xl mx-auto font-medium">
+          <p className="text-lg md:text-2xl text-gray-600 max-w-2xl mx-auto font-medium px-2">
             Evidence-based, results-oriented social enterprise for UK medical & dental admissions
           </p>
 
-          <p className="text-lg text-primary-dark max-w-xl mx-auto">
-            Your expert-led journey to medical or dental school begins today with our nationwide network of experienced tutors
+          <p className="text-base md:text-lg text-primary-dark max-w-xl mx-auto px-2">
+            Your expert-led journey to medical or dental school begins today
           </p>
 
-          <div className="flex flex-wrap items-center justify-center gap-3 text-sm text-gray-600">
+          {/* Service tags - simplified on mobile */}
+          <div className="flex flex-wrap items-center justify-center gap-2 md:gap-3 text-xs md:text-sm text-gray-600 px-2">
             <div className="flex items-center gap-1">
-              <CheckCircle className="w-4 h-4 text-green-500" />
-              <span>UCAT Preparation</span>
+              <CheckCircle className="w-3 h-3 md:w-4 md:h-4 text-green-500" />
+              <span>UCAT</span>
             </div>
             <div className="flex items-center gap-1">
-              <CheckCircle className="w-4 h-4 text-green-500" />
-              <span>Interview Training</span>
+              <CheckCircle className="w-3 h-3 md:w-4 md:h-4 text-green-500" />
+              <span>Interviews</span>
             </div>
             <div className="flex items-center gap-1">
-              <CheckCircle className="w-4 h-4 text-green-500" />
+              <CheckCircle className="w-3 h-3 md:w-4 md:h-4 text-green-500" />
               <span>Personal Statements</span>
             </div>
             <div className="flex items-center gap-1">
-              <CheckCircle className="w-4 h-4 text-green-500" />
-              <span>A-Level Support</span>
+              <CheckCircle className="w-3 h-3 md:w-4 md:h-4 text-green-500" />
+              <span>A-Levels</span>
             </div>
           </div>
 
-          {/* PRIMARY CTA - Dominant */}
-          <div className="pt-4">
-            <p className="text-lg font-semibold text-primary-dark mb-4">
+          {/* PRIMARY CTA */}
+          <div className="pt-2 md:pt-4">
+            <p className="text-base md:text-lg font-semibold text-primary-dark mb-3 md:mb-4">
               Start with Free Expert Guidance
             </p>
             
-            {/* Featured Group - UCAT 2026 Summer */}
             <a 
               href="https://chat.whatsapp.com/EOsY2wTUnFZ4g4iKmh1mcB"
               target="_blank"
@@ -71,21 +71,22 @@ const Hero = () => {
             >
               <Button 
                 size="lg"
-                className="bg-green-600 hover:bg-green-700 text-white px-12 py-8 text-xl transition-all transform hover:scale-105 shadow-xl hover:shadow-2xl rounded-full mb-4"
+                className="bg-green-600 hover:bg-green-700 text-white px-8 md:px-12 py-6 md:py-8 text-lg md:text-xl transition-all transform hover:scale-105 shadow-xl hover:shadow-2xl rounded-full mb-3 md:mb-4"
               >
-                <MessageCircle className="mr-3 h-6 w-6" />
-                Join UCAT Group (2026 Summer)
+                <MessageCircle className="mr-2 md:mr-3 h-5 w-5 md:h-6 md:w-6" />
+                Join UCAT Group (2026)
               </Button>
             </a>
             
-            <p className="text-sm text-gray-500 mb-4">Our most popular free advice group</p>
+            <p className="text-xs md:text-sm text-gray-500 mb-3 md:mb-4">Our most popular free advice group</p>
           </div>
 
-          <div className="pt-4 border-t border-gray-200 mt-6">
-            <p className="text-sm text-gray-500 mb-3">Already applied? Prepare for interviews:</p>
+          <div className="pt-3 md:pt-4 border-t border-gray-200 mt-4 md:mt-6">
+            <p className="text-xs md:text-sm text-gray-500 mb-2 md:mb-3">Already applied? Prepare for interviews:</p>
             <Button
               variant="outline"
-              className="border-primary text-primary hover:bg-primary hover:text-white"
+              size="sm"
+              className="border-primary text-primary hover:bg-primary hover:text-white text-sm"
               onClick={() => window.open('https://www.guessandflag.co.uk/interviews', '_blank')}
             >
               Book 1-1 Mock Interviews
