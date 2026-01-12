@@ -39,14 +39,14 @@ const FounderSection = () => {
             <img
               src="/lovable-uploads/ojas-speaking.png"
               alt="Ojas speaking at a MyUCAT event"
-              className="w-full h-64 md:h-80 object-cover object-top"
+              className="w-full h-auto md:h-80 object-contain md:object-cover md:object-top"
             />
           </div>
           <div className="overflow-hidden rounded-2xl shadow-lg">
             <img
               src="/lovable-uploads/ojas-presentation.png"
               alt="Ojas presenting student success stories and reviews"
-              className="w-full h-64 md:h-80 object-cover object-center"
+              className="w-full h-auto md:h-80 object-contain md:object-cover md:object-center"
             />
           </div>
         </div>
