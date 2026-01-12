@@ -57,6 +57,12 @@ const Index = () => {
           <div className="flex flex-col items-center justify-center gap-4">
             <p className="text-white/80 text-sm mb-2">Join our FREE advice groups:</p>
             <div className="flex flex-wrap items-center justify-center gap-3">
+              <Button 
+                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-5 text-base transition-all transform hover:scale-105 shadow-lg rounded-xl"
+                onClick={() => window.open('https://chat.whatsapp.com/JQs5u2s3V41KkogZZJfTOp', '_blank')}
+              >
+                Y13 Medicine Interviews
+              </Button>
               {/* Primary CTA - UCAT */}
               <Button 
                 size="lg"
@@ -65,12 +71,6 @@ const Index = () => {
               >
                 <MessageCircle className="mr-2 h-5 w-5" />
                 UCAT 2026 Summer
-              </Button>
-              <Button 
-                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-5 text-base transition-all transform hover:scale-105 shadow-lg rounded-xl"
-                onClick={() => window.open('https://chat.whatsapp.com/JQs5u2s3V41KkogZZJfTOp', '_blank')}
-              >
-                Y13 Medicine Interviews
               </Button>
               <Button 
                 className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-5 text-base transition-all transform hover:scale-105 shadow-lg rounded-xl"
