@@ -54,20 +54,36 @@ const Index = () => {
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            {/* Primary CTA */}
-            <Button 
-              size="lg"
-              className="bg-white text-primary hover:bg-gray-100 px-12 py-8 text-xl transition-all transform hover:scale-105 shadow-xl rounded-full"
-              onClick={() => window.open('https://chat.whatsapp.com/EOsY2wTUnFZ4g4iKmh1mcB', '_blank')}
-            >
-              Join a Free Advice Group
-            </Button>
+          <div className="flex flex-col items-center justify-center gap-4">
+            <p className="text-white/80 text-sm mb-2">Join our FREE advice groups:</p>
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              {/* Primary CTA - UCAT */}
+              <Button 
+                size="lg"
+                className="bg-green-600 hover:bg-green-700 text-white px-8 py-6 text-lg transition-all transform hover:scale-105 shadow-xl rounded-full"
+                onClick={() => window.open('https://chat.whatsapp.com/EOsY2wTUnFZ4g4iKmh1mcB', '_blank')}
+              >
+                <MessageCircle className="mr-2 h-5 w-5" />
+                UCAT 2026 Summer
+              </Button>
+              <Button 
+                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-5 text-base transition-all transform hover:scale-105 shadow-lg rounded-xl"
+                onClick={() => window.open('https://chat.whatsapp.com/JQs5u2s3V41KkogZZJfTOp', '_blank')}
+              >
+                Y13 Medicine Interviews
+              </Button>
+              <Button 
+                className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-5 text-base transition-all transform hover:scale-105 shadow-lg rounded-xl"
+                onClick={() => window.open('https://chat.whatsapp.com/Gme9STBqQ8qL5acO9LACkV', '_blank')}
+              >
+                Y13 Dentistry Interviews
+              </Button>
+            </div>
             {/* Secondary CTA */}
             <Button 
               variant="outline"
-              className="border-2 border-white text-white hover:bg-white/10 px-10 py-6 text-lg"
-              onClick={() => window.open('https://wa.me/447443341420', '_blank')}
+              className="border-2 border-white text-white hover:bg-white/10 px-10 py-6 text-lg mt-2"
+              onClick={() => window.open('https://wa.me/447763980592', '_blank')}
             >
               <MessageCircle className="mr-2 h-5 w-5" />
               WhatsApp Us
@@ -86,7 +102,7 @@ const Index = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-12">
             <Button 
               className="bg-primary hover:bg-primary-dark text-white px-12 py-6 text-lg rounded-full transition-all transform hover:scale-105"
-              onClick={() => window.open('https://wa.me/447443341420', '_blank')}
+              onClick={() => window.open('https://wa.me/447763980592', '_blank')}
             >
               <Phone className="mr-2 h-5 w-5" />
               WhatsApp us

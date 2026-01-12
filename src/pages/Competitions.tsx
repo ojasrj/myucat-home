@@ -117,7 +117,7 @@ const Competitions = () => {
               
               <Button 
                 className="bg-primary hover:bg-primary-dark text-white px-8 py-3 text-lg"
-                onClick={() => window.open('https://wa.me/447443341420', '_blank')}
+                onClick={() => window.open('https://wa.me/447763980592', '_blank')}
               >
                 Get More Information
               </Button>
@@ -137,7 +137,7 @@ const Competitions = () => {
           </p>
           <Button 
             className="bg-primary hover:bg-primary-dark text-white px-8 py-3"
-            onClick={() => window.open('https://wa.me/447443341420', '_blank')}
+            onClick={() => window.open('https://wa.me/447763980592', '_blank')}
           >
             Contact Us
           </Button>
