@@ -5,33 +5,22 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
-const PERSONA_CONFIGS = {
-  oxford_panel: {
-    followUpStyle: "Ask for evidence. Probe how the candidate would handle conflicting priorities. Be formal and challenging.",
-    scoringEmphasis: "Heavy emphasis on clinical reasoning and ethical awareness. Expect precise, well-structured answers."
-  },
-  imperial_mmi: {
-    followUpStyle: "Present a short scenario tweak and ask for immediate reaction. Focus on situational judgment.",
-    scoringEmphasis: "Emphasis on structure, ethics, and practical decision-making."
-  },
-  cambridge_socratic: {
-    followUpStyle: "Ask 'Why?' to probe depth. Be conversational but push for deeper logic and reasoning chains.",
-    scoringEmphasis: "Focus on depth of understanding and ability to justify reasoning."
-  },
-  generic_panel: {
-    followUpStyle: "Balanced follow-up style. Ask for clarification or examples when appropriate.",
-    scoringEmphasis: "Balanced assessment of communication and content."
-  }
-};
-
 serve(async (req) => {
-  // Handle CORS preflight
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
   }
 
   try {
-    const { transcript, question, persona, followUpCount, followUpDepth, previousMessages } = await req.json();
+    const { 
+      transcript, 
+      question, 
+      markScheme,
+      modelAnswer,
+      tips,
+      followUpCount, 
+      followUpDepth, 
+      previousMessages 
+    } = await req.json();
 
     if (!transcript || !question) {
       return new Response(
@@ -50,51 +39,64 @@ serve(async (req) => {
       );
     }
 
-    const personaConfig = PERSONA_CONFIGS[persona as keyof typeof PERSONA_CONFIGS] || PERSONA_CONFIGS.generic_panel;
     const shouldGenerateFollowUp = followUpCount < followUpDepth;
 
-    const systemPrompt = `You are an expert medical school interview coach analyzing candidate responses.
+    // Build mark scheme context
+    let markSchemeContext = "";
+    if (markScheme && markScheme.criteria) {
+      markSchemeContext = `
+MARK SCHEME (Total: ${markScheme.total_marks} marks):
+${markScheme.criteria.map((c: any) => `
+- ${c.name} (${c.max_marks} marks): ${c.description}
+  * Excellent: ${c.indicators?.excellent || "Strong performance"}
+  * Good: ${c.indicators?.good || "Good performance"}
+  * Satisfactory: ${c.indicators?.satisfactory || "Adequate performance"}
+  * Needs Improvement: ${c.indicators?.needs_improvement || "Below expectations"}
+`).join("")}`;
+    }
 
-PERSONA: ${persona}
-FOLLOW-UP STYLE: ${personaConfig.followUpStyle}
-SCORING EMPHASIS: ${personaConfig.scoringEmphasis}
+    const systemPrompt = `You are an expert medical school interview examiner providing detailed feedback.
 
-Your task is to ${shouldGenerateFollowUp ? "generate a relevant follow-up question OR" : ""} provide detailed feedback on the candidate's answer.
+${markSchemeContext}
 
-SCORING RUBRIC (out of 10 for each sub-criterion):
-COMMUNICATION (40% total):
-- Pitch: confidence, volume variability, assertiveness
-- Tone: warmth, professionalism, empathy
-- Structure: clear opening, logical body, strong closing, signposting
-- Pace: appropriate speed, effective pausing, minimal filler words
+${modelAnswer ? `MODEL ANSWER FOR REFERENCE:
+${modelAnswer}` : ""}
 
-CONTENT (60% total):
-- Relevance: directly addresses the question asked
-- Clinical reasoning: logical chain from data to conclusion, medical knowledge accuracy
-- Ethics: awareness of professional and ethical considerations
-- Reflection: self-awareness, genuine motivation, growth mindset
-- Examples: specific anecdotes, concrete actions, measurable outcomes
+${tips ? `KEY POINTS TO ASSESS:
+${tips}` : ""}
 
-OUTPUT FORMAT:
-You MUST respond with valid JSON in this exact structure:
+Your task is to ${shouldGenerateFollowUp ? "generate a relevant follow-up question OR" : ""} provide detailed feedback using the mark scheme.
+
+OUTPUT FORMAT - You MUST respond with valid JSON:
 {
   "shouldFollowUp": boolean,
-  "followUp": "string or null - a concise, relevant follow-up question if shouldFollowUp is true",
+  "followUp": "string or null - a concise follow-up question if shouldFollowUp is true",
   "feedback": {
     "scores": {
-      "communication": { "pitch": 0-10, "tone": 0-10, "structure": 0-10, "pace": 0-10, "signposting": 0-10, "total": 0-40 },
-      "content": { "relevance": 0-10, "clinical_reasoning": 0-10, "ethics": 0-10, "reflection": 0-10, "examples": 0-10, "total": 0-60 },
-      "overall": 0-100
+      "criteria": [
+        {
+          "name": "criterion name",
+          "score": number,
+          "max_marks": number,
+          "feedback": "specific feedback for this criterion"
+        }
+      ],
+      "total": number,
+      "max_total": number,
+      "percentage": number
     },
-    "executive_summary": "1-3 sentences: key strengths and top 1-2 improvements",
-    "detailed_feedback": {
-      "communication": ["specific feedback points with quotes from transcript"],
-      "content": ["specific feedback points with quotes from transcript"]
-    },
-    "actionable_practice": ["concrete, specific practice exercises"],
-    "model_answer": "A 45-60 second model answer demonstrating excellent structure and content"
+    "what_went_well": ["list of 2-4 specific strengths with examples from their answer"],
+    "areas_for_improvement": ["list of 2-4 specific areas to improve with actionable advice"],
+    "model_answer": "A well-structured example answer (45-60 seconds when spoken)"
   }
-}`;
+}
+
+FEEDBACK GUIDELINES:
+1. "what_went_well" should highlight genuine strengths - be encouraging but honest
+2. "areas_for_improvement" should be constructive and actionable - explain WHAT to change and HOW
+3. Score each criterion fairly based on the indicators provided
+4. Reference specific parts of the candidate's answer when giving feedback
+5. The model_answer should demonstrate excellent technique for this specific question`;
 
     const conversationContext = previousMessages 
       ? previousMessages.map((m: { role: string; content: string }) => `${m.role}: ${m.content}`).join("\n")
@@ -105,16 +107,16 @@ You MUST respond with valid JSON in this exact structure:
 PREVIOUS CONVERSATION:
 ${conversationContext}
 
-CANDIDATE'S LATEST RESPONSE:
+CANDIDATE'S RESPONSE:
 "${transcript}"
 
 ${shouldGenerateFollowUp 
-  ? `This is follow-up attempt ${followUpCount + 1} of ${followUpDepth}. Consider whether a follow-up would be valuable based on the persona style, or if the answer is complete enough to move to feedback.` 
-  : "Provide complete feedback for this response. No more follow-ups needed."}
+  ? `This is follow-up ${followUpCount + 1} of ${followUpDepth}. Consider whether a follow-up would add value, or if ready for final feedback.` 
+  : "Provide complete feedback using the mark scheme. No more follow-ups."}
 
-Analyze and respond with the JSON structure specified.`;
+Respond with the JSON structure specified.`;
 
-    console.log(`Processing feedback for persona: ${persona}, followUpCount: ${followUpCount}/${followUpDepth}`);
+    console.log(`Processing feedback, followUpCount: ${followUpCount}/${followUpDepth}`);
 
     const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
       method: "POST",
@@ -134,14 +136,12 @@ Analyze and respond with the JSON structure specified.`;
 
     if (!response.ok) {
       if (response.status === 429) {
-        console.error("Rate limited");
         return new Response(
           JSON.stringify({ error: "Rate limit exceeded. Please try again in a moment." }),
           { status: 429, headers: { ...corsHeaders, "Content-Type": "application/json" } }
         );
       }
       if (response.status === 402) {
-        console.error("Payment required");
         return new Response(
           JSON.stringify({ error: "AI credits exhausted. Please add credits to continue." }),
           { status: 402, headers: { ...corsHeaders, "Content-Type": "application/json" } }
@@ -166,10 +166,9 @@ Analyze and respond with the JSON structure specified.`;
       );
     }
 
-    // Parse JSON from response (handle markdown code blocks)
+    // Parse JSON from response
     let parsedContent;
     try {
-      // Remove markdown code blocks if present
       let jsonStr = content;
       if (jsonStr.includes("```json")) {
         jsonStr = jsonStr.replace(/```json\n?/g, "").replace(/```\n?/g, "");
@@ -179,26 +178,42 @@ Analyze and respond with the JSON structure specified.`;
       parsedContent = JSON.parse(jsonStr.trim());
     } catch (parseError) {
       console.error("Failed to parse AI response:", content);
-      // Return a default structure
+      // Return default feedback structure
+      const defaultCriteria = markScheme?.criteria?.map((c: any) => ({
+        name: c.name,
+        score: Math.round(c.max_marks * 0.6),
+        max_marks: c.max_marks,
+        feedback: "Your response showed effort. Focus on providing more specific examples and structure."
+      })) || [
+        { name: "Communication", score: 15, max_marks: 25, feedback: "Consider improving structure" },
+        { name: "Content", score: 18, max_marks: 30, feedback: "Add more specific examples" },
+        { name: "Critical Thinking", score: 15, max_marks: 25, feedback: "Show more analysis" },
+        { name: "Ethics", score: 12, max_marks: 20, feedback: "Demonstrate ethical awareness" }
+      ];
+      
+      const total = defaultCriteria.reduce((sum: number, c: any) => sum + c.score, 0);
+      const maxTotal = defaultCriteria.reduce((sum: number, c: any) => sum + c.max_marks, 0);
+      
       parsedContent = {
         shouldFollowUp: false,
         followUp: null,
         feedback: {
           scores: {
-            communication: { pitch: 6, tone: 6, structure: 6, pace: 6, signposting: 6, total: 30 },
-            content: { relevance: 6, clinical_reasoning: 6, ethics: 6, reflection: 6, examples: 6, total: 30 },
-            overall: 60
+            criteria: defaultCriteria,
+            total,
+            max_total: maxTotal,
+            percentage: Math.round((total / maxTotal) * 100)
           },
-          executive_summary: "Your answer showed good effort. Focus on providing more specific examples and structuring your response with a clear beginning, middle, and end.",
-          detailed_feedback: {
-            communication: ["Consider slowing down your pace", "Add clear signposting between points"],
-            content: ["Include more specific examples", "Demonstrate awareness of ethical considerations"]
-          },
-          actionable_practice: [
-            "Practice the STAR method: Situation, Task, Action, Result",
-            "Record yourself and listen back for clarity"
+          what_went_well: [
+            "You attempted to answer the question",
+            "Your response showed some understanding of the topic"
           ],
-          model_answer: "When answering this question, I would structure my response by first acknowledging the complexity of the issue, then providing a specific example from my experience, explaining my reasoning process, and concluding with what I learned and how it shaped my approach to medicine."
+          areas_for_improvement: [
+            "Structure your answer with a clear beginning, middle, and end",
+            "Include specific examples from your experience",
+            "Consider the ethical implications more deeply"
+          ],
+          model_answer: modelAnswer || "When answering this question, structure your response clearly. Start by acknowledging the complexity of the issue, provide specific examples from your experience, explain your reasoning process, and conclude with key learnings."
         }
       };
     }
