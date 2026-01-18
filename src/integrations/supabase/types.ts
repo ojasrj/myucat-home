@@ -14,7 +14,86 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      interview_questions: {
+        Row: {
+          created_at: string
+          id: string
+          mark_scheme: Json | null
+          model_answer: string | null
+          order_index: number
+          question_text: string
+          question_type: string | null
+          school_id: string
+          time_limit_seconds: number | null
+          tips: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          mark_scheme?: Json | null
+          model_answer?: string | null
+          order_index?: number
+          question_text: string
+          question_type?: string | null
+          school_id: string
+          time_limit_seconds?: number | null
+          tips?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          mark_scheme?: Json | null
+          model_answer?: string | null
+          order_index?: number
+          question_text?: string
+          question_type?: string | null
+          school_id?: string
+          time_limit_seconds?: number | null
+          tips?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "interview_questions_school_id_fkey"
+            columns: ["school_id"]
+            isOneToOne: false
+            referencedRelation: "medical_schools"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      medical_schools: {
+        Row: {
+          created_at: string
+          description: string | null
+          id: string
+          interview_style: string
+          name: string
+          updated_at: string
+          voice_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          interview_style?: string
+          name: string
+          updated_at?: string
+          voice_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          interview_style?: string
+          name?: string
+          updated_at?: string
+          voice_id?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
