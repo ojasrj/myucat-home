@@ -1,1 +1,7 @@
 project_id = "eifjmxmimgplfbivltsf"
+
+[functions.interview-tts]
+verify_jwt = false
+
+[functions.interview-feedback]
+verify_jwt = false
