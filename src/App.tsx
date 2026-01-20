@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -8,6 +7,7 @@ import Index from "./pages/Index";
 import Competitions from "./pages/Competitions";
 import InterviewPractice from "./pages/InterviewPractice";
 import InterviewAdmin from "./pages/InterviewAdmin";
+import PasswordProtect from "./components/PasswordProtect";
 
 const queryClient = new QueryClient();
 
@@ -20,8 +20,22 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/competitions" element={<Competitions />} />
-          <Route path="/interview-practice" element={<InterviewPractice />} />
-          <Route path="/interview-admin" element={<InterviewAdmin />} />
+          <Route 
+            path="/interview-practice" 
+            element={
+              <PasswordProtect>
+                <InterviewPractice />
+              </PasswordProtect>
+            } 
+          />
+          <Route 
+            path="/interview-admin" 
+            element={
+              <PasswordProtect>
+                <InterviewAdmin />
+              </PasswordProtect>
+            } 
+          />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
