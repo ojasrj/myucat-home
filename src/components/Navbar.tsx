@@ -206,7 +206,7 @@ const Navbar = () => {
           {/* Contact Button - Desktop & Tablet */}
           <div className="hidden md:block">
             <Button
-              onClick={() => window.open('https://wa.me/447763980592', '_blank')}
+              onClick={() => window.open('https://api.whatsapp.com/send/?phone=447356273785', '_blank')}
               className="bg-primary hover:bg-primary-dark text-white px-3 lg:px-6 py-2 rounded-full transition-all duration-200 transform hover:scale-105 text-xs lg:text-sm"
             >
               Contact Us
@@ -269,7 +269,7 @@ const Navbar = () => {
                 <Button
                   onClick={() => {
                     setIsMobileMenuOpen(false);
-                    window.open('https://wa.me/447763980592', '_blank');
+                    window.open('https://api.whatsapp.com/send/?phone=447356273785', '_blank');
                   }}
                   className="bg-primary hover:bg-primary-dark text-white w-full"
                 >
