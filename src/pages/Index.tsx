@@ -84,7 +84,7 @@ const Index = () => {
             <Button 
               variant="outline"
               className="border-2 border-white text-white hover:bg-white/10 px-10 py-6 text-lg mt-2"
-              onClick={() => window.open('https://wa.me/447763980592', '_blank')}
+              onClick={() => window.open('https://api.whatsapp.com/send/?phone=447356273785', '_blank')}
             >
               <MessageCircle className="mr-2 h-5 w-5" />
               WhatsApp Us
@@ -103,7 +103,7 @@ const Index = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-12">
             <Button 
               className="bg-primary hover:bg-primary-dark text-white px-12 py-6 text-lg rounded-full transition-all transform hover:scale-105"
-              onClick={() => window.open('https://wa.me/447763980592', '_blank')}
+              onClick={() => window.open('https://api.whatsapp.com/send/?phone=447356273785', '_blank')}
             >
               <Phone className="mr-2 h-5 w-5" />
               WhatsApp us

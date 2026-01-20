@@ -99,7 +99,7 @@ const TeamSection = () => {
           <Button
             variant="outline"
             className="border-2 border-primary text-primary hover:bg-primary hover:text-white px-8 py-6 text-lg"
-            onClick={() => window.open('https://wa.me/447763980592?text=I%20would%20like%20to%20learn%20more%20about%20your%20tutors', '_blank')}
+            onClick={() => window.open('https://api.whatsapp.com/send/?phone=447356273785&text=I%20would%20like%20to%20learn%20more%20about%20your%20tutors', '_blank')}
           >
             View Full Team
             <ArrowRight className="ml-2 h-5 w-5" />
