@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import Competitions from "./pages/Competitions";
 import InterviewPractice from "./pages/InterviewPractice";
 import InterviewAdmin from "./pages/InterviewAdmin";
+import UCATTutoring from "./pages/UCATTutoring";
 import PasswordProtect from "./components/PasswordProtect";
 
 const queryClient = new QueryClient();
@@ -33,6 +34,14 @@ const App = () => (
             element={
               <PasswordProtect>
                 <InterviewAdmin />
+              </PasswordProtect>
+            } 
+          />
+          <Route 
+            path="/ucat-tutoring" 
+            element={
+              <PasswordProtect storageKey="ucat_tutoring_access">
+                <UCATTutoring />
               </PasswordProtect>
             } 
           />
