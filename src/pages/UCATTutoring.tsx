@@ -1,7 +1,8 @@
-import { CheckCircle, Users, Target, Award, Clock, BookOpen, TrendingUp, MessageCircle, GraduationCap, Star, Shield } from "lucide-react";
+import { CheckCircle, Users, Target, Award, Clock, BookOpen, TrendingUp, MessageCircle, GraduationCap, Star, Shield, Quote } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
 const UCATTutoring = () => {
   const packageFeatures = [
@@ -29,6 +30,50 @@ const UCATTutoring = () => {
     { value: "3000+", label: "Average Student Score" },
     { value: "35+", label: "Oxbridge Offers 2025" },
     { value: "Top 1%", label: "Tutor Scores Nationally" },
+  ];
+
+  const tutors = [
+    { name: "Akshita", score: "3490 UCAT", university: "Med @ Imperial", initials: "AK" },
+    { name: "Gregory", score: "3490 UCAT", university: "(inc.) Grad Med @ Southampton", initials: "GR" },
+    { name: "Shaun", score: "3480 UCAT", university: "(inc.) Med @ Oxford", initials: "SH" },
+    { name: "Vedant", score: "3510 UCAT", university: "(inc.) Med @ Cambridge", initials: "VE" },
+    { name: "Sonia", score: "3410 UCAT", university: "(inc.) Med @ UCL", initials: "SO" },
+    { name: "Dhruv", score: "3450 UCAT", university: "Med @ Cambridge", initials: "DH" },
+    { name: "Sheen", score: "3400 UCAT", university: "Med @ Oxford", initials: "SN" },
+    { name: "Manasa", score: "3420 UCAT", university: "Med @ Cambridge", initials: "MA" },
+  ];
+
+  const studentSuccesses = [
+    { name: "Ali", score: "3270 UCAT", university: "Med @ KCL", initials: "AL" },
+    { name: "Seri", score: "3300 UCAT", university: "(inc.) Med @ Cambridge", initials: "SE" },
+    { name: "Eshaal", score: "3250 UCAT", university: "(inc.) Med @ Oxford", initials: "ES" },
+    { name: "Yaman", score: "3320 UCAT", university: "Med @ Oxford", initials: "YA" },
+    { name: "Alhasan", score: "3300 UCAT", university: "(inc.) Med @ Oxford", initials: "AH" },
+    { name: "Jeevan", score: "3140 UCAT", university: "Med @ Cambridge", initials: "JE" },
+    { name: "Anagha", score: "3350 UCAT", university: "(inc.) Med @ Imperial", initials: "AN" },
+    { name: "Samaika", score: "3260 UCAT", university: "Med @ Cambridge", initials: "SA" },
+    { name: "Season", score: "3360 UCAT", university: "Med @ Edinburgh", initials: "SN" },
+    { name: "Rebecca", score: "3210 UCAT", university: "Dent @ KCL", initials: "RE" },
+    { name: "Jahnavi", score: "3190 UCAT", university: "(inc.) Med @ Imperial", initials: "JA" },
+    { name: "Mohammed", score: "3120 UCAT", university: "(inc.) Med @ Lancaster", initials: "MO" },
+  ];
+
+  const testimonials = [
+    {
+      quote: "The structured approach completely transformed my preparation. I went from 2400 to 3200+ in 6 weeks.",
+      name: "Cambridge Medicine Offer",
+      detail: "2025 Cycle"
+    },
+    {
+      quote: "Unlike generic tutoring, every session was tailored to my weaknesses. The score tracking kept me accountable.",
+      name: "Oxford Medicine Offer",
+      detail: "2025 Cycle"
+    },
+    {
+      quote: "The strategic frameworks for each section gave me a repeatable system. Best investment I made for my application.",
+      name: "Imperial Medicine Offer",
+      detail: "2025 Cycle"
+    },
   ];
 
   return (
@@ -210,8 +255,110 @@ const UCATTutoring = () => {
         </div>
       </section>
 
-      {/* Founder Section */}
+      {/* Our Elite Tutors */}
       <section className="py-20 bg-secondary/30">
+        <div className="container mx-auto px-6">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <Badge className="bg-primary/10 text-primary mb-4 px-4 py-2">
+                <Award className="w-4 h-4 mr-2" />
+                Top 1% Nationally
+              </Badge>
+              <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+                Our Elite Tutors
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Every tutor scored in the top 1% of UCAT candidates and holds offers from leading UK medical schools.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+              {tutors.map((tutor, index) => (
+                <Card key={index} className="bg-white border-0 shadow-md hover:shadow-lg transition-shadow">
+                  <CardContent className="p-4 text-center">
+                    <Avatar className="w-20 h-20 mx-auto mb-3 bg-gradient-to-br from-primary to-primary-dark">
+                      <AvatarFallback className="text-white text-lg font-semibold bg-gradient-to-br from-primary to-primary-dark">
+                        {tutor.initials}
+                      </AvatarFallback>
+                    </Avatar>
+                    <h4 className="font-semibold text-foreground">{tutor.name}</h4>
+                    <p className="text-primary font-bold text-lg">{tutor.score}</p>
+                    <p className="text-xs text-muted-foreground">{tutor.university}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Student Success Stories */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <Badge className="bg-primary/10 text-primary mb-4 px-4 py-2">
+                <Star className="w-4 h-4 mr-2" />
+                Verified Results
+              </Badge>
+              <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+                Student Success Stories
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Recent students who achieved outstanding UCAT scores and secured offers at top medical schools.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+              {studentSuccesses.map((student, index) => (
+                <div key={index} className="text-center group">
+                  <Avatar className="w-16 h-16 mx-auto mb-2 bg-gradient-to-br from-secondary to-primary/20 group-hover:scale-105 transition-transform">
+                    <AvatarFallback className="text-primary font-semibold bg-gradient-to-br from-secondary to-primary/10">
+                      {student.initials}
+                    </AvatarFallback>
+                  </Avatar>
+                  <h4 className="font-medium text-foreground text-sm">{student.name}</h4>
+                  <p className="text-primary font-bold text-sm">{student.score}</p>
+                  <p className="text-xs text-muted-foreground leading-tight">{student.university}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="py-20 bg-gradient-to-br from-secondary/50 to-primary/5">
+        <div className="container mx-auto px-6">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+                What Our Students Say
+              </h2>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6">
+              {testimonials.map((testimonial, index) => (
+                <Card key={index} className="bg-white border-0 shadow-lg">
+                  <CardContent className="p-6">
+                    <Quote className="w-8 h-8 text-primary/30 mb-4" />
+                    <p className="text-muted-foreground leading-relaxed mb-6 italic">
+                      "{testimonial.quote}"
+                    </p>
+                    <div className="border-t pt-4">
+                      <p className="font-semibold text-primary">{testimonial.name}</p>
+                      <p className="text-sm text-muted-foreground">{testimonial.detail}</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Founder Section */}
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
             <div className="grid md:grid-cols-3 gap-8 items-center">
