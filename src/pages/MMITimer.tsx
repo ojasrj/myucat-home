@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
-import { Play, Pause, RotateCcw, Settings, X, GraduationCap, SkipForward, VolumeX } from "lucide-react";
+import { Play, Pause, RotateCcw, Settings, X, GraduationCap, SkipForward, VolumeX, Volume2 } from "lucide-react";
 
 interface TimerSettings {
   changeoverTime: number; // in seconds
@@ -111,9 +111,9 @@ export default function MMITimer() {
     return settings.totalStations * (settings.changeoverTime + settings.readingTime + settings.answerTime + settings.feedbackTime);
   };
 
-  const playBuzzer = useCallback(() => {
-    // Stop any existing buzzer
-    stopBuzzer();
+  const playBuzzer = useCallback((duration: number = 5000) => {
+    // Don't restart if already playing
+    if (isBuzzerPlaying) return;
     
     try {
       // Create audio context
@@ -136,9 +136,10 @@ export default function MMITimer() {
       oscillator.type = "square";
       oscillator.frequency.setValueAtTime(440, audioContext.currentTime); // A4 note
       
-      // Pulsing effect
+      // Pulsing effect - alternating frequencies
       const now = audioContext.currentTime;
-      for (let i = 0; i < 10; i++) {
+      const pulseCount = Math.ceil(duration / 500); // 0.5 second per pulse
+      for (let i = 0; i < pulseCount; i++) {
         oscillator.frequency.setValueAtTime(440, now + i * 0.5);
         oscillator.frequency.setValueAtTime(880, now + i * 0.5 + 0.25);
       }
@@ -148,14 +149,14 @@ export default function MMITimer() {
       oscillator.start();
       setIsBuzzerPlaying(true);
       
-      // Auto-stop after 5 seconds
+      // Auto-stop after duration
       buzzerTimeoutRef.current = setTimeout(() => {
         stopBuzzer();
-      }, 5000);
+      }, duration);
     } catch (error) {
       console.error("Error playing buzzer:", error);
     }
-  }, []);
+  }, [isBuzzerPlaying]);
 
   const stopBuzzer = useCallback(() => {
     if (buzzerTimeoutRef.current) {
@@ -215,6 +216,16 @@ export default function MMITimer() {
     advanceToNext();
   };
 
+  // Effect to play buzzer during last 5 seconds
+  useEffect(() => {
+    if (isRunning && !isComplete && timeRemaining <= 5 && timeRemaining > 0) {
+      // Start buzzer when we hit 5 seconds remaining
+      if (timeRemaining === 5) {
+        playBuzzer(5000);
+      }
+    }
+  }, [isRunning, isComplete, timeRemaining, playBuzzer]);
+
   useEffect(() => {
     let interval: NodeJS.Timeout | null = null;
 
@@ -222,10 +233,7 @@ export default function MMITimer() {
       interval = setInterval(() => {
         setTimeRemaining((prev) => {
           if (prev <= 1) {
-            // Time's up - play buzzer
-            playBuzzer();
-            
-            // Advance to next phase/station
+            // Time's up - advance to next
             setTimeout(() => {
               advanceToNext();
             }, 100);
@@ -241,7 +249,7 @@ export default function MMITimer() {
     return () => {
       if (interval) clearInterval(interval);
     };
-  }, [isRunning, isComplete, advanceToNext, playBuzzer]);
+  }, [isRunning, isComplete, advanceToNext]);
 
   // Cleanup on unmount
   useEffect(() => {
@@ -326,15 +334,28 @@ export default function MMITimer() {
           </div>
         </div>
         
-        <Button
-          onClick={handleOpenSettings}
-          variant="ghost"
-          size="icon"
-          className="text-gray-400 hover:text-white hover:bg-white/10"
-          disabled={isRunning}
-        >
-          <Settings className="w-6 h-6" />
-        </Button>
+        <div className="flex items-center gap-2">
+          <Button
+            onClick={() => playBuzzer(3000)}
+            variant="ghost"
+            size="sm"
+            className="text-gray-400 hover:text-white hover:bg-white/10 text-xs"
+            title="Test Buzzer"
+          >
+            <Volume2 className="w-4 h-4 mr-1" />
+            Test Buzzer
+          </Button>
+          
+          <Button
+            onClick={handleOpenSettings}
+            variant="ghost"
+            size="icon"
+            className="text-gray-400 hover:text-white hover:bg-white/10"
+            disabled={isRunning}
+          >
+            <Settings className="w-6 h-6" />
+          </Button>
+        </div>
       </header>
 
       {/* Main Content */}
