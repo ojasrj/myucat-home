@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import SocialProofSection from "@/components/SocialProofSection";
@@ -147,6 +148,12 @@ const Index = () => {
           <p className="text-gray-500 text-sm mt-12">
             © {new Date().getFullYear()} MyUCAT. All rights reserved.
           </p>
+          <Link 
+            to="/mmi-timer" 
+            className="text-gray-400 hover:text-primary text-xs mt-4 inline-block transition-colors"
+          >
+            MMI Timer
+          </Link>
         </div>
       </section>
     </main>
