@@ -8,6 +8,7 @@ import Competitions from "./pages/Competitions";
 import InterviewPractice from "./pages/InterviewPractice";
 import InterviewAdmin from "./pages/InterviewAdmin";
 import UCATTutoring from "./pages/UCATTutoring";
+import MMITimer from "./pages/MMITimer";
 import PasswordProtect from "./components/PasswordProtect";
 
 const queryClient = new QueryClient();
@@ -45,6 +46,7 @@ const App = () => (
               </PasswordProtect>
             } 
           />
+          <Route path="/mmi-timer" element={<MMITimer />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
